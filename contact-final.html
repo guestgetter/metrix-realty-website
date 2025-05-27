@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Metrix Realty Group - Professional Appraisal Services</title>
+    <meta name="description" content="Contact Metrix Realty Group for professional real estate appraisal services. Located in London, Ontario. Call (519) 672-7550 or request a consultation online.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+        }
+        
+        /* Header Styles - Consistent with other pages */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        .logo {
+            height: 48px;
+            width: 140px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(35, 60, 117, 0.2);
+        }
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #233c75;
+        }
+        
+        .nav-link.active {
+            color: #233c75;
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #233c75, #3faa4d);
+            border-radius: 1px;
+        }
+        
+        .cta-button {
+            display: none;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(35, 60, 117, 0.2);
+        }
+        
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            color: #374151;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .hamburger {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .hamburger-line {
+            display: block;
+            height: 2px;
+            width: 24px;
+            background-color: currentColor;
+            border-radius: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Mobile Menu - Same proven working version */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 300px;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12), -2px 0 8px rgba(0, 0, 0, 0.08);
+            z-index: 99999;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-left: 1px solid #e5e7eb;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: #9ca3af;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-menu-content {
+            padding: 32px 24px;
+            padding-top: 88px;
+            height: 100%;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            font-size: 17px;
+            font-weight: 500;
+            color: #374151;
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-nav-link.active {
+            color: #233c75;
+            font-weight: 600;
+            background: linear-gradient(90deg, rgba(35, 60, 117, 0.04) 0%, transparent 100%);
+            border-left: 2px solid #233c75;
+            padding-left: 8px;
+        }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 32px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .info-content p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .contact-form h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 32px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #233c75;
+            box-shadow: 0 0 0 3px rgba(35, 60, 117, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(35, 60, 117, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(35, 60, 117, 0.3);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        
+        .map-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .map-placeholder {
+            height: 400px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .desktop-nav {
+                display: flex;
+            }
+            
+            .cta-button {
+                display: inline-block;
+            }
+            
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 32px 24px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        body.menu-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-flex">
+                <div class="logo">
+                    METRIX REALTY
+                </div>
+                
+                <div class="desktop-nav">
+                    <a href="homepage-final.html" class="nav-link">Home</a>
+                    <a href="services-final.html" class="nav-link">Services</a>
+                    <a href="market-areas.html" class="nav-link">Market Areas</a>
+                    <a href="team.html" class="nav-link">Team</a>
+                    <a href="insights.html" class="nav-link">Insights</a>
+                    <a href="#" class="nav-link active">Contact</a>
+                </div>
+                
+                <a href="#" class="cta-button">Request Appraisal</a>
+                
+                <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle mobile menu">
+                    <div class="hamburger" id="hamburger">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        <div class="mobile-menu-content">
+            <nav class="mobile-nav">
+                <a href="homepage-final.html" class="mobile-nav-link">Home</a>
+                <a href="services-final.html" class="mobile-nav-link">Services</a>
+                <a href="market-areas.html" class="mobile-nav-link">Market Areas</a>
+                <a href="team.html" class="mobile-nav-link">Team</a>
+                <a href="insights.html" class="mobile-nav-link">Insights</a>
+                <a href="#" class="mobile-nav-link active">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div id="mobile-menu-overlay" class="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Contact Us</h1>
+                <p class="page-subtitle">
+                    Ready to get started? Contact our team of certified appraisers for a free consultation 
+                    and discover how we can help with your real estate valuation needs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-content">
+                                <h3>Office Location</h3>
+                                <p>620A Richmond Street, Suite 203<br>
+                                London, ON N6A 5J9<br>
+                                Canada</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div class="info-content">
+                                <h3>Phone & Fax</h3>
+                                <p><strong>Phone:</strong> (519) 672-7550<br>
+                                <strong>Toll Free:</strong> 1-866-672-9101<br>
+                                <strong>Fax:</strong> (519) 672-9321</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">✉️</div>
+                            <div class="info-content">
+                                <h3>Email</h3>
+                                <p><strong>General Inquiries:</strong><br>
+                                info@metrixrealty.com<br><br>
+                                <strong>Appraisal Requests:</strong><br>
+                                appraisals@metrixrealty.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">🕒</div>
+                            <div class="info-content">
+                                <h3>Business Hours</h3>
+                                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br>
+                                <strong>Saturday:</strong> 9:00 AM - 1:00 PM<br>
+                                <strong>Sunday:</strong> Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h2>Request a Consultation</h2>
+                        
+                        <form id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="serviceType">Service Type *</label>
+                                <select id="serviceType" name="serviceType" required>
+                                    <option value="">Select a service...</option>
+                                    <option value="commercial">Commercial Valuation</option>
+                                    <option value="residential">Residential Appraisal</option>
+                                    <option value="litigation">Litigation Support</option>
+                                    <option value="consulting">Real Estate Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="propertyAddress">Property Address</label>
+                                <input type="text" id="propertyAddress" name="propertyAddress" placeholder="Street address, city, province">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timeline">Preferred Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="">Select timeline...</option>
+                                    <option value="urgent">Urgent (1-2 days)</option>
+                                    <option value="standard">Standard (3-5 days)</option>
+                                    <option value="flexible">Flexible (1-2 weeks)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Additional Details</label>
+                                <textarea id="message" name="message" placeholder="Please provide any additional information about your appraisal needs..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        📍 Interactive Map - 620A Richmond Street, London, ON
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburger = document.getElementById('hamburger');
+
+            function toggleMobileMenu() {
+                const isOpen = mobileMenu.classList.contains('open');
+                
+                if (isOpen) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            }
+
+            function openMobileMenu() {
+                mobileMenu.classList.add('open');
+                mobileMenuOverlay.classList.add('open');
+                hamburger.classList.add('open');
+                document.body.classList.add('menu-open');
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('open');
+                mobileMenuOverlay.classList.remove('open');
+                hamburger.classList.remove('open');
+                document.body.classList.remove('menu-open');
+            }
+
+            mobileMenuButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileMenu();
+            });
+            
+            mobileMenuClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenu();
+            });
+            
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            // Contact Form Handling
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation and submission simulation
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Simulate form submission
+                alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your appraisal needs.');
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html> 

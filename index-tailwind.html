@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Real Estate Appraisal & Consulting | Metrix Realty Group | Southwestern Ontario</title>
+    <meta name="description" content="Trusted real estate appraisal and consulting services in Southwestern Ontario. AACI designated professionals serving commercial, residential, and litigation clients since 1999.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metrix-blue': '#233c75',
+                        'metrix-blue-light': '#3d5a9e',
+                        'metrix-blue-dark': '#1a2d5a',
+                        'metrix-green': '#3faa4d',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-hero {
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 70%, #3faa4d 100%);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #233c75, #3faa4d);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Global Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-12 w-auto">
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200 border-b-2 border-metrix-blue">Home</a>
+                    <div class="relative group">
+                        <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Services</a>
+                        <!-- Mega Menu -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-96 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="p-6 grid grid-cols-1 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-3 pb-2 border-b-2 border-metrix-blue">Appraisal Services</h4>
+                                    <div class="space-y-3">
+                                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                            <div class="font-medium text-gray-900">Commercial Appraisals</div>
+                                            <div class="text-sm text-gray-600">Expert valuations for office, retail, and industrial properties</div>
+                                        </a>
+                                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                            <div class="font-medium text-gray-900">Residential Appraisals</div>
+                                            <div class="text-sm text-gray-600">Comprehensive home valuations for all purposes</div>
+                                        </a>
+                                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                            <div class="font-medium text-gray-900">Litigation Support</div>
+                                            <div class="text-sm text-gray-600">Expert witness testimony and legal valuations</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Market Areas</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Team</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Insights</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">FAQ</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="contact.html" class="inline-flex items-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                        Request an Appraisal
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-gray-900 hover:text-metrix-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20">
+            <!-- Background -->
+            <div class="absolute inset-0 bg-hero"></div>
+            <div class="absolute inset-0 bg-black/10"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Trusted Real Estate Valuations Without the Guesswork
+                </h1>
+                <p class="text-lg sm:text-xl lg:text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed">
+                    Struggling with uncertain property values or complex appraisal needs? We deliver precise, defensible valuations and expert analysis tailored to drive your strategic decisions and protect your investments.
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-lg">
+                        Get Quote
+                    </a>
+                    <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-metrix-blue transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-lg">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-16">
+                    <div class="text-center">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">80+</div>
+                        <div class="text-sm lg:text-base opacity-80">Years Combined Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">1000+</div>
+                        <div class="text-sm lg:text-base opacity-80">Properties Appraised</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">AACI</div>
+                        <div class="text-sm lg:text-base opacity-80">Designated Professionals</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Signals -->
+        <section class="py-16 bg-gray-50 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="flex items-center justify-center gap-4 text-center sm:text-left">
+                        <div class="text-metrix-blue flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/>
+                            </svg>
+                        </div>
+                        <span class="font-semibold text-gray-900 text-sm">AACI Designated Professionals</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-4 text-center sm:text-left">
+                        <div class="text-metrix-blue flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <span class="font-semibold text-gray-900 text-sm">80+ Years Combined Experience</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-4 text-center sm:text-left">
+                        <div class="text-metrix-blue flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <span class="font-semibold text-gray-900 text-sm">Serving Southwestern Ontario Since 1999</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-4 text-center sm:text-left">
+                        <div class="text-metrix-blue flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <span class="font-semibold text-gray-900 text-sm">Trusted by Leading Institutions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-20 max-w-4xl mx-auto">
+                    <span class="inline-block px-4 py-2 bg-metrix-blue/10 text-metrix-blue text-sm font-semibold rounded-full uppercase tracking-wide mb-4">Our Services</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                        Expert Real Estate Valuations Across All Property Types
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        From commercial properties to residential homes, our AACI-designated professionals deliver precise, defensible appraisals that support your most important decisions.
+                    </p>
+                </div>
+                
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Commercial -->
+                    <div class="service-card bg-white p-8 rounded-xl shadow-sm border border-gray-50 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group">
+                        <div class="text-metrix-blue mb-6 flex justify-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Commercial Property Valuations</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Precise valuations for office buildings, retail spaces, industrial properties, and investment portfolios to support financing, acquisitions, and strategic decisions.
+                        </p>
+                        <a href="#" class="text-metrix-blue font-semibold hover:text-metrix-blue-dark transition-colors duration-200">
+                            Learn More →
+                        </a>
+                    </div>
+                    
+                    <!-- Residential -->
+                    <div class="service-card bg-white p-8 rounded-xl shadow-sm border border-gray-50 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group">
+                        <div class="text-metrix-blue mb-6 flex justify-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Residential Property Appraisals</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Comprehensive home valuations for mortgage financing, estate planning, matrimonial matters, and property tax appeals with fast, reliable service.
+                        </p>
+                        <a href="#" class="text-metrix-blue font-semibold hover:text-metrix-blue-dark transition-colors duration-200">
+                            Learn More →
+                        </a>
+                    </div>
+                    
+                    <!-- Litigation -->
+                    <div class="service-card bg-white p-8 rounded-xl shadow-sm border border-gray-50 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group">
+                        <div class="text-metrix-blue mb-6 flex justify-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Litigation Support & Expert Testimony</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Expert witness services, arbitration support, expropriation valuations, and forensic analysis for legal proceedings with defensible, court-ready reports.
+                        </p>
+                        <a href="#" class="text-metrix-blue font-semibold hover:text-metrix-blue-dark transition-colors duration-200">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-transparent text-gray-800 font-semibold rounded-lg border-2 border-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-800 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                        Learn More
+                    </a>
+                    <a href="contact.html" class="inline-flex items-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-24 bg-gray-900 text-white text-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <span class="inline-block px-4 py-2 bg-white/10 text-white text-sm font-semibold rounded-full uppercase tracking-wide mb-6">Ready to Get Started?</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    Let's make this official, get a quote and let us create an appraisal your decisions will rely on.
+                </h2>
+                <p class="text-lg sm:text-xl mb-12 opacity-90 leading-relaxed">
+                    A precise property valuation can save you thousands. Let's get yours right.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-lg">
+                        Get Quote
+                    </a>
+                    <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-lg">
+                        Free Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-12 w-auto mb-4 brightness-0 invert">
+                    <p class="text-lg font-semibold text-metrix-blue-light mb-6">Trusted • Valued • Experienced</p>
+                    <div class="text-gray-300 space-y-1">
+                        <p>620A Richmond Street, Suite 203</p>
+                        <p>London, ON N6A 5J9</p>
+                        <p>Tel: (519) 672-7550</p>
+                        <p>Toll Free: 866 672 9101</p>
+                        <p>Fax: (519) 672-9321</p>
+                    </div>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Commercial Appraisals</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Residential Appraisals</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Litigation Support</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Insights</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">FAQ</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4 text-sm text-gray-400">
+                    <span>Professional Affiliations:</span>
+                    <div class="flex gap-3">
+                        <span class="bg-gray-800 px-2 py-1 rounded text-xs font-semibold">AIC</span>
+                        <span class="bg-gray-800 px-2 py-1 rounded text-xs font-semibold">OREA</span>
+                        <span class="bg-gray-800 px-2 py-1 rounded text-xs font-semibold">CREA</span>
+                        <span class="bg-gray-800 px-2 py-1 rounded text-xs font-semibold">RICS</span>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-400">
+                    <p>&copy; 2024 Metrix Southwest Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 

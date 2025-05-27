@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Test - Metrix Realty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metrix-blue': '#233c75',
+                        'metrix-blue-light': '#3d5a9e',
+                        'metrix-blue-dark': '#1a2d5a',
+                        'metrix-green': '#3faa4d',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .debug-border { border: 2px solid red; }
+        .debug-bg { background: rgba(255, 0, 0, 0.1); }
+        
+        /* Show current breakpoint */
+        .breakpoint-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 9999;
+        }
+        
+        .breakpoint-indicator::before {
+            content: 'XS (< 640px)';
+        }
+        
+        @media (min-width: 640px) {
+            .breakpoint-indicator::before {
+                content: 'SM (640px+)';
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .breakpoint-indicator::before {
+                content: 'MD (768px+)';
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .breakpoint-indicator::before {
+                content: 'LG (1024px+)';
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .breakpoint-indicator::before {
+                content: 'XL (1280px+)';
+            }
+        }
+        
+        @media (min-width: 1536px) {
+            .breakpoint-indicator::before {
+                content: '2XL (1536px+)';
+            }
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Breakpoint Indicator -->
+    <div class="breakpoint-indicator"></div>
+    
+    <!-- Header Test -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-8">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="h-12 w-32 bg-metrix-blue rounded flex items-center justify-center text-white text-sm font-bold">LOGO</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium">Home</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium">Services</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium">Market Areas</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium">Team</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <button class="px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg">
+                        Request Appraisal
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-gray-900">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        <!-- Hero Section Test -->
+        <section class="text-center py-16">
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                Responsive Hero Title Test
+            </h1>
+            <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
+                This is a test of responsive typography and spacing. The text should scale appropriately across different screen sizes.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-4 bg-metrix-blue text-white font-semibold rounded-lg">Primary CTA</button>
+                <button class="px-8 py-4 border-2 border-metrix-blue text-metrix-blue font-semibold rounded-lg">Secondary CTA</button>
+            </div>
+        </section>
+
+        <!-- Grid Test -->
+        <section>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">Grid Responsiveness Test</h2>
+            
+            <!-- 3-Column Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Card 1</h3>
+                    <p class="text-gray-600">This should be 1 column on mobile, 2 on tablet, 3 on desktop.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Card 2</h3>
+                    <p class="text-gray-600">Testing responsive grid behavior across breakpoints.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Card 3</h3>
+                    <p class="text-gray-600">Each card should maintain proper spacing and proportions.</p>
+                </div>
+            </div>
+
+            <!-- 4-Column Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-metrix-blue/10 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-metrix-blue mb-2">25+</div>
+                    <div class="text-sm text-gray-600">Years Experience</div>
+                </div>
+                <div class="bg-metrix-blue/10 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-metrix-blue mb-2">1000+</div>
+                    <div class="text-sm text-gray-600">Properties Appraised</div>
+                </div>
+                <div class="bg-metrix-blue/10 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-metrix-blue mb-2">100+</div>
+                    <div class="text-sm text-gray-600">Court Cases</div>
+                </div>
+                <div class="bg-metrix-blue/10 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-metrix-blue mb-2">AACI</div>
+                    <div class="text-sm text-gray-600">Designation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two-Column Layout Test -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Two-Column Layout</h2>
+                <p class="text-gray-600 mb-6">
+                    This tests how content flows in a two-column layout. On mobile, this should stack vertically. 
+                    On larger screens, it should display side by side.
+                </p>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• Mobile: Stacked vertically</li>
+                    <li>• Tablet: Still stacked</li>
+                    <li>• Desktop: Side by side</li>
+                </ul>
+            </div>
+            <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                <span class="text-gray-500">Image/Content Area</span>
+            </div>
+        </section>
+
+        <!-- Navigation Menu Test -->
+        <section>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">Navigation Responsiveness</h2>
+            
+            <!-- Horizontal Menu (Desktop) -->
+            <div class="hidden md:flex justify-center space-x-8 mb-8">
+                <a href="#" class="px-4 py-2 text-gray-700 hover:text-metrix-blue">Commercial</a>
+                <a href="#" class="px-4 py-2 text-gray-700 hover:text-metrix-blue">Residential</a>
+                <a href="#" class="px-4 py-2 text-gray-700 hover:text-metrix-blue">Litigation</a>
+                <a href="#" class="px-4 py-2 text-gray-700 hover:text-metrix-blue">Insurance</a>
+            </div>
+            
+            <!-- Vertical Menu (Mobile) -->
+            <div class="md:hidden space-y-2 mb-8">
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded">Commercial</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded">Residential</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded">Litigation</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded">Insurance</a>
+            </div>
+        </section>
+
+        <!-- Form Responsiveness Test -->
+        <section class="bg-gray-50 p-8 rounded-lg">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">Form Responsiveness</h2>
+            <form class="max-w-2xl mx-auto space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent"></textarea>
+                </div>
+                <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark">
+                    Submit Form
+                </button>
+            </form>
+        </section>
+
+        <!-- Spacing and Typography Test -->
+        <section class="space-y-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Typography & Spacing Test</h2>
+            
+            <div class="space-y-4">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900">H1 Heading</h1>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">H2 Heading</h2>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">H3 Heading</h3>
+                <h4 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">H4 Heading</h4>
+                <p class="text-base sm:text-lg lg:text-xl text-gray-600">
+                    This is body text that should scale appropriately across different screen sizes. 
+                    The line height and spacing should remain readable and proportional.
+                </p>
+                <p class="text-sm sm:text-base text-gray-500">
+                    This is smaller text that might be used for captions or secondary information.
+                </p>
+            </div>
+        </section>
+
+        <!-- Button Responsiveness Test -->
+        <section class="text-center space-y-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Button Responsiveness</h2>
+            
+            <!-- Full width on mobile, auto on desktop -->
+            <div class="space-y-4">
+                <button class="w-full sm:w-auto px-8 py-3 bg-metrix-blue text-white font-semibold rounded-lg">
+                    Responsive Button
+                </button>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg">Button 1</button>
+                    <button class="px-6 py-3 border-2 border-metrix-blue text-metrix-blue font-semibold rounded-lg">Button 2</button>
+                    <button class="px-6 py-3 bg-metrix-green text-white font-semibold rounded-lg">Button 3</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer Test -->
+    <footer class="bg-black text-white py-16 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="h-12 w-32 bg-white rounded flex items-center justify-center text-black text-sm font-bold mb-4">LOGO</div>
+                    <p class="text-gray-300 mb-4">Company tagline and description</p>
+                    <div class="text-gray-300 space-y-1">
+                        <p>Address Line 1</p>
+                        <p>Address Line 2</p>
+                        <p>Phone: (519) 672-7550</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Commercial</a></li>
+                        <li><a href="#" class="hover:text-white">Residential</a></li>
+                        <li><a href="#" class="hover:text-white">Litigation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Team</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive testing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Log current viewport size
+            function logViewportSize() {
+                console.log(`Viewport: ${window.innerWidth}x${window.innerHeight}`);
+            }
+            
+            logViewportSize();
+            window.addEventListener('resize', logViewportSize);
+            
+            // Test touch events on mobile
+            if ('ontouchstart' in window) {
+                console.log('Touch device detected');
+            }
+        });
+    </script>
+</body>
+</html> 

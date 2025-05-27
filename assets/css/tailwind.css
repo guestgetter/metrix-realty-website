@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg border-2 border-metrix-blue transition-all duration-300 hover:bg-metrix-blue-dark hover:border-metrix-blue-dark hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-transparent text-metrix-blue font-semibold rounded-lg border-2 border-metrix-blue transition-all duration-300 hover:bg-metrix-blue hover:text-white hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-transparent text-gray-800 font-semibold rounded-lg border-2 border-gray-300 transition-all duration-300 hover:bg-gray-800 hover:text-white hover:border-gray-800 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  
+  .service-card {
+    @apply bg-white p-8 rounded-xl shadow-sm border border-gray-50 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative overflow-hidden;
+  }
+  
+  .service-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-metrix-blue to-metrix-green transform scale-x-0 transition-transform duration-300 origin-left;
+  }
+  
+  .service-card:hover::before {
+    @apply scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .bg-hero {
+    background: linear-gradient(135deg, #233c75 0%, #1a2d5a 70%, #3faa4d 100%);
+  }
+} 

@@ -1,0 +1,19 @@
+{
+  "name": "metrix-sitemap",
+  "version": "1.0.0",
+  "description": "A professional, modern website for Metrix Realty Group, a premier real estate appraisal and consulting firm serving Southwestern Ontario. This website embodies a \"McKinsey-like\" authoritative brand while being optimized for lead generation, local search visibility, and trust building.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "use-tailwind": "cp index-tailwind.html index.html && echo 'Switched to Tailwind CSS version'",
+    "use-custom": "cp index-custom.html index.html && echo 'Switched to custom CSS version'",
+    "use-enhanced": "cp index-enhanced.html index.html && echo 'Switched to enhanced YesWeDoWeb-inspired version'",
+    "backup-current": "cp index.html index-backup.html && echo 'Current version backed up'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  }
+}

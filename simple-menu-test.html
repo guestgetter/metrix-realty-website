@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Menu Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .test-button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100vh;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 5px solid #ff0000;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            z-index: 99999;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .menu-content {
+            background: #ffffff;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 99998;
+            display: none;
+        }
+        
+        .overlay.open {
+            display: block;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        .debug-info {
+            background: #ffffcc;
+            padding: 15px;
+            border: 2px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ultra Simple Mobile Menu Test</h1>
+    
+    <div class="debug-info">
+        <strong>Debug Info:</strong><br>
+        - Menu has RED border for visibility<br>
+        - Menu content has GREEN border<br>
+        - Background should be WHITE<br>
+        - Z-index is 99999<br>
+    </div>
+    
+    <button class="test-button" onclick="openMenu()">Open Menu</button>
+    
+    <p>This is some background content that should be hidden when the menu is open. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    
+    <div class="mobile-menu" id="menu">
+        <button class="close-btn" onclick="closeMenu()">X</button>
+        <div class="menu-content">
+            <h2>Menu Title</h2>
+            <p>This should have a WHITE background!</p>
+            <ul>
+                <li>Home</li>
+                <li>Services</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openMenu() {
+            console.log('Opening menu');
+            document.getElementById('menu').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMenu() {
+            console.log('Closing menu');
+            document.getElementById('menu').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        
+        // Debug: Log computed styles
+        window.addEventListener('load', function() {
+            const menu = document.getElementById('menu');
+            const computedStyle = window.getComputedStyle(menu);
+            console.log('Menu background-color:', computedStyle.backgroundColor);
+            console.log('Menu background:', computedStyle.background);
+            console.log('Menu z-index:', computedStyle.zIndex);
+        });
+    </script>
+</body>
+</html> 

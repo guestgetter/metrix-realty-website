@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Full Glory - Metrix Realty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.6;
+            color: #1f2937;
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        .logo {
+            height: 48px;
+            width: 140px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(35, 60, 117, 0.2);
+        }
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #233c75;
+        }
+        
+        .nav-link.active {
+            color: #233c75;
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #233c75, #3faa4d);
+            border-radius: 1px;
+        }
+        
+        .cta-button {
+            display: none;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(35, 60, 117, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(35, 60, 117, 0.3);
+        }
+        
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            color: #374151;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-menu-button:hover {
+            background: rgba(243, 244, 246, 0.8);
+            color: #233c75;
+        }
+        
+        .hamburger {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .hamburger-line {
+            display: block;
+            height: 2px;
+            width: 24px;
+            background-color: currentColor;
+            border-radius: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile Menu Styles - THE WORKING VERSION */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 320px;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15), -5px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 99999;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 1px solid #e5e7eb;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: #6b7280;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .mobile-menu-content {
+            padding: 24px;
+            padding-top: 80px;
+            height: 100%;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1f2937;
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .mobile-nav-link:hover {
+            color: #233c75;
+            padding-left: 8px;
+        }
+        
+        .mobile-nav-link.active {
+            color: #233c75;
+            font-weight: 600;
+            background: linear-gradient(90deg, rgba(35, 60, 117, 0.05) 0%, transparent 100%);
+            border-left: 3px solid #233c75;
+            padding-left: 12px;
+        }
+        
+        .services-section {
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .services-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1f2937;
+            background: none;
+            border: none;
+            padding: 16px 0;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        
+        .services-toggle:hover {
+            color: #233c75;
+        }
+        
+        .services-arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #6b7280;
+        }
+        
+        .services-arrow.rotated {
+            transform: rotate(180deg);
+            color: #233c75;
+        }
+        
+        .services-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 8px;
+            margin: 0 -8px 8px -8px;
+        }
+        
+        .services-submenu.open {
+            max-height: 200px;
+            padding: 16px;
+        }
+        
+        .services-submenu a {
+            display: block;
+            color: #6b7280;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        
+        .services-submenu a:hover {
+            color: #233c75;
+            background: rgba(35, 60, 117, 0.05);
+            transform: translateX(4px);
+        }
+        
+        .mobile-cta {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .mobile-cta a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(35, 60, 117, 0.2);
+        }
+        
+        .mobile-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(35, 60, 117, 0.3);
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            margin-bottom: 48px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #233c75 0%, #3faa4d 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #3faa4d 0%, #2d7a3d 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(63, 170, 77, 0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(63, 170, 77, 0.3);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #233c75 0%, #3faa4d 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .feature-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .desktop-nav {
+                display: flex;
+            }
+            
+            .cta-button {
+                display: inline-block;
+            }
+            
+            .mobile-menu-button {
+                display: none;
+            }
+            
+            .title {
+                font-size: 4rem;
+            }
+        }
+        
+        /* Prevent body scroll when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* Success indicator */
+        .success-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-flex">
+                <!-- Logo -->
+                <div class="logo">
+                    METRIX REALTY
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <a href="#" class="nav-link active">Home</a>
+                    <a href="#" class="nav-link">Services</a>
+                    <a href="#" class="nav-link">Market Areas</a>
+                    <a href="#" class="nav-link">Team</a>
+                    <a href="#" class="nav-link">Insights</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <a href="#" class="cta-button">Request Appraisal</a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle mobile menu">
+                    <div class="hamburger" id="hamburger">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu - FULL GLORY VERSION -->
+    <div id="mobile-menu" class="mobile-menu">
+        <!-- Close Button -->
+        <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        <div class="mobile-menu-content">
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link active">Home</a>
+                
+                <!-- Services Submenu -->
+                <div class="services-section">
+                    <button class="services-toggle" id="services-toggle">
+                        Services
+                        <svg class="services-arrow" id="services-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="services-submenu" id="services-submenu">
+                        <a href="#">Commercial Appraisals</a>
+                        <a href="#">Residential Appraisals</a>
+                        <a href="#">Litigation Support</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="mobile-nav-link">Market Areas</a>
+                <a href="#" class="mobile-nav-link">Team</a>
+                <a href="#" class="mobile-nav-link">Insights</a>
+                <a href="#" class="mobile-nav-link">Contact</a>
+                
+                <div class="mobile-cta">
+                    <a href="#">Request an Appraisal</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="hero-section">
+                <div class="success-badge">✅ Mobile Menu Fixed!</div>
+                <h1 class="title">Mobile Menu Full Glory</h1>
+                <p class="subtitle">
+                    Professional mobile navigation with solid white background, beautiful animations, 
+                    and Metrix branding - all using pure CSS with no external dependencies.
+                </p>
+                <a href="#features" class="demo-button">Test the Menu</a>
+            </div>
+            
+            <div class="features-grid" id="features">
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3 class="feature-title">Solid White Background</h3>
+                    <p class="feature-description">
+                        No more content bleeding through! The menu has a proper solid white background 
+                        that completely blocks content behind it.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Professional Design</h3>
+                    <p class="feature-description">
+                        Beautiful Metrix branding with gradients, proper typography, spacing, 
+                        and sophisticated hover effects.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Smooth Animations</h3>
+                    <p class="feature-description">
+                        Buttery smooth slide-in animation, hamburger transformation, 
+                        and submenu expansion with professional easing curves.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Perfect Mobile UX</h3>
+                    <p class="feature-description">
+                        Touch-optimized targets, proper overlay, body scroll lock, 
+                        and multiple ways to close the menu.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">No Dependencies</h3>
+                    <p class="feature-description">
+                        Pure CSS implementation with no Tailwind CDN conflicts. 
+                        Fast loading and guaranteed compatibility.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3 class="feature-title">Accessible</h3>
+                    <p class="feature-description">
+                        ARIA attributes, keyboard navigation support, 
+                        and screen reader friendly implementation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile Menu Functionality - FULL GLORY VERSION
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburger = document.getElementById('hamburger');
+            const servicesToggle = document.getElementById('services-toggle');
+            const servicesSubmenu = document.getElementById('services-submenu');
+            const servicesArrow = document.getElementById('services-arrow');
+
+            if (!mobileMenuButton || !mobileMenu) {
+                console.error('Mobile menu elements not found');
+                return;
+            }
+
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                const isOpen = mobileMenu.classList.contains('open');
+                console.log('Toggling menu, currently open:', isOpen);
+                
+                if (isOpen) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            }
+
+            // Open mobile menu
+            function openMobileMenu() {
+                console.log('Opening mobile menu');
+                mobileMenu.classList.add('open');
+                mobileMenuOverlay.classList.add('open');
+                hamburger.classList.add('open');
+                document.body.classList.add('menu-open');
+                
+                // Add ARIA attributes for accessibility
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+            }
+
+            // Close mobile menu
+            function closeMobileMenu() {
+                console.log('Closing mobile menu');
+                mobileMenu.classList.remove('open');
+                mobileMenuOverlay.classList.remove('open');
+                hamburger.classList.remove('open');
+                document.body.classList.remove('menu-open');
+                
+                // Update ARIA attributes
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            }
+
+            // Event listeners
+            mobileMenuButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileMenu();
+            });
+            
+            mobileMenuClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenu();
+            });
+            
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+            // Services submenu toggle
+            servicesToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isOpen = servicesSubmenu.classList.contains('open');
+                
+                if (isOpen) {
+                    servicesSubmenu.classList.remove('open');
+                    servicesArrow.classList.remove('rotated');
+                } else {
+                    servicesSubmenu.classList.add('open');
+                    servicesArrow.classList.add('rotated');
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            // Close menu when clicking on menu links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Initialize ARIA attributes
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            
+            console.log('Mobile menu FULL GLORY version initialized successfully! 🎉');
+        });
+    </script>
+</body>
+</html> 

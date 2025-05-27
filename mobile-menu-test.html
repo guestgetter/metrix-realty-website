@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test - Metrix Realty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metrix-blue': '#233c75',
+                        'metrix-blue-light': '#3d5a9e',
+                        'metrix-blue-dark': '#1a2d5a',
+                        'metrix-green': '#3faa4d',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Hamburger Animation */
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu Specific Styles */
+        #mobile-menu {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border-left: 1px solid #e5e7eb;
+            opacity: 1 !important;
+        }
+        
+        /* Ensure mobile menu appears above everything */
+        @media (max-width: 767px) {
+            #mobile-menu {
+                z-index: 9999 !important;
+            }
+            #mobile-menu-overlay {
+                z-index: 9998 !important;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-100">
+    <!-- Test Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="h-10 sm:h-12 w-32 bg-metrix-blue rounded flex items-center justify-center text-white font-bold text-sm">
+                        METRIX LOGO
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200 border-b-2 border-metrix-blue">Home</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Services</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Market Areas</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Team</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#" class="inline-flex items-center px-4 lg:px-6 py-2 lg:py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300 text-sm lg:text-base">
+                        Request Appraisal
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="hamburger text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
+                        <div class="w-6 h-6 flex flex-col justify-center space-y-1">
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-80 shadow-2xl z-[9999] md:hidden transform translate-x-full transition-transform duration-300 ease-in-out" style="background: #ffffff !important; background-color: #ffffff !important;">
+            <!-- Close Button -->
+            <div class="absolute top-4 right-4">
+                <button id="mobile-menu-close" class="p-2 text-gray-500 hover:text-gray-700" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 pt-20">
+                <nav class="space-y-6">
+                    <a href="#" class="block text-lg font-medium text-gray-900 hover:text-metrix-blue transition-colors duration-200 py-2 border-b border-gray-100">Home</a>
+                    
+                    <!-- Services Submenu -->
+                    <div>
+                        <button class="services-toggle w-full flex items-center justify-between text-lg font-medium text-gray-900 hover:text-metrix-blue transition-colors duration-200 py-2">
+                            Services
+                            <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="services-submenu hidden mt-2 ml-4 space-y-3">
+                            <a href="#" class="block text-gray-600 hover:text-metrix-blue transition-colors duration-200 py-1">Commercial Appraisals</a>
+                            <a href="#" class="block text-gray-600 hover:text-metrix-blue transition-colors duration-200 py-1">Residential Appraisals</a>
+                            <a href="#" class="block text-gray-600 hover:text-metrix-blue transition-colors duration-200 py-1">Litigation Support</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="block text-lg font-medium text-gray-900 hover:text-metrix-blue transition-colors duration-200 py-2 border-b border-gray-100">Market Areas</a>
+                    <a href="#" class="block text-lg font-medium text-gray-900 hover:text-metrix-blue transition-colors duration-200 py-2 border-b border-gray-100">Team</a>
+                    <a href="#" class="block text-lg font-medium text-gray-900 hover:text-metrix-blue transition-colors duration-200 py-2 border-b border-gray-100">Insights</a>
+                    <a href="#" class="block text-lg font-medium text-gray-900 hover:text-metrix-blue transition-colors duration-200 py-2 border-b border-gray-100">Contact</a>
+                    
+                    <div class="pt-6">
+                        <a href="#" class="block w-full text-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300">
+                            Request an Appraisal
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[9998] hidden md:hidden"></div>
+    </header>
+
+    <!-- Test Content -->
+    <main class="pt-20">
+        <div class="max-w-4xl mx-auto p-6">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Mobile Menu Test Page</h1>
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Test Instructions</h2>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>Resize your browser window to mobile size (< 768px) or use mobile device</li>
+                    <li>Click the hamburger menu button (three lines) in the top right</li>
+                    <li>Verify the menu slides in from the right</li>
+                    <li>Test the Services submenu by clicking on it</li>
+                    <li>Try closing the menu using the X button or clicking the overlay</li>
+                    <li>Test that the hamburger animates to an X when open</li>
+                </ol>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Expected Behavior</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Menu should slide in smoothly from the right</li>
+                    <li>Overlay should appear behind the menu</li>
+                    <li>Hamburger should animate to X when menu is open</li>
+                    <li>Services submenu should expand/collapse when clicked</li>
+                    <li>Menu should close when clicking X, overlay, or pressing Escape</li>
+                    <li>Body scroll should be disabled when menu is open</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburger = document.querySelector('.hamburger');
+            const servicesToggle = document.querySelector('.services-toggle');
+            const servicesSubmenu = document.querySelector('.services-submenu');
+
+            if (!mobileMenuButton || !mobileMenu) {
+                console.error('Mobile menu elements not found');
+                return;
+            }
+
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                const isOpen = mobileMenu.classList.contains('translate-x-0');
+                console.log('Toggling menu, currently open:', isOpen);
+                
+                if (isOpen) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            }
+
+            // Open mobile menu
+            function openMobileMenu() {
+                console.log('Opening mobile menu');
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('hidden');
+                if (hamburger) hamburger.classList.add('open');
+                document.body.classList.add('overflow-hidden');
+                
+                // Add ARIA attributes for accessibility
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+            }
+
+            // Close mobile menu
+            function closeMobileMenu() {
+                console.log('Closing mobile menu');
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+                if (hamburger) hamburger.classList.remove('open');
+                document.body.classList.remove('overflow-hidden');
+                
+                // Update ARIA attributes
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            }
+
+            // Event listeners
+            mobileMenuButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileMenu();
+            });
+            
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMobileMenu();
+                });
+            }
+            
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            }
+
+            // Services submenu toggle
+            if (servicesToggle && servicesSubmenu) {
+                servicesToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    servicesSubmenu.classList.toggle('hidden');
+                    const arrow = servicesToggle.querySelector('svg');
+                    if (arrow) arrow.classList.toggle('rotate-180');
+                });
+            }
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            // Close menu when clicking on menu links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Initialize ARIA attributes
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            
+            console.log('Mobile menu initialized successfully');
+        });
+    </script>
+</body>
+</html> 

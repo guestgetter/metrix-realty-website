@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insights | Metrix Realty Group | Southwestern Ontario Real Estate Analysis</title>
+    <meta name="description" content="Expert market insights and real estate analysis from Metrix Realty Group's AACI-designated professionals covering Southwestern Ontario markets.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metrix-blue': '#233c75',
+                        'metrix-blue-light': '#3d5a9e',
+                        'metrix-blue-dark': '#1a2d5a',
+                        'metrix-green': '#3faa4d',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-hero {
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 70%, #3faa4d 100%);
+        }
+        .professional-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .professional-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(35, 60, 117, 0.15);
+        }
+        .insight-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Global Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html">
+                        <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-12 w-auto">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Home</a>
+                    <a href="services-enhanced.html" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Services</a>
+                    <a href="market-areas.html" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Market Areas</a>
+                    <a href="team.html" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Team</a>
+                    <a href="#" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200 border-b-2 border-metrix-blue">Market Insights</a>
+                    <a href="contact-enhanced.html" class="text-gray-900 hover:text-metrix-blue font-medium transition-colors duration-200">Contact</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="contact-enhanced.html" class="inline-flex items-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                        Request an Appraisal
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-[60vh] flex items-center justify-center text-center text-white overflow-hidden pt-20">
+            <div class="absolute inset-0 bg-hero"></div>
+            <div class="absolute inset-0 bg-black/10"></div>
+            
+            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <span class="inline-block px-4 py-2 bg-white/20 text-white text-sm font-semibold rounded-full uppercase tracking-wide mb-4" data-aos="fade-up" data-aos-duration="800">Market Intelligence</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight" data-aos="fade-up" data-aos-duration="1000">
+                    Market Insights & Analysis
+                </h1>
+                <p class="text-lg sm:text-xl lg:text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    Expert analysis and insights from our AACI-designated professionals on Southwestern Ontario's real estate markets.
+                </p>
+            </div>
+        </section>
+
+        <!-- Market Trends -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="inline-block px-4 py-2 bg-metrix-blue/10 text-metrix-blue text-sm font-semibold rounded-full uppercase tracking-wide mb-4" data-aos="fade-up" data-aos-duration="800">Current Trends</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                        2025 Market Outlook
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        Key trends and insights shaping Southwestern Ontario's real estate landscape.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Commercial Trends -->
+                    <div class="insight-card rounded-xl p-8 border border-gray-100 professional-hover" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        <div class="w-12 h-12 bg-metrix-blue/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-metrix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Commercial Real Estate</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Industrial demand remains strong with e-commerce driving warehouse needs. Office markets adapting to hybrid work models.
+                        </p>
+                        <div class="text-sm text-gray-500">
+                            <div class="mb-2">• Industrial vacancy rates: 2.1%</div>
+                            <div class="mb-2">• Office absorption improving</div>
+                            <div>• Retail sector stabilizing</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Residential Trends -->
+                    <div class="insight-card rounded-xl p-8 border border-gray-100 professional-hover" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <div class="w-12 h-12 bg-metrix-green/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-metrix-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Residential Market</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Market stabilization following recent volatility. Affordability challenges persist in major centers.
+                        </p>
+                        <div class="text-sm text-gray-500">
+                            <div class="mb-2">• Price growth moderating</div>
+                            <div class="mb-2">• Inventory levels improving</div>
+                            <div>• First-time buyer activity</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interest Rate Impact -->
+                    <div class="insight-card rounded-xl p-8 border border-gray-100 professional-hover" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Interest Rate Environment</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Bank of Canada policy shifts impacting financing costs and investment decisions across all property types.
+                        </p>
+                        <div class="text-sm text-gray-500">
+                            <div class="mb-2">• Rate cut expectations</div>
+                            <div class="mb-2">• Financing cost pressures</div>
+                            <div>• Investment yield impacts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional Analysis -->
+        <section class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6" data-aos="fade-up" data-aos-duration="1000">
+                        Regional Market Analysis
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        Detailed insights into key markets across our service area.
+                    </p>
+                </div>
+                
+                <div class="space-y-12">
+                    <!-- London Market -->
+                    <div class="bg-white rounded-xl p-8 border border-gray-100" data-aos="fade-up" data-aos-duration="800">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                            <div class="lg:col-span-2">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">London Market Update</h3>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                    London continues to benefit from its strategic location and diverse economy. Healthcare, education, and technology sectors drive commercial demand while residential markets show resilience.
+                                </p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Population Growth</div>
+                                        <div class="text-gray-600">2.1% annually</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Employment Rate</div>
+                                        <div class="text-gray-600">94.2%</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Avg. Home Price</div>
+                                        <div class="text-gray-600">$685,000</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Commercial Vacancy</div>
+                                        <div class="text-gray-600">8.5%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-1">
+                                <div class="bg-gradient-to-br from-metrix-blue/5 to-metrix-blue/10 rounded-lg p-6 text-center">
+                                    <div class="text-3xl font-bold text-metrix-blue mb-2">+3.2%</div>
+                                    <div class="text-sm text-gray-600">Year-over-year price growth</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Windsor Market -->
+                    <div class="bg-white rounded-xl p-8 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                            <div class="lg:col-span-2">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Windsor Region</h3>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                    Automotive sector transformation and cross-border trade dynamics continue to shape the market. Industrial properties benefit from logistics advantages.
+                                </p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Manufacturing Jobs</div>
+                                        <div class="text-gray-600">18.2% of workforce</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Cross-Border Trade</div>
+                                        <div class="text-gray-600">$140B annually</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Avg. Home Price</div>
+                                        <div class="text-gray-600">$525,000</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Industrial Demand</div>
+                                        <div class="text-gray-600">Strong</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-1">
+                                <div class="bg-gradient-to-br from-metrix-green/5 to-metrix-green/10 rounded-lg p-6 text-center">
+                                    <div class="text-3xl font-bold text-metrix-green mb-2">+1.8%</div>
+                                    <div class="text-sm text-gray-600">Year-over-year price growth</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expert Commentary -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6" data-aos="fade-up" data-aos-duration="1000">
+                        Expert Commentary
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        Professional insights from our AACI-designated appraisers.
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 lg:p-12 border border-gray-100" data-aos="fade-up" data-aos-duration="800">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <div class="text-4xl text-metrix-blue mb-6">"</div>
+                        <blockquote class="text-xl text-gray-700 mb-8 leading-relaxed italic">
+                            The Southwestern Ontario market continues to demonstrate resilience despite broader economic uncertainties. We're seeing selective opportunities in industrial properties while residential markets stabilize. Our role as appraisers is more critical than ever in providing accurate, defensible valuations in this evolving landscape.
+                        </blockquote>
+                        <div class="text-center">
+                            <div class="font-semibold text-gray-900">Senior Appraiser</div>
+                            <div class="text-metrix-blue">AACI, P.App</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 bg-metrix-blue text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight" data-aos="fade-up" data-aos-duration="1000">
+                        Need Expert Market Analysis?
+                    </h2>
+                    <p class="text-lg sm:text-xl mb-12 opacity-90 leading-relaxed" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        Our AACI-designated professionals provide detailed market analysis and valuation insights to support your real estate decisions.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                        <a href="contact-enhanced.html" class="inline-flex items-center px-8 py-4 bg-white text-metrix-blue font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-lg">
+                            Request Market Analysis
+                        </a>
+                        <a href="tel:519-672-7550" class="inline-flex items-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-metrix-blue transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-lg">
+                            Call (519) 672-7550
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="bg-black text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-center lg:text-left">
+                <div class="lg:col-span-1">
+                    <div class="flex justify-center lg:justify-start items-center gap-3 mb-6">
+                        <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-10 w-auto brightness-0 invert">
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                        Trusted • Valued • Experienced
+                    </p>
+                    <div class="text-gray-300 text-sm space-y-1">
+                        <p class="font-semibold text-white">620A Richmond Street, Suite 203</p>
+                        <p>London, ON N6A 5J9</p>
+                        <p class="mt-3">
+                            <span class="inline-block w-4 text-center">📞</span> (519) 672-7550
+                        </p>
+                        <p>Toll Free: 866 672 9101</p>
+                        <p>Fax: (519) 672-9321</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-6">Services</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="services-enhanced.html" class="hover:text-white transition-colors duration-200">Commercial Valuation</a></li>
+                        <li><a href="services-enhanced.html" class="hover:text-white transition-colors duration-200">Residential Appraisals</a></li>
+                        <li><a href="services-enhanced.html" class="hover:text-white transition-colors duration-200">Litigation Support</a></li>
+                        <li><a href="services-enhanced.html" class="hover:text-white transition-colors duration-200">Real Estate Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-6">Market Areas</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">London</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Windsor</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Guelph</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Full Coverage Map</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-6">Company</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="team.html" class="hover:text-white transition-colors duration-200">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Market Insights</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Careers</a></li>
+                        <li><a href="contact-enhanced.html" class="hover:text-white transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mb-8 text-center">
+                <div class="mb-6">
+                    <h4 class="text-white font-semibold text-lg mb-4">Professional Affiliations</h4>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-300">
+                    <span>AIC - Appraisal Institute of Canada</span>
+                    <span>OREA - Ontario Real Estate Association</span>
+                    <span>CREA - Canadian Real Estate Association</span>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Metrix Realty Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html> 
