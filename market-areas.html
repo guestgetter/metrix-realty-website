@@ -195,34 +195,119 @@
             </div>
         </section>
 
-        <!-- Interactive Postal Code Checker -->
+        <!-- Interactive Ontario Map -->
         <section class="py-24 bg-white">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-duration="1000">
-                    <span class="inline-block px-4 py-2 bg-black/10 text-black text-sm font-semibold rounded-full uppercase tracking-wide mb-4">Coverage Checker</span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6" data-aos="fade-up" data-aos-duration="1000">
-                        Do We Serve Your Area?
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="inline-block px-4 py-2 bg-black/10 text-black text-sm font-semibold rounded-full uppercase tracking-wide mb-4" data-aos="fade-up" data-aos-duration="800">Interactive Coverage Map</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                        Explore Our Ontario Coverage
                     </h2>
-                    <p class="text-lg text-gray-600 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                        Enter your postal code to instantly see if we provide professional appraisal services in your location.
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        Click on any region or enter your postal code to see if we serve your area.
                     </p>
                     
-                    <div class="max-w-md mx-auto mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <!-- Postal Code Quick Check -->
+                    <div class="max-w-md mx-auto mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                         <div class="flex gap-3">
                             <input type="text" 
                                    id="postalCode" 
-                                   placeholder="Enter Postal Code (e.g., N6A 5J9)" 
-                                   class="flex-1 px-4 py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black text-center uppercase text-lg font-medium"
+                                   placeholder="Quick Check: Enter Postal Code" 
+                                   class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black text-center uppercase font-medium"
                                    maxlength="7"
                                    style="text-transform: uppercase;">
                             <button onclick="checkCoverage()" 
-                                    class="px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 text-lg">
-                                Check Now
+                                    class="px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300">
+                                Check
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <!-- Interactive Map Container -->
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <div class="relative">
+                        <!-- Map SVG -->
+                        <svg id="ontarioMap" viewBox="0 0 1000 800" class="w-full h-auto max-h-[600px] mx-auto">
+                            <!-- Ontario Province Outline (Simplified but more accurate) -->
+                            <path id="ontario-outline" 
+                                  d="M200,200 L800,200 L800,400 L750,450 L780,500 L750,550 L700,580 L650,600 L600,620 L550,610 L500,590 L450,580 L400,570 L350,550 L300,520 L250,480 L220,440 L200,400 Z" 
+                                  fill="#f8fafc" 
+                                  stroke="#e2e8f0" 
+                                  stroke-width="2"/>
+                            
+                            <!-- Great Lakes (simplified) -->
+                            <circle cx="150" cy="350" r="40" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" opacity="0.3"/>
+                            <ellipse cx="750" cy="180" rx="60" ry="30" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" opacity="0.3"/>
+                            <ellipse cx="850" cy="320" rx="40" ry="80" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" opacity="0.3"/>
+                            
+                            <!-- Regional Points -->
+                            <g id="regions">
+                                <!-- Southwestern Ontario -->
+                                <circle cx="300" cy="450" r="25" fill="#1f2937" stroke="#ffffff" stroke-width="3" 
+                                        class="region-point cursor-pointer hover:fill-gray-600 transition-all duration-300" 
+                                        data-region="southwestern" onclick="showRegionDetails('southwestern')">
+                                    <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="300" y="480" text-anchor="middle" class="text-sm font-semibold fill-gray-700">SW Ontario</text>
+                                
+                                <!-- Greater Toronto Area -->
+                                <circle cx="550" cy="380" r="25" fill="#1f2937" stroke="#ffffff" stroke-width="3" 
+                                        class="region-point cursor-pointer hover:fill-gray-600 transition-all duration-300" 
+                                        data-region="gta" onclick="showRegionDetails('gta')">
+                                    <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+                                </circle>
+                                <text x="550" y="410" text-anchor="middle" class="text-sm font-semibold fill-gray-700">GTA</text>
+                                
+                                <!-- Eastern Ontario -->
+                                <circle cx="650" cy="320" r="25" fill="#1f2937" stroke="#ffffff" stroke-width="3" 
+                                        class="region-point cursor-pointer hover:fill-gray-600 transition-all duration-300" 
+                                        data-region="eastern" onclick="showRegionDetails('eastern')">
+                                    <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite" begin="1s"/>
+                                </circle>
+                                <text x="650" y="350" text-anchor="middle" class="text-sm font-semibold fill-gray-700">Eastern</text>
+                                
+                                <!-- Central Ontario -->
+                                <circle cx="450" cy="300" r="25" fill="#1f2937" stroke="#ffffff" stroke-width="3" 
+                                        class="region-point cursor-pointer hover:fill-gray-600 transition-all duration-300" 
+                                        data-region="central" onclick="showRegionDetails('central')">
+                                    <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+                                </circle>
+                                <text x="450" y="330" text-anchor="middle" class="text-sm font-semibold fill-gray-700">Central</text>
+                                
+                                <!-- Northern Ontario -->
+                                <circle cx="400" cy="250" r="25" fill="#1f2937" stroke="#ffffff" stroke-width="3" 
+                                        class="region-point cursor-pointer hover:fill-gray-600 transition-all duration-300" 
+                                        data-region="northern" onclick="showRegionDetails('northern')">
+                                    <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite" begin="2s"/>
+                                </circle>
+                                <text x="400" y="280" text-anchor="middle" class="text-sm font-semibold fill-gray-700">Northern</text>
+                                
+                                <!-- Headquarters (London area) -->
+                                <circle cx="350" cy="420" r="15" fill="#dc2626" stroke="#ffffff" stroke-width="3" 
+                                        class="cursor-pointer">
+                                    <animate attributeName="r" values="15;20;15" dur="1.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="350" y="450" text-anchor="middle" class="text-xs font-bold fill-red-600">HQ</text>
+                            </g>
+                            
+                            <!-- Coverage Legend -->
+                            <g transform="translate(50, 50)">
+                                <rect x="0" y="0" width="200" height="120" fill="white" stroke="#e5e7eb" stroke-width="1" rx="8" opacity="0.95"/>
+                                <text x="10" y="20" class="text-sm font-bold fill-gray-800">Coverage Legend</text>
+                                <circle cx="20" cy="40" r="8" fill="#1f2937"/>
+                                <text x="35" y="45" class="text-xs fill-gray-700">Service Regions</text>
+                                <circle cx="20" cy="60" r="6" fill="#dc2626"/>
+                                <text x="35" y="65" class="text-xs fill-gray-700">Headquarters</text>
+                                <rect x="10" y="75" width="16" height="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+                                <text x="35" y="82" class="text-xs fill-gray-700">Great Lakes</text>
+                                <text x="10" y="105" class="text-xs fill-gray-600">Click regions for details</text>
+                            </g>
+                        </svg>
+                    </div>
                     
-                    <div id="coverageResult" class="hidden">
+                    <!-- Quick Coverage Result -->
+                    <div id="coverageResult" class="hidden mt-8">
                         <div id="coverageMessage" class="p-6 rounded-lg mb-6"></div>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href="contact-enhanced.html" 
@@ -822,7 +907,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                     </svg>
-                                    Call Direct
+                                    Call Direct: (519) 672-7550
                                 </a>
                             </div>
                         </div>
@@ -877,6 +962,87 @@
          
          // Make showRegionInfo globally accessible for onclick handlers
          window.showRegionInfo = showRegionInfo;
+
+         // Map Region Details (for SVG map clicks)
+         const mapRegionData = {
+             southwestern: {
+                 title: 'Southwestern Ontario',
+                 description: 'Comprehensive coverage of Windsor-Essex, Chatham-Kent, London-Middlesex-Elgin, and Sarnia-Lambton regions',
+                 areas: ['Windsor–Essex', 'Chatham–Kent', 'London–Middlesex–Elgin', 'Sarnia–Lambton'],
+                 specialties: 'Automotive industry, agricultural properties, petrochemical facilities, cross-border commercial'
+             },
+             gta: {
+                 title: 'Greater Toronto Area',
+                 description: 'Strategic coverage of GTA-influenced markets including Halton-Peel regions',
+                 areas: ['Halton–Peel', 'Oakville', 'Milton', 'Brampton'],
+                 specialties: 'High-density commercial, mixed-use developments, GTA proximity markets'
+             },
+             eastern: {
+                 title: 'Eastern Ontario',
+                 description: 'Specialized assignments in Ottawa and surrounding regions',
+                 areas: ['Ottawa', 'Nepean', 'Kanata', 'Orleans'],
+                 specialties: 'Government facilities, institutional properties, specialized commercial (select assignments)'
+             },
+             central: {
+                 title: 'Central Ontario',
+                 description: 'Technology corridor and agricultural regions north of GTA',
+                 areas: ['Kitchener–Waterloo–Cambridge–Guelph', 'Huron–Perth–Wellington–Grey–Bruce'],
+                 specialties: 'Technology sector, manufacturing, agricultural and rural properties'
+             },
+             northern: {
+                 title: 'Northern Ontario',
+                 description: 'Specialized coverage for unique northern market assignments',
+                 areas: ['Sudbury Region', 'Thunder Bay Region', 'Sault Ste. Marie'],
+                 specialties: 'Mining facilities, forestry operations, tourism properties (select assignments)'
+             }
+         };
+
+         function showRegionDetails(regionKey) {
+             const region = mapRegionData[regionKey];
+             const infoPanel = document.getElementById('region-info');
+             const content = document.getElementById('region-content');
+             
+             content.innerHTML = `
+                 <div class="text-center mb-6">
+                     <h3 class="text-2xl font-bold text-gray-900 mb-2">${region.title}</h3>
+                     <p class="text-lg text-gray-600 font-medium mb-4">${region.specialties}</p>
+                     <p class="text-gray-700 leading-relaxed mb-6">${region.description}</p>
+                     
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                         <div>
+                             <h4 class="font-semibold text-gray-900 mb-3">Coverage Areas:</h4>
+                             <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                                 ${region.areas.map(area => 
+                                     `<span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">${area}</span>`
+                                 ).join('')}
+                             </div>
+                         </div>
+                         <div class="flex flex-col gap-3">
+                             <a href="contact-enhanced.html" 
+                                class="inline-flex items-center justify-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300">
+                                 Get Regional Consultation
+                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                 </svg>
+                             </a>
+                             <a href="tel:519-672-7550" 
+                                class="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-800 font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300">
+                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                 </svg>
+                                 Call Direct: (519) 672-7550
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             `;
+             
+             infoPanel.classList.remove('hidden');
+             infoPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+         }
+
+         // Make showRegionDetails globally accessible for map onclick handlers
+         window.showRegionDetails = showRegionDetails;
 
          // Postal Code Coverage Checker
          function checkCoverage() {
