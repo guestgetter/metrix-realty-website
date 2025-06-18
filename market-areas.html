@@ -218,63 +218,76 @@
                 <div class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                     <!-- Map SVG -->
                     <div class="relative mx-auto max-w-4xl">
-                        <svg viewBox="0 0 800 600" class="w-full h-auto" style="max-height: 500px;">
-                            <!-- Ontario Outline (Simplified) -->
-                            <path id="ontario-outline" d="M100 150 L200 100 L350 80 L500 90 L650 120 L700 180 L680 250 L650 350 L600 420 L500 450 L400 460 L300 450 L200 420 L150 350 L120 250 Z" 
+                        <svg viewBox="0 0 900 600" class="w-full h-auto" style="max-height: 500px;">
+                            <!-- More Accurate Ontario Outline -->
+                            <path id="ontario-outline" d="M150 300 
+                                     L120 280 L110 260 L105 240 L110 220 L125 200 L145 185 L170 175 L200 170 
+                                     L230 165 L260 160 L300 158 L340 160 L380 165 L420 170 L460 175 L500 180 
+                                     L540 185 L580 190 L620 200 L660 215 L690 235 L710 260 L720 285 L715 310 
+                                     L700 335 L680 355 L650 370 L620 380 L590 385 L560 388 L530 390 L500 385 
+                                     L470 380 L440 375 L410 370 L380 365 L350 360 L320 355 L290 350 L260 345 
+                                     L230 340 L200 335 L180 325 L165 315 Z" 
                                   fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
                             
-                            <!-- Coverage Regions -->
-                            <!-- Windsor-Essex -->
-                            <circle id="region-windsor" cx="180" cy="400" r="25" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-30" 
+                            <!-- Great Lakes Outline for Context -->
+                            <path d="M50 350 Q100 330 150 340 Q200 350 250 360 Q300 370 350 365 Q400 360 450 365 Q500 370 550 375" 
+                                  fill="none" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="5,5" opacity="0.5"/>
+                            
+                            <!-- Coverage Regions with Better Placement -->
+                            <!-- Windsor-Essex (Southwest) -->
+                            <circle id="region-windsor" cx="180" cy="360" r="25" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="windsor"/>
                             
                             <!-- Chatham-Kent -->
-                            <circle id="region-chatham" cx="240" cy="380" r="20" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-25" 
+                            <circle id="region-chatham" cx="240" cy="340" r="20" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="chatham"/>
                             
-                            <!-- London-Middlesex-Elgin -->
-                            <circle id="region-london" cx="280" cy="350" r="30" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-35" 
+                            <!-- London-Middlesex-Elgin (Central) -->
+                            <circle id="region-london" cx="300" cy="315" r="30" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#000000" opacity="0.9" data-region="london"/>
-                            <text x="280" y="355" text-anchor="middle" class="text-xs fill-white font-bold pointer-events-none">HQ</text>
+                            <text x="300" y="320" text-anchor="middle" class="text-xs fill-white font-bold pointer-events-none">HQ</text>
                             
-                            <!-- Sarnia-Lambton -->
-                            <circle id="region-sarnia" cx="220" cy="320" r="20" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-25" 
+                            <!-- Sarnia-Lambton (West) -->
+                            <circle id="region-sarnia" cx="220" cy="300" r="20" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="sarnia"/>
                             
-                            <!-- Kitchener-Waterloo-Cambridge-Guelph -->
-                            <circle id="region-kwcg" cx="380" cy="300" r="35" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-40" 
+                            <!-- Kitchener-Waterloo-Cambridge-Guelph (Central-East) -->
+                            <circle id="region-kwcg" cx="400" cy="280" r="35" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="kwcg"/>
                             
-                            <!-- Brantford-Hamilton-Burlington -->
-                            <circle id="region-hamilton" cx="420" cy="350" r="30" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-35" 
+                            <!-- Brantford-Hamilton-Burlington (Southeast) -->
+                            <circle id="region-hamilton" cx="450" cy="320" r="30" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="hamilton"/>
                             
-                            <!-- Huron-Perth-Wellington-Grey-Bruce -->
-                            <circle id="region-huron" cx="320" cy="250" r="25" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-30" 
+                            <!-- Huron-Perth-Wellington-Grey-Bruce (North-Central) -->
+                            <circle id="region-huron" cx="350" cy="230" r="25" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="huron"/>
                             
-                            <!-- Niagara Region -->
-                            <circle id="region-niagara" cx="480" cy="380" r="25" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-30" 
+                            <!-- Niagara Region (Far Southeast) -->
+                            <circle id="region-niagara" cx="520" cy="350" r="25" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="niagara"/>
                             
-                            <!-- Halton-Peel -->
-                            <circle id="region-halton" cx="450" cy="320" r="25" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-30" 
+                            <!-- Halton-Peel (GTA Area) -->
+                            <circle id="region-halton" cx="480" cy="300" r="25" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#1f2937" opacity="0.8" data-region="halton"/>
                             
-                            <!-- Ottawa -->
-                            <circle id="region-ottawa" cx="580" cy="200" r="20" 
-                                    class="coverage-region cursor-pointer transition-all duration-300 hover:r-25" 
+                            <!-- Ottawa (East) -->
+                            <circle id="region-ottawa" cx="620" cy="240" r="20" 
+                                    class="coverage-region cursor-pointer transition-all duration-300" 
                                     fill="#6b7280" opacity="0.8" data-region="ottawa"/>
-                            <text x="580" y="185" text-anchor="middle" class="text-xs fill-gray-600 font-medium pointer-events-none">Select</text>
+                            <text x="620" y="225" text-anchor="middle" class="text-xs fill-gray-600 font-medium pointer-events-none">Select</text>
+                            
+                            <!-- Province Label -->
+                            <text x="450" y="400" text-anchor="middle" class="text-lg font-semibold fill-gray-400 pointer-events-none opacity-60">ONTARIO</text>
                         </svg>
                         
                         <!-- Legend -->
