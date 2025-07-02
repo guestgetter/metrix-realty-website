@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Free Property Appraisal Quote | Contact Metrix Realty | Ontario</title>
-    <meta name="description" content="Get your free property appraisal quote in 2 minutes. AACI-certified appraisers serving London, Windsor, Guelph. Same-day rush service available. Call (519) 672-7550 now.">
+    <title>Professional Property Appraisal Services | Contact Metrix Realty | Ontario</title>
+    <meta name="description" content="Professional property appraisal services throughout Ontario. AACI-certified appraisers providing comprehensive valuations for residential and commercial properties since 1999.">
     <meta name="keywords" content="free property appraisal quote Ontario, contact real estate appraiser, property valuation quote London Ontario, AACI appraiser contact, same day appraisal service">
     <link rel="canonical" href="https://metrixrealty.com/contact">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -146,6 +146,25 @@
             overflow: hidden;
         }
         
+        /* Mega Menu Styling */
+        .mega-menu-item {
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mega-menu-item:hover {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            transform: translateX(4px);
+        }
+        
+        .mega-menu-title {
+            transition: color 0.2s ease;
+        }
+        
+        .mega-menu-item:hover .mega-menu-title {
+            color: #233c75;
+        }
+        
         /* Ensure proper mobile spacing */
         @media (max-width: 767px) {
             .hero-section {
@@ -227,37 +246,63 @@
     <!-- Global Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-16 sm:h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="index.html">
-                        <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-12 w-auto">
+                        <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-10 sm:h-12 w-auto">
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                                    <a href="index.html" class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200">Home</a>
-                <a href="services-enhanced.html" class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200">Services</a>
-                <a href="market-areas.html" class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200">Market Areas</a>
-                <a href="team.html" class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200">Team</a>
-                <a href="market-insights.html" class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200">Market Insights</a>
-                <a href="#" class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200 border-b-2 border-black">Contact</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="index.html" class="nav-link text-gray-900 font-medium">Home</a>
+                    <div class="relative group">
+                        <a href="services-enhanced.html" class="nav-link text-gray-900 font-medium">Services</a>
+                        <!-- Mega Menu -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 backdrop-blur-sm">
+                            <div class="p-8">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-6 pb-3 border-b-2 border-metrix-navy text-lg">Appraisal & Consulting Services</h4>
+                                    <div class="space-y-1">
+                                        <a href="services-enhanced.html#commercial" class="mega-menu-item block p-4">
+                                            <div class="mega-menu-title font-semibold text-gray-900 mb-2">Commercial Appraisals</div>
+                                            <div class="text-sm text-gray-600 leading-relaxed">Expert valuations for office, retail, and industrial properties</div>
+                                        </a>
+                                        <a href="services-enhanced.html#residential" class="mega-menu-item block p-4">
+                                            <div class="mega-menu-title font-semibold text-gray-900 mb-2">Residential Appraisals</div>
+                                            <div class="text-sm text-gray-600 leading-relaxed">Professional home valuations for mortgages, refinancing, estate planning, and legal matters.</div>
+                                        </a>
+                                        <a href="services-enhanced.html#litigation" class="mega-menu-item block p-4">
+                                            <div class="mega-menu-title font-semibold text-gray-900 mb-2">Litigation Support</div>
+                                            <div class="text-sm text-gray-600 leading-relaxed">Expert witness testimony and legal valuations</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="market-areas.html" class="nav-link text-gray-900 font-medium">Market Areas</a>
+                    <a href="team.html" class="nav-link text-gray-900 font-medium">Team</a>
+                    <!-- <a href="market-insights.html" class="nav-link text-gray-900 font-medium">Market Insights</a> -->
+                    <a href="#" class="nav-link active text-gray-900 font-medium">Contact</a>
                 </div>
                 
                 <!-- CTA Button -->
                 <div class="hidden md:block">
-                    <a href="#contact-form" class="inline-flex items-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                        Get Free Quote
+                    <a href="contact-enhanced.html" class="btn-primary inline-flex items-center px-4 lg:px-6 py-2 lg:py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark text-sm lg:text-base transition-colors duration-200">
+                        Connect with a Professional
                     </a>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-900 hover:text-gray-600">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button id="mobile-menu-button" class="hamburger touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
+                        <div class="w-6 h-6 flex flex-col justify-center space-y-1">
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                        </div>
                     </button>
                 </div>
             </div>
@@ -278,12 +323,12 @@
                 <a href="services-enhanced.html" class="mobile-nav-link">Services</a>
                 <a href="market-areas.html" class="mobile-nav-link">Market Areas</a>
                 <a href="team.html" class="mobile-nav-link">Team</a>
-                <a href="market-insights.html" class="mobile-nav-link">Market Insights</a>
+                <!-- <a href="market-insights.html" class="mobile-nav-link">Market Insights</a> -->
                 <a href="#" class="mobile-nav-link active">Contact</a>
                 
-                <div class="mt-8 pt-6 border-t border-gray-200">
-                    <a href="#contact-form" class="block w-full text-center py-3 px-6 bg-black text-white font-semibold rounded-lg">
-                        Get Free Quote
+                <div style="margin-top: 32px;">
+                    <a href="contact-enhanced.html" class="btn-primary block w-full text-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-colors duration-200">
+                        Connect with a Professional
                     </a>
                 </div>
             </nav>
@@ -306,10 +351,10 @@
                 </div>
                 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 lg:mb-12 leading-tight" data-aos="fade-up" data-aos-duration="1000">
-                    Get Your Free Property Appraisal Quote in 2 Minutes
+                    Professional Property Appraisal Services
                 </h1>
                 <p class="text-lg sm:text-xl lg:text-2xl mb-12 sm:mb-16 lg:mb-20 opacity-90 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    Join 2,500+ satisfied clients. Our AACI-certified appraisers deliver bank-approved reports in 24-48 hours. Same-day rush service available for urgent needs.
+                    Established in 1999, Metrix Realty Advisors provides comprehensive property valuation services throughout Ontario. Our AACI-certified appraisers deliver thorough, bank-approved reports with the precision and expertise your transaction deserves.
                 </p>
                 
                 <!-- Quick Contact Options -->
@@ -337,8 +382,8 @@
                     <!-- Contact Form -->
                     <div data-aos="fade-right" data-aos-duration="1000">
                         <div class="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 shadow-lg border border-gray-100">
-                            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Request Your Free Quote</h2>
-                            <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed">Fill out the form below and we'll get back to you within 24 hours with a detailed quote for your appraisal needs.</p>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Connect with a Professional</h2>
+                            <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed">Complete the form below and our team will contact you to discuss your property valuation requirements and provide a comprehensive proposal.</p>
                             
                             <form class="space-y-5 sm:space-y-6">
                                 <!-- Contact Info -->
@@ -499,71 +544,7 @@
             </div>
         </section>
 
-        <!-- Market Insights Widget -->
-        <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4" data-aos="fade-up" data-aos-duration="1000">Current Market Conditions</h2>
-                    <p class="text-lg text-gray-600" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Stay informed with the latest market data from our three key markets.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <!-- London -->
-                    <div class="bg-white rounded-xl p-6 border border-gray-100 text-center professional-hover" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                        <div class="flex items-center justify-center mb-4">
-                            <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-2">
-                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900">London</h3>
-                        </div>
-                        <div class="text-xl font-bold text-metrix-navy mb-2">$443,238</div>
-                        <div class="text-sm text-gray-600 mb-2">Average Price</div>
-                        <div class="text-sm bg-gray-100 px-3 py-1 rounded-full text-gray-600 inline-block">13 Days on Market</div>
-                    </div>
 
-                    <!-- Guelph -->
-                    <div class="bg-white rounded-xl p-6 border border-gray-100 text-center professional-hover" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                        <div class="flex items-center justify-center mb-4">
-                            <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-2">
-                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900">Guelph</h3>
-                        </div>
-                        <div class="text-xl font-bold text-metrix-navy mb-2">$806,432</div>
-                        <div class="text-sm text-gray-600 mb-2">Average Price</div>
-                        <div class="text-sm bg-gray-100 px-3 py-1 rounded-full text-gray-600 inline-block">25 Days on Market</div>
-                    </div>
-
-                    <!-- Windsor -->
-                    <div class="bg-white rounded-xl p-6 border border-gray-100 text-center professional-hover" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                        <div class="flex items-center justify-center mb-4">
-                            <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-2">
-                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-900">Windsor</h3>
-                        </div>
-                        <div class="text-xl font-bold text-metrix-navy mb-2">$257,954</div>
-                        <div class="text-sm text-gray-600 mb-2">Average Price</div>
-                        <div class="text-sm bg-gray-100 px-3 py-1 rounded-full text-gray-600 inline-block">+14.4% Growth</div>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <a href="market-insights.html" class="inline-flex items-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-                        View Full Market Report
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <!-- Map Section -->
         <section class="py-16 bg-white">
@@ -573,14 +554,53 @@
                     <p class="text-lg text-gray-600" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Located in the heart of London, Ontario, we're easily accessible for in-person consultations.</p>
                 </div>
                 
-                <div class="bg-gray-200 rounded-2xl h-96 flex items-center justify-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="text-center text-gray-600">
-                        <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                        <p class="text-lg font-semibold">Interactive Map</p>
-                        <p>620A Richmond Street, Suite 203, London, ON N6A 5J9</p>
+                <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-100" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <iframe 
+                        src="https://www.google.com/maps?q=620A+Richmond+Street,+Suite+203,+London,+ON+N6A+5J9&output=embed" 
+                        width="100%" 
+                        height="384" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Metrix Realty Group Office Location">
+                    </iframe>
+                </div>
+                
+                <!-- Office Details Below Map -->
+                <div class="mt-8 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 max-w-2xl mx-auto">
+                        <div class="flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <h3 class="text-xl font-bold text-gray-900">Visit Our Office</h3>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-900 mb-2">620A Richmond Street, Suite 203</p>
+                        <p class="text-gray-600 mb-4">London, ON N6A 5J9</p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Mon-Fri: 9:00 AM - 5:00 PM
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m0 0h-6m6 0v2M8 7v2m0 0h6m-6 0a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V11a2 2 0 00-2-2m-6 0h6"/>
+                                </svg>
+                                Professional consultation by appointment
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="tel:519-672-7550" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                Call to Schedule Visit
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -604,7 +624,7 @@
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                             </svg>
-                            (519) 672-7550
+                            <a href="tel:519-672-7550" class="text-white hover:text-gray-200 transition-colors">(519) 672-7550</a>
                         </p>
                         <p>Toll Free: 1-866-672-9101</p>
                         <p>Fax: (519) 672-9321</p>
