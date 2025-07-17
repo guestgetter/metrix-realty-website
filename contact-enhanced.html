@@ -973,45 +973,6 @@
 
                     console.log('Form data collected:', data);
 
-                    // For now, let's use a reliable email fallback while we debug GHL API
-                    // This ensures leads are captured even if GHL integration has issues
-
-                    // Send email notification to your team
-                    const emailData = {
-                        to: 'info@metrixrealty.com',
-                        subject: `New Appraisal Request - ${data.firstName} ${data.lastName}`,
-                        html: `
-                            <h2>New Website Lead</h2>
-                            <p><strong>Contact Information:</strong></p>
-                            <ul>
-                                <li>Name: ${data.firstName} ${data.lastName}</li>
-                                <li>Email: ${data.email}</li>
-                                <li>Phone: ${data.phone || 'Not provided'}</li>
-                                <li>Company: ${data.company || 'Not provided'}</li>
-                                <li>Address: ${data.clientAddress || 'Not provided'}</li>
-                            </ul>
-                            
-                            <p><strong>Property Details:</strong></p>
-                            <ul>
-                                <li>Property Type: ${data.propertyType || 'Not specified'}</li>
-                                <li>Property Address: ${data.propertyAddress || 'Not provided'}</li>
-                                <li>City: ${data.city || 'Not provided'}</li>
-                                <li>Building Size: ${data.buildingSize || 'Not provided'} sq ft</li>
-                                <li>Site Area: ${data.siteArea || 'Not provided'}</li>
-                                <li>Purpose: ${data.purpose || 'Not specified'}</li>
-                                <li>Property Contact: ${data.propertyContact || 'Not provided'}</li>
-                            </ul>
-                            
-                            <p><strong>Property Description:</strong></p>
-                            <p>${data.propertyDescription || 'Not provided'}</p>
-                            
-                            <p><strong>Message:</strong></p>
-                            <p>${data.message || 'Not provided'}</p>
-                            
-                            <p><em>Submitted from metrixrealty.com contact form</em></p>
-                        `
-                    };
-
                     // Try GHL API first, fallback to email if it fails
                     let ghlSuccess = false;
                     
@@ -1027,68 +988,78 @@
                             timezone: 'America/Toronto',
                             country: 'CA',
                             source: 'Website Contact Form',
-                            tags: ['Website Lead', 'Appraisal Request']
+                            tags: ['Website Lead', 'Appraisal Request'],
+                            // Add custom fields for property details
+                            customFields: {
+                                propertyType: data.propertyType || '',
+                                propertyAddress: data.propertyAddress || '',
+                                city: data.city || '',
+                                buildingSize: data.buildingSize || '',
+                                siteArea: data.siteArea || '',
+                                purpose: data.purpose || '',
+                                propertyContact: data.propertyContact || '',
+                                propertyDescription: data.propertyDescription || '',
+                                message: data.message || ''
+                            }
                         };
 
                         console.log('Attempting GHL integration:', contactData);
 
-                        // Try GHL API with a simpler endpoint approach
+                        // Try GHL API with the correct v2 endpoint
                         const contactResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
                             method: 'POST',
                             headers: {
                                 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkZ0TTQyUU9Xb2RsdllyOXJFMkFmIiwidmVyc2lvbiI6MSwiaWF0IjoxNzUyNzc5MzQ2NDA5LCJzdWIiOiJ4QTVucmE2a1EyOHpFc3JjY21HYSJ9.WVtPM4esGfeq1KrQt-5OPmga8c_z3GfzGvN5Grcy9HQ',
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/json',
+                                'Version': '2021-07-28'
                             },
                             body: JSON.stringify(contactData)
                         });
 
                         if (contactResponse.ok) {
                             const result = await contactResponse.json();
-                            console.log('GHL success:', result);
+                            console.log('GHL Contact created successfully:', result);
                             ghlSuccess = true;
+
+                            // Try to create an opportunity as well
+                            try {
+                                const opportunityData = {
+                                    title: `Appraisal Request - ${data.firstName} ${data.lastName}`,
+                                    status: 'open',
+                                    contactId: result.contact?.id,
+                                    monetaryValue: 0,
+                                    assignedTo: '', // Will assign to default user
+                                    source: 'Website Contact Form'
+                                };
+
+                                const oppResponse = await fetch('https://services.leadconnectorhq.com/opportunities/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkZ0TTQyUU9Xb2RsdllyOXJFMkFmIiwidmVyc2lvbiI6MSwiaWF0IjoxNzUyNzc5MzQ2NDA5LCJzdWIiOiJ4QTVucmE2a1EyOHpFc3JjY21HYSJ9.WVtPM4esGfeq1KrQt-5OPmga8c_z3GfzGvN5Grcy9HQ',
+                                        'Content-Type': 'application/json',
+                                        'Version': '2021-07-28'
+                                    },
+                                    body: JSON.stringify(opportunityData)
+                                });
+
+                                if (oppResponse.ok) {
+                                    console.log('Opportunity created successfully');
+                                }
+                            } catch (oppError) {
+                                console.warn('Opportunity creation failed:', oppError);
+                            }
+
                         } else {
                             const errorText = await contactResponse.text();
-                            console.warn('GHL API failed:', contactResponse.status, errorText);
+                            console.error('GHL API failed:', contactResponse.status, '-', errorText);
+                            throw new Error(`GHL API failed: ${contactResponse.status}`);
                         }
                     } catch (ghlError) {
-                        console.warn('GHL API error:', ghlError);
+                        console.error('GHL API error:', ghlError);
+                        throw ghlError; // Re-throw to trigger error handling
                     }
 
-                    // Always send email notification as backup
-                    try {
-                        // Using a simple mailto fallback for now - you can replace this with your preferred email service
-                        const mailtoLink = `mailto:info@metrixrealty.com?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(`
-New Website Lead:
-
-Name: ${data.firstName} ${data.lastName}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-Company: ${data.company || 'Not provided'}
-
-Property Type: ${data.propertyType || 'Not specified'}
-Property Address: ${data.propertyAddress || 'Not provided'}
-City: ${data.city || 'Not provided'}
-Purpose: ${data.purpose || 'Not specified'}
-
-Message: ${data.message || 'Not provided'}
-
-Submitted from website contact form.
-                        `)}`;
-                        
-                        // Create a hidden link and click it to trigger email
-                        const emailLink = document.createElement('a');
-                        emailLink.href = mailtoLink;
-                        emailLink.style.display = 'none';
-                        document.body.appendChild(emailLink);
-                        emailLink.click();
-                        document.body.removeChild(emailLink);
-                        
-                        console.log('Email backup triggered');
-                    } catch (emailError) {
-                        console.error('Email backup failed:', emailError);
-                    }
-
-                    // Show success message regardless
+                    // Show success message
                     showSuccessMessage(ghlSuccess);
                     contactForm.reset();
 
