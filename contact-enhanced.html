@@ -965,33 +965,36 @@
                     const formData = new FormData(contactForm);
                     const data = Object.fromEntries(formData.entries());
 
-                    // Prepare contact data for GHL
+                    console.log('Form data collected:', data);
+
+                    // Prepare contact data for GHL API v2
                     const contactData = {
                         firstName: data.firstName,
                         lastName: data.lastName,
                         email: data.email,
                         phone: data.phone,
-                        address1: data.clientAddress,
-                        companyName: data.company,
-                        website: data.website,
+                        address1: data.clientAddress || '',
+                        companyName: data.company || '',
                         timezone: 'America/Toronto',
                         country: 'CA',
                         source: 'Website Contact Form',
                         tags: ['Website Lead', 'Appraisal Request'],
-                        customFields: {
-                            property_type: data.propertyType,
-                            building_size: data.buildingSize,
-                            site_area: data.siteArea,
-                            property_address: data.propertyAddress,
-                            city: data.city,
-                            purpose_of_appraisal: data.purpose,
-                            property_contact: data.propertyContact,
-                            property_description: data.propertyDescription,
-                            message: data.message
-                        }
+                        customFields: [
+                            { key: 'property_type', field_value: data.propertyType || '' },
+                            { key: 'building_size', field_value: data.buildingSize || '' },
+                            { key: 'site_area', field_value: data.siteArea || '' },
+                            { key: 'property_address', field_value: data.propertyAddress || '' },
+                            { key: 'city', field_value: data.city || '' },
+                            { key: 'purpose_of_appraisal', field_value: data.purpose || '' },
+                            { key: 'property_contact', field_value: data.propertyContact || '' },
+                            { key: 'property_description', field_value: data.propertyDescription || '' },
+                            { key: 'message', field_value: data.message || '' }
+                        ]
                     };
 
-                    // Create contact in GHL
+                    console.log('Sending contact data to GHL:', contactData);
+
+                    // Create contact in GHL using correct API v2 endpoint
                     const contactResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
                         method: 'POST',
                         headers: {
@@ -1002,50 +1005,25 @@
                         body: JSON.stringify(contactData)
                     });
 
+                    console.log('Contact response status:', contactResponse.status);
+                    
+                    const responseText = await contactResponse.text();
+                    console.log('Contact response text:', responseText);
+
                     if (!contactResponse.ok) {
-                        throw new Error(`Contact creation failed: ${contactResponse.status}`);
+                        throw new Error(`Contact creation failed: ${contactResponse.status} - ${responseText}`);
                     }
 
-                    const contactResult = await contactResponse.json();
-                    const contactId = contactResult.contact.id;
-
-                    // Create opportunity for the appraisal request
-                    const opportunityData = {
-                        title: `${data.propertyType ? data.propertyType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Property'} Appraisal - ${data.firstName} ${data.lastName}`,
-                        status: 'open',
-                        stage: 'lead',
-                        source: 'Website Contact Form',
-                        contactId: contactId,
-                        monetaryValue: 0, // Will be set during quote process
-                        assignedTo: '', // Will be assigned by team
-                        pipeline: 'appraisal_requests', // You may need to adjust this to match your pipeline
-                        customFields: {
-                            property_type: data.propertyType,
-                            property_address: `${data.propertyAddress || ''} ${data.city || ''}`.trim(),
-                            purpose: data.purpose,
-                            building_size: data.buildingSize,
-                            site_area: data.siteArea,
-                            timeline: 'Standard', // Default, can be customized
-                            priority: 'Medium', // Default, can be customized
-                            request_details: data.message
-                        }
-                    };
-
-                    const opportunityResponse = await fetch('https://services.leadconnectorhq.com/opportunities/', {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkZ0TTQyUU9Xb2RsdllyOXJFMkFmIiwidmVyc2lvbiI6MSwiaWF0IjoxNzUyNzc5MzQ2NDA5LCJzdWIiOiJ4QTVucmE2a1EyOHpFc3JjY21HYSJ9.WVtPM4esGfeq1KrQt-5OPmga8c_z3GfzGvN5Grcy9HQ',
-                            'Content-Type': 'application/json',
-                            'Version': '2021-07-28'
-                        },
-                        body: JSON.stringify(opportunityData)
-                    });
-
-                    if (!opportunityResponse.ok) {
-                        console.warn('Opportunity creation failed, but contact was created successfully');
+                    let contactResult;
+                    try {
+                        contactResult = JSON.parse(responseText);
+                        console.log('Contact created successfully:', contactResult);
+                    } catch (parseError) {
+                        console.error('Failed to parse contact response:', parseError);
+                        throw new Error('Invalid response from contact API');
                     }
 
-                    // Success feedback
+                    // Success feedback (skip opportunity creation for now to simplify debugging)
                     showSuccessMessage();
                     contactForm.reset();
 
