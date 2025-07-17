@@ -424,7 +424,13 @@
                             <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed">Complete the form below and our team will contact you to discuss your property valuation requirements and provide a comprehensive proposal.</p>
                             
                             <form class="space-y-5 sm:space-y-6">
-                                <!-- Contact Info -->
+                                <!-- Company -->
+                                <div class="form-field">
+                                    <label for="company" class="block text-sm font-semibold text-gray-900 mb-2">Company</label>
+                                    <input type="text" id="company" name="company" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                </div>
+
+                                <!-- Name -->
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                                     <div class="form-field">
                                         <label for="firstName" class="block text-sm font-semibold text-gray-900 mb-2">First Name *</label>
@@ -435,54 +441,101 @@
                                         <input type="text" id="lastName" name="lastName" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
                                     </div>
                                 </div>
+
+                                <!-- Client Address -->
+                                <div class="form-field">
+                                    <label for="clientAddress" class="block text-sm font-semibold text-gray-900 mb-2">Address</label>
+                                    <input type="text" id="clientAddress" name="clientAddress" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                </div>
                                 
+                                <!-- Contact Info -->
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                                     <div class="form-field">
                                         <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">Email Address *</label>
                                         <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
                                     </div>
                                     <div class="form-field">
-                                        <label for="phone" class="block text-sm font-semibold text-gray-900 mb-2">Phone Number *</label>
-                                        <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                        <label for="phone" class="block text-sm font-semibold text-gray-900 mb-2">Phone</label>
+                                        <input type="tel" id="phone" name="phone" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
                                     </div>
                                 </div>
 
-                                <!-- Service Type -->
+                                <!-- Property Type -->
                                 <div class="form-field">
-                                    <label for="serviceType" class="block text-sm font-semibold text-gray-900 mb-2">Service Type *</label>
-                                    <select id="serviceType" name="serviceType" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
-                                        <option value="">Select a service...</option>
-                                        <option value="residential">Residential Appraisal</option>
-                                        <option value="commercial">Commercial Appraisal</option>
-                                        <option value="litigation">Litigation Support</option>
-                                        <option value="consulting">Real Estate Consulting</option>
+                                    <label for="propertyType" class="block text-sm font-semibold text-gray-900 mb-2">Property Type *</label>
+                                    <select id="propertyType" name="propertyType" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                        <option value="">Select property type...</option>
+                                        <option value="residential-detached">Residential - Detached House</option>
+                                        <option value="residential-semi">Residential - Semi-Detached</option>
+                                        <option value="residential-townhouse">Residential - Townhouse</option>
+                                        <option value="residential-condo">Residential - Condominium</option>
+                                        <option value="commercial-office">Commercial - Office Building</option>
+                                        <option value="commercial-retail">Commercial - Retail</option>
+                                        <option value="commercial-industrial">Commercial - Industrial</option>
+                                        <option value="commercial-mixed">Commercial - Mixed Use</option>
+                                        <option value="vacant-land">Vacant Land</option>
+                                        <option value="agricultural">Agricultural</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
 
-                                <!-- Property Address -->
-                                <div class="form-field">
-                                    <label for="propertyAddress" class="block text-sm font-semibold text-gray-900 mb-2">Property Address *</label>
-                                    <input type="text" id="propertyAddress" name="propertyAddress" required placeholder="123 Main Street, London, ON" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                <!-- Building Size and Site Area -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                    <div class="form-field">
+                                        <label for="buildingSize" class="block text-sm font-semibold text-gray-900 mb-2">Building Size (sq ft)</label>
+                                        <input type="number" id="buildingSize" name="buildingSize" placeholder="e.g. 2500" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="siteArea" class="block text-sm font-semibold text-gray-900 mb-2">Site Area</label>
+                                        <input type="text" id="siteArea" name="siteArea" placeholder="e.g. 0.25 acres or 50 x 120 ft" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                    </div>
                                 </div>
 
-                                <!-- Timeline -->
+                                <!-- Property Address and City -->
                                 <div class="form-field">
-                                    <label for="timeline" class="block text-sm font-semibold text-gray-900 mb-2">When do you need this completed? *</label>
-                                    <select id="timeline" name="timeline" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
-                                        <option value="">Select timeline...</option>
-                                        <option value="asap">ASAP (Rush Service)</option>
-                                        <option value="1-3-days">1-3 Business Days</option>
-                                        <option value="1-week">Within 1 Week</option>
-                                        <option value="2-weeks">Within 2 Weeks</option>
-                                        <option value="flexible">Flexible</option>
+                                    <label for="propertyAddress" class="block text-sm font-semibold text-gray-900 mb-2">Property Address</label>
+                                    <input type="text" id="propertyAddress" name="propertyAddress" placeholder="123 Main Street" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="city" class="block text-sm font-semibold text-gray-900 mb-2">City</label>
+                                    <input type="text" id="city" name="city" placeholder="London" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                </div>
+
+                                <!-- Purpose of Appraisal -->
+                                <div class="form-field">
+                                    <label for="purpose" class="block text-sm font-semibold text-gray-900 mb-2">Purpose of Appraisal *</label>
+                                    <select id="purpose" name="purpose" required class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                        <option value="">Select purpose...</option>
+                                        <option value="mortgage-financing">Mortgage Financing</option>
+                                        <option value="refinancing">Refinancing</option>
+                                        <option value="purchase-sale">Purchase/Sale</option>
+                                        <option value="estate-planning">Estate Planning</option>
+                                        <option value="divorce-settlement">Divorce Settlement</option>
+                                        <option value="litigation-support">Litigation Support</option>
+                                        <option value="insurance-claim">Insurance Claim</option>
+                                        <option value="tax-assessment">Tax Assessment Appeal</option>
+                                        <option value="investment-analysis">Investment Analysis</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
 
-                                <!-- Additional Details -->
+                                <!-- Property Contact Person -->
                                 <div class="form-field">
-                                    <label for="details" class="block text-sm font-semibold text-gray-900 mb-2">Additional Details</label>
-                                    <textarea id="details" name="details" rows="4" placeholder="Please provide any additional information about your appraisal needs..." class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200 resize-vertical"></textarea>
+                                    <label for="propertyContact" class="block text-sm font-semibold text-gray-900 mb-2">Property Contact Person</label>
+                                    <input type="text" id="propertyContact" name="propertyContact" placeholder="Name and phone number for property access" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200">
+                                </div>
+
+                                <!-- Property Description -->
+                                <div class="form-field">
+                                    <label for="propertyDescription" class="block text-sm font-semibold text-gray-900 mb-2">Property Description</label>
+                                    <textarea id="propertyDescription" name="propertyDescription" rows="3" placeholder="Brief description of the property and any special features" class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200 resize-vertical"></textarea>
+                                </div>
+
+                                <!-- Additional Message -->
+                                <div class="form-field">
+                                    <label for="message" class="block text-sm font-semibold text-gray-900 mb-2">Message *</label>
+                                    <textarea id="message" name="message" rows="4" required placeholder="Please provide any additional information about your appraisal needs, timeline, and specific requirements..." class="w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-metrix-blue focus:border-transparent transition-colors duration-200 resize-vertical"></textarea>
                                 </div>
 
                                 <!-- Submit Button -->
