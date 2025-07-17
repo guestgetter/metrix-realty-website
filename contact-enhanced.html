@@ -294,9 +294,9 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                    <a href="index.html" class="nav-link text-gray-900 font-medium nav-text-enhanced text-smooth focus-readable">Home</a>
+                    <a href="index.html" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Home</a>
                     <div class="relative group">
-                        <a href="services-enhanced.html" class="nav-link text-gray-900 font-medium nav-text-enhanced text-smooth focus-readable">Services</a>
+                        <a href="services-enhanced.html" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Services</a>
                         <!-- Mega Menu -->
                         <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 backdrop-blur-sm">
                             <div class="p-8">
@@ -320,10 +320,10 @@
                             </div>
                         </div>
                     </div>
-                    <a href="market-areas.html" class="nav-link text-gray-900 font-medium nav-text-enhanced text-smooth focus-readable">Market Areas</a>
-                    <a href="team.html" class="nav-link text-gray-900 font-medium nav-text-enhanced text-smooth focus-readable">Team</a>
-                    <!-- <a href="market-insights.html" class="nav-link text-gray-900 font-medium">Market Insights</a> -->
-                    <a href="#" class="nav-link active text-gray-900 font-medium nav-text-enhanced text-smooth focus-readable">Contact</a>
+                    <a href="market-areas.html" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Market Areas</a>
+                    <a href="team.html" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Team</a>
+                    <!-- <a href="market-insights.html" class="nav-link text-gray-900 font-semibold">Market Insights</a> -->
+                    <a href="#" class="nav-link active text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Contact</a>
                 </div>
                 
                 <!-- CTA Button -->
@@ -810,11 +810,11 @@
                 <div>
                     <h3 class="text-white font-semibold text-lg mb-6">Services</h3>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="services-enhanced.html#commercial" class="hover:text-gray-300 transition-colors duration-200">Commercial Valuation</a></li>
-                        <li><a href="services-enhanced.html#residential" class="hover:text-gray-300 transition-colors duration-200">Residential Appraisals</a></li>
-                        <li><a href="services-enhanced.html#litigation" class="hover:text-gray-300 transition-colors duration-200">Litigation Support</a></li>
-                        <li><a href="services-enhanced.html#consulting" class="hover:text-gray-300 transition-colors duration-200">Real Estate Consulting</a></li>
-                        <li><a href="services-enhanced.html" class="hover:text-gray-300 transition-colors duration-200">View All Services</a></li>
+                        <li><a href="services-enhanced.html#commercial" class="hover:text-white transition-colors duration-200">Commercial Valuation</a></li>
+                        <li><a href="services-enhanced.html#residential" class="hover:text-white transition-colors duration-200">Residential Appraisals</a></li>
+                        <li><a href="services-enhanced.html#litigation" class="hover:text-white transition-colors duration-200">Litigation Support</a></li>
+                        <li><a href="services-enhanced.html#consulting" class="hover:text-white transition-colors duration-200">Real Estate Consulting</a></li>
+                        <li><a href="services-enhanced.html" class="hover:text-white transition-colors duration-200">View All Services</a></li>
                     </ul>
                 </div>
                 
@@ -822,11 +822,11 @@
                 <div>
                     <h3 class="text-white font-semibold text-lg mb-6">Market Areas</h3>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" class="hover:text-gray-300 transition-colors duration-200">London & Area</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors duration-200">Windsor & Essex County</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors duration-200">Guelph & Wellington</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors duration-200">Oxford County</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors duration-200">Full Coverage Map</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">London & Area</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Windsor & Essex County</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Guelph & Wellington</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Oxford County</a></li>
+                        <li><a href="market-areas.html" class="hover:text-white transition-colors duration-200">Full Coverage Map</a></li>
                     </ul>
                 </div>
                 
@@ -944,6 +944,185 @@
             mobileMenuLinks?.forEach(link => {
                 link.addEventListener('click', closeMobileMenu);
             });
+        });
+
+        // GoHighLevel Integration
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.querySelector('form');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Disable submit button and show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                submitButton.classList.add('opacity-75');
+
+                try {
+                    // Collect form data
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData.entries());
+
+                    // Prepare contact data for GHL
+                    const contactData = {
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        phone: data.phone,
+                        address1: data.clientAddress,
+                        companyName: data.company,
+                        website: data.website,
+                        timezone: 'America/Toronto',
+                        country: 'CA',
+                        source: 'Website Contact Form',
+                        tags: ['Website Lead', 'Appraisal Request'],
+                        customFields: {
+                            property_type: data.propertyType,
+                            building_size: data.buildingSize,
+                            site_area: data.siteArea,
+                            property_address: data.propertyAddress,
+                            city: data.city,
+                            purpose_of_appraisal: data.purpose,
+                            property_contact: data.propertyContact,
+                            property_description: data.propertyDescription,
+                            message: data.message
+                        }
+                    };
+
+                    // Create contact in GHL
+                    const contactResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkZ0TTQyUU9Xb2RsdllyOXJFMkFmIiwidmVyc2lvbiI6MSwiaWF0IjoxNzUyNzc5MzQ2NDA5LCJzdWIiOiJ4QTVucmE2a1EyOHpFc3JjY21HYSJ9.WVtPM4esGfeq1KrQt-5OPmga8c_z3GfzGvN5Grcy9HQ',
+                            'Content-Type': 'application/json',
+                            'Version': '2021-07-28'
+                        },
+                        body: JSON.stringify(contactData)
+                    });
+
+                    if (!contactResponse.ok) {
+                        throw new Error(`Contact creation failed: ${contactResponse.status}`);
+                    }
+
+                    const contactResult = await contactResponse.json();
+                    const contactId = contactResult.contact.id;
+
+                    // Create opportunity for the appraisal request
+                    const opportunityData = {
+                        title: `${data.propertyType ? data.propertyType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Property'} Appraisal - ${data.firstName} ${data.lastName}`,
+                        status: 'open',
+                        stage: 'lead',
+                        source: 'Website Contact Form',
+                        contactId: contactId,
+                        monetaryValue: 0, // Will be set during quote process
+                        assignedTo: '', // Will be assigned by team
+                        pipeline: 'appraisal_requests', // You may need to adjust this to match your pipeline
+                        customFields: {
+                            property_type: data.propertyType,
+                            property_address: `${data.propertyAddress || ''} ${data.city || ''}`.trim(),
+                            purpose: data.purpose,
+                            building_size: data.buildingSize,
+                            site_area: data.siteArea,
+                            timeline: 'Standard', // Default, can be customized
+                            priority: 'Medium', // Default, can be customized
+                            request_details: data.message
+                        }
+                    };
+
+                    const opportunityResponse = await fetch('https://services.leadconnectorhq.com/opportunities/', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkZ0TTQyUU9Xb2RsdllyOXJFMkFmIiwidmVyc2lvbiI6MSwiaWF0IjoxNzUyNzc5MzQ2NDA5LCJzdWIiOiJ4QTVucmE2a1EyOHpFc3JjY21HYSJ9.WVtPM4esGfeq1KrQt-5OPmga8c_z3GfzGvN5Grcy9HQ',
+                            'Content-Type': 'application/json',
+                            'Version': '2021-07-28'
+                        },
+                        body: JSON.stringify(opportunityData)
+                    });
+
+                    if (!opportunityResponse.ok) {
+                        console.warn('Opportunity creation failed, but contact was created successfully');
+                    }
+
+                    // Success feedback
+                    showSuccessMessage();
+                    contactForm.reset();
+
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showErrorMessage();
+                } finally {
+                    // Re-enable submit button
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    submitButton.classList.remove('opacity-75');
+                }
+            });
+
+            function showSuccessMessage() {
+                // Create success message
+                const successDiv = document.createElement('div');
+                successDiv.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+                successDiv.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold">Request Submitted Successfully!</h4>
+                            <p class="text-sm opacity-90">We'll contact you within 24 hours.</p>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(successDiv);
+                
+                // Animate in
+                setTimeout(() => {
+                    successDiv.classList.remove('translate-x-full');
+                }, 100);
+                
+                // Animate out after 5 seconds
+                setTimeout(() => {
+                    successDiv.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        document.body.removeChild(successDiv);
+                    }, 300);
+                }, 5000);
+            }
+
+            function showErrorMessage() {
+                // Create error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'fixed top-4 right-4 bg-red-600 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+                errorDiv.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold">Submission Failed</h4>
+                            <p class="text-sm opacity-90">Please try again or call us directly.</p>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(errorDiv);
+                
+                // Animate in
+                setTimeout(() => {
+                    errorDiv.classList.remove('translate-x-full');
+                }, 100);
+                
+                // Animate out after 7 seconds
+                setTimeout(() => {
+                    errorDiv.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        document.body.removeChild(errorDiv);
+                    }, 300);
+                }, 7000);
+            }
         });
     </script>
     <script src="responsive-enhancement.js"></script>
