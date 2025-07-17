@@ -599,54 +599,106 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20 sm:pt-24" style="background: linear-gradient(135deg, #233c75 0%, #1a2d5a 70%, #3faa4d 100%);">
+        <section class="hero relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-20 sm:pt-24" style="background: linear-gradient(135deg, #233c75 0%, #1a2d5a 70%, #3faa4d 100%);">
             <!-- Professional Background Pattern -->
             <div class="absolute inset-0 opacity-10">
                 <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
             </div>
             
             <!-- Content -->
-            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mobile-safe-area">
-                <div class="mb-6">
-                    <span class="inline-block px-3 sm:px-4 py-2 bg-white/20 text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wide mb-4">Trusted Professionals</span>
-                </div>
-                
-                <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-smooth" data-aos="fade-up" data-aos-duration="1000">
-                    Accredited Property Valuations Across Ontario
-                </h1>
-                <p class="hero-subtitle text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed px-4 text-smooth" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    Real estate appraisal services for commercial, residential, and litigation matters. Comprehensive reports for banks, legal professionals, and business clients across Ontario.
-                </p>
-                
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <a href="contact-enhanced.html" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-metrix-navy font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-base sm:text-lg group">
-                        <span>Request Consultation</span>
-                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                        </svg>
-                    </a>
-                    <a href="tel:519-672-7550" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-metrix-navy transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-base sm:text-lg group">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        <span>(519) 672-7550</span>
-                    </a>
-                </div>
-                
-                <!-- Stats -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 lg:gap-16 px-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-                    <div class="text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="800">
-                        <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">25+ Years</div>
-                        <div class="text-xs sm:text-sm lg:text-base opacity-80">Experience</div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mobile-safe-area">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left">
+                        <!-- Company Logo -->
+                        <div class="mb-8">
+                            <img src="assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-16 sm:h-20 lg:h-24 w-auto mx-auto lg:mx-0 brightness-0 invert" data-aos="fade-up" data-aos-duration="800">
+                        </div>
+                        
+                        <h1 class="hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-smooth" data-aos="fade-up" data-aos-duration="1000">
+                            Providing Accredited Property Valuations
+                        </h1>
+                        <p class="hero-subtitle text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl mb-8 sm:mb-12 opacity-90 leading-relaxed text-smooth" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                            Real estate appraisal services for all property types servicing lenders, legal professionals, municipalities and business clients across Ontario.
+                        </p>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                            <a href="contact-enhanced.html" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-metrix-navy font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-base sm:text-lg group">
+                                <span>Request Consultation</span>
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                            <a href="tel:519-672-7550" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-metrix-navy transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-base sm:text-lg group">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <span>(519) 672-7550</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                            <div class="text-center lg:text-left" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="800">
+                                <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">30+ Years</div>
+                                <div class="text-xs sm:text-sm lg:text-base opacity-80">Experience</div>
+                            </div>
+                            <div class="text-center lg:text-left" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="900">
+                                <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">AACI/CRA</div>
+                                <div class="text-xs sm:text-sm lg:text-base opacity-80">Accredited Team</div>
+                            </div>
+                            <div class="text-center lg:text-left" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="1000">
+                                <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">1000+</div>
+                                <div class="text-xs sm:text-sm lg:text-base opacity-80">Properties Appraised</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="900">
-                        <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">AIC/CRA</div>
-                        <div class="text-xs sm:text-sm lg:text-base opacity-80">Accredited Team</div>
-                    </div>
-                    <div class="text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="1000">
-                        <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">Ontario</div>
-                        <div class="text-xs sm:text-sm lg:text-base opacity-80">Service Area</div>
+                    
+                    <!-- Image Content -->
+                    <div class="relative lg:pl-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                        <div class="relative">
+                            <!-- Decorative elements -->
+                            <div class="absolute -top-4 -right-4 w-72 h-72 bg-white/10 rounded-2xl transform rotate-3 hidden lg:block"></div>
+                            <div class="absolute -bottom-4 -left-4 w-64 h-64 bg-white/5 rounded-2xl transform -rotate-2 hidden lg:block"></div>
+                            
+                            <!-- Main image -->
+                            <div class="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/20 hover:transform hover:scale-105 transition-all duration-500 hover:shadow-2xl">
+                                <img src="Metrix Photos New Site/real-estate-appraisal-ontario.png" 
+                                     alt="Professional Real Estate Appraisal Services in Ontario" 
+                                     class="w-full h-auto rounded-xl shadow-lg object-cover max-w-lg mx-auto">
+                                
+                                <!-- Professional badge overlay -->
+                                <div class="absolute -top-3 -right-3 bg-white text-metrix-navy px-4 py-2 rounded-full shadow-lg font-semibold text-sm border border-gray-200">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        AACI Certified
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating trust indicators -->
+                            <div class="absolute -bottom-6 left-6 right-6 lg:left-8 lg:right-8">
+                                <div class="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/30">
+                                    <div class="flex items-center justify-between text-metrix-navy text-sm font-medium">
+                                        <div class="flex items-center gap-2">
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            <span>CUSPAP Compliant</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            <span>Fast Turnaround</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -673,7 +725,7 @@
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
-                        <span class="text-gray-600 font-medium">Consistently trusted by Banks, Lawyers & Real Estate Professionals</span>
+                        <span class="text-gray-600 font-medium">Consistently trusted by Lenders, Lawyers & Real Estate Professionals</span>
                     </div>
                 </div>
                 <div class="max-w-4xl mx-auto">
@@ -1090,7 +1142,7 @@
                         <!-- FAQ Item 2 -->
                         <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                             <h3 class="text-xl font-bold text-gray-900 mb-3">Are your appraisals accepted by banks and lenders?</h3>
-                            <p class="text-gray-600 leading-relaxed">Our accredited appraisers are recognized by major Canadian banks and financial institutions. Our reports meet industry standards and regulatory requirements for mortgage financing, refinancing, and investment purposes.</p>
+                            <p class="text-gray-600 leading-relaxed">Our accredited appraisers are recognized by major Canadian lenders and financial institutions. Our reports meet industry standards and regulatory requirements for mortgage financing, refinancing, and investment purposes.</p>
                         </div>
 
                         <!-- FAQ Item 3 -->
@@ -1147,7 +1199,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                 <div class="max-w-4xl mx-auto">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight" data-aos="fade-up" data-aos-duration="1000">
-                        Connect with a Professional
+                        Request a Quote
                     </h2>
                     <p class="text-lg sm:text-xl mb-8 opacity-90 leading-relaxed" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                         Professional property valuations by accredited appraisers serving clients across Ontario. Contact us for a consultation and quote tailored to your specific needs.
@@ -1249,7 +1301,7 @@
                     <h4 class="text-white font-semibold text-lg mb-4">Professional Affiliations</h4>
                 </div>
                 <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-300 mb-6">
-                    <span>AIC - Appraisal Institute of Canada</span>
+                    <span>AACI - Accredited Appraiser Canadian Institute</span>
                     <span>OREA - Ontario Real Estate Association</span>
                     <span>CREA - Canadian Real Estate Association</span>
                 </div>
