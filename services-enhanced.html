@@ -157,6 +157,20 @@
             opacity: 1;
             visibility: visible;
         }
+
+        /* Hamburger Animation */
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
         
         body.menu-open {
             overflow: hidden;
@@ -314,8 +328,8 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="hamburger touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
-                        <div class="w-6 h-6 flex flex-col justify-center space-y-1">
+                    <button id="mobile-menu-button" class="touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
+                        <div class="hamburger w-6 h-6 flex flex-col justify-center space-y-1">
                             <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
                             <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
                             <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
@@ -936,6 +950,9 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
             const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburger = document.querySelector('.hamburger');
+
+            console.log('Services - Mobile menu elements:', { mobileMenuButton, mobileMenu, mobileMenuOverlay, hamburger });
 
             function toggleMobileMenu() {
                 const isOpen = mobileMenu.classList.contains('open');
@@ -948,14 +965,17 @@
             }
 
             function openMobileMenu() {
+                console.log('Services - Opening mobile menu');
                 mobileMenu.classList.add('open');
-                mobileMenuOverlay.classList.add('open');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+                if (hamburger) hamburger.classList.add('open');
                 document.body.classList.add('menu-open');
             }
 
             function closeMobileMenu() {
                 mobileMenu.classList.remove('open');
-                mobileMenuOverlay.classList.remove('open');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+                if (hamburger) hamburger.classList.remove('open');
                 document.body.classList.remove('menu-open');
             }
 
@@ -990,6 +1010,6 @@
             });
         });
     </script>
-    <script src="responsive-enhancement.js"></script>
+    <!-- <script src="responsive-enhancement.js"></script> -->
 </body>
 </html> 

@@ -204,6 +204,20 @@
         .nav-link.active::after {
             width: 100%;
         }
+
+        /* Hamburger Animation */
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
     </style>
 </head>
 <body class="font-inter">
@@ -254,6 +268,17 @@
                     <a href="contact-enhanced.html" class="btn-primary inline-flex items-center px-4 lg:px-6 py-2 lg:py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 text-sm lg:text-base transition-colors duration-200">
                         Connect with a Professional
                     </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
+                        <div class="hamburger w-6 h-6 flex flex-col justify-center space-y-1">
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                        </div>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -629,6 +654,9 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
             const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburger = document.querySelector('.hamburger');
+
+            console.log('Market Areas - Mobile menu elements:', { mobileMenuButton, mobileMenu, mobileMenuOverlay, hamburger });
 
             if (!mobileMenuButton || !mobileMenu) {
                 console.error('Mobile menu elements not found');
@@ -646,8 +674,10 @@
             }
 
             function openMobileMenu() {
+                console.log('Market Areas - Opening mobile menu');
                 mobileMenu.classList.add('open');
-                mobileMenuOverlay.classList.add('open');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+                if (hamburger) hamburger.classList.add('open');
                 document.body.classList.add('menu-open');
                 
                 mobileMenuButton.setAttribute('aria-expanded', 'true');
@@ -656,7 +686,8 @@
 
             function closeMobileMenu() {
                 mobileMenu.classList.remove('open');
-                mobileMenuOverlay.classList.remove('open');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+                if (hamburger) hamburger.classList.remove('open');
                 document.body.classList.remove('menu-open');
                 
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
