@@ -1349,11 +1349,17 @@
             const mobileMenuClose = document.getElementById('mobile-menu-close');
             const hamburger = document.querySelector('.hamburger');
 
-            if (!mobileMenuButton || !mobileMenu) return;
+            console.log('Mobile menu elements:', { mobileMenuButton, mobileMenu, mobileMenuOverlay, hamburger });
+
+            if (!mobileMenuButton || !mobileMenu) {
+                console.error('Mobile menu elements not found!');
+                return;
+            }
 
             // Toggle mobile menu
             function toggleMobileMenu() {
                 const isOpen = mobileMenu.classList.contains('open');
+                console.log('Toggle mobile menu - currently open:', isOpen);
                 
                 if (isOpen) {
                     closeMobileMenu();
@@ -1364,6 +1370,7 @@
 
             // Open mobile menu
             function openMobileMenu() {
+                console.log('Opening mobile menu');
                 mobileMenu.classList.add('open');
                 if (mobileMenuOverlay) mobileMenuOverlay.classList.add('show');
                 if (hamburger) hamburger.classList.add('open');
@@ -1372,6 +1379,7 @@
                 // Add ARIA attributes for accessibility
                 mobileMenuButton.setAttribute('aria-expanded', 'true');
                 mobileMenu.setAttribute('aria-hidden', 'false');
+                console.log('Menu should now be open');
             }
 
             // Close mobile menu
@@ -1466,6 +1474,6 @@
         // Initialize counter after page load
         document.addEventListener('DOMContentLoaded', initAnimatedCounter);
     </script>
-    <script src="responsive-enhancement.js"></script>
+    <!-- <script src="responsive-enhancement.js"></script> -->
 </body>
 </html> 
