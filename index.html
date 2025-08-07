@@ -224,6 +224,17 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
+        /* FAQ Accordion Styles */
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-item.active .faq-question {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
         /* Responsive Typography Improvements */
         @media (max-width: 640px) {
             .hero-title {
@@ -1129,41 +1140,95 @@
                 </div>
 
                 <div class="max-w-4xl mx-auto">
-                    <div class="space-y-6">
+                    <div class="space-y-4">
                         <!-- FAQ Item 1 -->
-                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">How quickly can you complete my property appraisal?</h3>
+                        <div class="faq-item bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                            <button class="faq-question w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-metrix-blue/20 rounded-xl" aria-expanded="false">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">How quickly can you complete my property appraisal?</h3>
+                                <svg class="faq-icon w-5 h-5 text-metrix-blue transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-6 pt-0">
                             <p class="text-gray-600 leading-relaxed">Appraisal timelines vary based on property type, complexity, and current workload. We'll provide a clear timeline estimate when you request your quote and keep you informed throughout the process.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- FAQ Item 2 -->
-                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Are your appraisals accepted by banks and lenders?</h3>
+                        <div class="faq-item bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                            <button class="faq-question w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-metrix-blue/20 rounded-xl" aria-expanded="false">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Are your appraisals accepted by banks and lenders?</h3>
+                                <svg class="faq-icon w-5 h-5 text-metrix-blue transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-6 pt-0">
                             <p class="text-gray-600 leading-relaxed">Our accredited appraisers are recognized by major Canadian lenders and financial institutions. Our reports meet industry standards and regulatory requirements for mortgage financing, refinancing, and investment purposes.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- FAQ Item 3 -->
-                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">What areas do you serve in Ontario?</h3>
+                        <div class="faq-item bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                            <button class="faq-question w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-metrix-blue/20 rounded-xl" aria-expanded="false">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">What areas do you serve in Ontario?</h3>
+                                <svg class="faq-icon w-5 h-5 text-metrix-blue transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-6 pt-0">
                             <p class="text-gray-600 leading-relaxed">We provide appraisal services across Ontario. Contact us to confirm service availability in your specific location.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- FAQ Item 4 -->
-                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">How much does a property appraisal cost?</h3>
+                        <div class="faq-item bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                            <button class="faq-question w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-metrix-blue/20 rounded-xl" aria-expanded="false">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">How much does a property appraisal cost?</h3>
+                                <svg class="faq-icon w-5 h-5 text-metrix-blue transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-6 pt-0">
                             <p class="text-gray-600 leading-relaxed">Appraisal fees vary based on property type, size, complexity, and turnaround requirements. Residential appraisals typically start at $450, while commercial properties vary based on scope. Contact us for a free, no-obligation quote tailored to your specific needs.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- FAQ Item 5 -->
-                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Can you provide expert witness testimony for legal proceedings?</h3>
+                        <div class="faq-item bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                            <button class="faq-question w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-metrix-blue/20 rounded-xl" aria-expanded="false">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Can you provide expert witness testimony for legal proceedings?</h3>
+                                <svg class="faq-icon w-5 h-5 text-metrix-blue transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-6 pt-0">
                             <p class="text-gray-600 leading-relaxed">Our accredited appraisers are experienced expert witnesses with extensive experience in legal proceedings. We provide litigation support for matrimonial disputes, expropriation cases, insurance claims, and other legal matters requiring professional property valuation testimony.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- FAQ Item 6 -->
-                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">What information do you need to provide a quote?</h3>
+                        <div class="faq-item bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+                            <button class="faq-question w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-metrix-blue/20 rounded-xl" aria-expanded="false">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">What information do you need to provide a quote?</h3>
+                                <svg class="faq-icon w-5 h-5 text-metrix-blue transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-6 pt-0">
                             <p class="text-gray-600 leading-relaxed">To provide a quote, we need the property address, type of appraisal required (residential, commercial, litigation), intended use of the report, and your preferred timeline. You can provide this information through our online form or by calling us directly at (519) 672-7550.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1473,6 +1538,41 @@
         
         // Initialize counter after page load
         document.addEventListener('DOMContentLoaded', initAnimatedCounter);
+
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            const otherQuestion = otherItem.querySelector('.faq-question');
+                            otherQuestion.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                        question.setAttribute('aria-expanded', 'false');
+                    } else {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                
+                // Initialize ARIA attributes
+                question.setAttribute('aria-expanded', 'false');
+            });
+        });
     </script>
     <!-- <script src="responsive-enhancement.js"></script> -->
 </body>
