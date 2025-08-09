@@ -16,7 +16,8 @@ function initializeResponsiveEnhancements() {
     
     // Event listeners for responsive updates
     window.addEventListener('resize', debounce(handleWindowResize, 250));
-    window.addEventListener('orientationchange', handleOrientationChange);
+    // Orientation change handling is set up inside handleOrientationChanges();
+    // avoid attaching a listener to an undefined function name
     
     // Initialize mobile-specific enhancements
     if (isMobileDevice()) {

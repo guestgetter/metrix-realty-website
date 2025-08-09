@@ -110,7 +110,7 @@
         }
         
         /* Overlay */
-        .overlay {
+        .mobile-menu-overlay {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
@@ -122,7 +122,7 @@
             transition: all 0.3s ease;
         }
         
-        .overlay.open {
+        .mobile-menu-overlay.show {
             opacity: 1;
             visibility: visible;
         }
@@ -162,22 +162,7 @@
             padding-left: 12px;
         }
         
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 99998 !important;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
+
         
         body.menu-open {
             overflow: hidden;
@@ -692,7 +677,7 @@
         </div>
     </div>
 
-    <div id="mobile-menu-overlay" class="overlay"></div>
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
 
     <script>
         AOS.init({
@@ -729,17 +714,36 @@
             function openMobileMenu() {
                 console.log('Market Areas - Opening mobile menu');
                 mobileMenu.classList.add('open');
-                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+                // Fallback inline styles in case any CSS specificity conflicts
+                mobileMenu.style.transform = 'translateX(0)';
+                mobileMenu.style.display = 'block';
+                if (mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.add('show');
+                    mobileMenuOverlay.classList.remove('hidden');
+                    mobileMenuOverlay.style.opacity = '1';
+                    mobileMenuOverlay.style.visibility = 'visible';
+                }
                 if (hamburger) hamburger.classList.add('open');
                 document.body.classList.add('menu-open');
                 
                 mobileMenuButton.setAttribute('aria-expanded', 'true');
                 mobileMenu.setAttribute('aria-hidden', 'false');
+                
+                // Debug: log computed transform
+                try {
+                    const cs = window.getComputedStyle(mobileMenu);
+                    console.log('Menu transform after open:', cs.transform);
+                } catch (err) {}
             }
 
             function closeMobileMenu() {
                 mobileMenu.classList.remove('open');
-                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+                mobileMenu.style.transform = '';
+                if (mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.remove('show');
+                    mobileMenuOverlay.style.opacity = '';
+                    mobileMenuOverlay.style.visibility = '';
+                }
                 if (hamburger) hamburger.classList.remove('open');
                 document.body.classList.remove('menu-open');
                 
