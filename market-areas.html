@@ -694,12 +694,14 @@
             const mobileMenuClose = document.getElementById('mobile-menu-close');
             const hamburger = document.querySelector('.hamburger');
 
-            console.log('Market Areas - Mobile menu elements:', { mobileMenuButton, mobileMenu, mobileMenuOverlay, hamburger });
+            console.log('Market Areas - Mobile menu elements:', { mobileMenuButton, mobileMenu, mobileMenuOverlay, mobileMenuClose, hamburger });
 
             if (!mobileMenuButton || !mobileMenu) {
-                console.error('Mobile menu elements not found');
+                console.error('Mobile menu elements not found:', { mobileMenuButton, mobileMenu });
                 return;
             }
+
+            console.log('Market Areas - Mobile menu initialized successfully');
 
             function toggleMobileMenu() {
                 const isOpen = mobileMenu.classList.contains('open');
@@ -756,12 +758,16 @@
                 toggleMobileMenu();
             });
             
-            mobileMenuClose.addEventListener('click', function(e) {
-                e.preventDefault();
-                closeMobileMenu();
-            });
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMobileMenu();
+                });
+            }
             
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            }
 
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
@@ -1126,6 +1132,6 @@
          // Make checkCoverage globally accessible
          window.checkCoverage = checkCoverage;
     </script>
-    <script src="responsive-enhancement.js"></script>
+    <!-- <script src="responsive-enhancement.js"></script> -->
 </body>
 </html> 
