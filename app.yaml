@@ -1,0 +1,21 @@
+name: metrix-realty-website
+static_sites:
+- name: metrix-realty
+  source_dir: /
+  github:
+    repo: your-username/metrix-realty-website
+    branch: main
+  routes:
+  - path: /
+  catchall_document: index.html
+  
+  # Clean URL rewrites
+  error_document: 404.html
+  
+  # Custom headers for clean URLs
+  headers:
+  - name: "/*"
+    headers:
+      X-Content-Type-Options: nosniff
+      X-Frame-Options: DENY
+      X-XSS-Protection: "1; mode=block"
