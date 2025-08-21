@@ -107,38 +107,92 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Track Calendar Widget Interactions (Calendly)
-    if (window.Calendly) {
-        window.Calendly.initBadgeWidget({
-            url: 'https://calendly.com/metrixrealty',
-            text: 'Schedule time with me',
-            color: '#233c75',
-            textColor: '#ffffff',
-            branding: false
-        });
-    }
-    
-    // Listen for Calendly events if available
+    // Track Calendar Widget Interactions (Calendly) - Enhanced Conversion Tracking
     window.addEventListener('message', function(e) {
         if (e.data.event && e.data.event.indexOf('calendly') === 0) {
             const eventType = e.data.event;
+            console.log('Calendly event detected:', eventType, e.data);
             
-            // Send to GA4
-            gtag('event', 'calendly_interaction', {
-                'event_category': 'scheduling',
-                'event_label': eventType,
-                'value': 1
-            });
-            
-            // Send to GTM
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'calendly_interaction',
-                'calendly_event': eventType,
-                'page_location': window.location.href
-            });
-            
-            console.log('Calendly interaction tracked:', eventType);
+            // Track different Calendly events
+            switch(eventType) {
+                case 'calendly.event_scheduled':
+                    // CONVERSION EVENT - Someone booked a meeting!
+                    gtag('event', 'conversion', {
+                        'send_to': 'G-TB55XJ4B9D',
+                        'event_category': 'conversion',
+                        'event_label': 'calendar_booking',
+                        'value': 100, // Assign monetary value to conversion
+                        'currency': 'CAD'
+                    });
+                    
+                    // Also send as custom conversion event
+                    gtag('event', 'calendar_booking', {
+                        'event_category': 'conversion',
+                        'event_label': 'calendly_scheduled',
+                        'value': 100,
+                        'currency': 'CAD'
+                    });
+                    
+                    // Send to GTM for advanced tracking
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': 'conversion',
+                        'conversion_type': 'calendar_booking',
+                        'conversion_value': 100,
+                        'currency': 'CAD',
+                        'page_location': window.location.href,
+                        'calendly_event_data': e.data
+                    });
+                    
+                    console.log('🎉 CONVERSION TRACKED: Calendar booking!');
+                    break;
+                    
+                case 'calendly.profile_page_viewed':
+                    gtag('event', 'calendar_viewed', {
+                        'event_category': 'engagement',
+                        'event_label': 'calendly_opened',
+                        'value': 1
+                    });
+                    
+                    window.dataLayer.push({
+                        'event': 'calendar_viewed',
+                        'page_location': window.location.href
+                    });
+                    
+                    console.log('📅 Calendar viewed');
+                    break;
+                    
+                case 'calendly.date_and_time_selected':
+                    gtag('event', 'calendar_time_selected', {
+                        'event_category': 'engagement',
+                        'event_label': 'time_slot_selected',
+                        'value': 10
+                    });
+                    
+                    window.dataLayer.push({
+                        'event': 'calendar_time_selected',
+                        'page_location': window.location.href
+                    });
+                    
+                    console.log('⏰ Time slot selected');
+                    break;
+                    
+                default:
+                    // Track any other Calendly interactions
+                    gtag('event', 'calendly_interaction', {
+                        'event_category': 'engagement',
+                        'event_label': eventType,
+                        'value': 1
+                    });
+                    
+                    window.dataLayer.push({
+                        'event': 'calendly_interaction',
+                        'calendly_event': eventType,
+                        'page_location': window.location.href
+                    });
+                    
+                    console.log('Calendly interaction:', eventType);
+            }
         }
     });
 
