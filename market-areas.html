@@ -784,79 +784,79 @@
         const regionData = {
             windsor: {
                 title: 'Windsor–Essex',
-                specialties: 'Local economy at a glance: automotive and cross‑border trade',
-                description: 'Economic context for Windsor–Essex—auto manufacturing, supplier networks, and U.S. border dynamics that influence local markets. Background only; our appraisal services span all major property types in the region.',
+                specialties: 'Local economic drivers: automotive manufacturing and cross‑border trade',
+                description: '',
                 communities: ['Windsor', 'Essex', 'Amherstburg', 'LaSalle', 'Tecumseh', 'Lakeshore'],
                 icon: '🏭'
             },
             chatham: {
                 title: 'Chatham–Kent',
-                specialties: 'Local economy at a glance: agriculture and industry',
-                description: 'Context on Chatham–Kent’s market drivers—agriculture, rural operations, and industrial activity. This is background on the area; our appraisal work covers all major property types.',
+                specialties: 'Local economic drivers: agriculture and industrial operations',
+                description: '',
                 communities: ['Chatham', 'Kent Bridge', 'Wallaceburg', 'Tilbury', 'Ridgetown', 'Blenheim'],
                 icon: '🌾'
             },
             oxford: {
                 title: 'Oxford County',
-                specialties: 'Local economy at a glance: manufacturing and agriculture',
-                description: 'Background on Oxford County’s market—manufacturing hubs, agricultural operations, and small‑town commercial activity. Informational context only; we appraise broadly across property types.',
+                specialties: 'Local economic drivers: manufacturing and agriculture',
+                description: '',
                 communities: ['Woodstock', 'Tillsonburg', 'Ingersoll', 'Tavistock', 'Embro', 'Norwich', 'Beachville'],
                 strengths: ['Manufacturing Properties', 'Agricultural Land', 'Small-Town Commercial', 'Industrial Sites'],
                 contact: 'Direct service from London office - 25 minutes to Woodstock'
             },
             london: {
                 title: 'London–Middlesex–Elgin',
-                specialties: 'Regional context: health, education, manufacturing, and tech',
-                description: 'Overview of economic pillars shaping London–Middlesex–Elgin. Provided as local context; appraisal services span commercial, residential, industrial, and institutional properties.',
+                specialties: 'Local economic drivers: health, education, manufacturing, and technology',
+                description: '',
                 communities: ['London', 'St. Thomas', 'Strathroy'],
                 icon: '🏢'
             },
             sarnia: {
                 title: 'Sarnia–Lambton',
-                specialties: 'Local economy at a glance: petrochemical and industrial',
-                description: 'Context on Sarnia–Lambton’s petrochemical cluster and related industrial activity. Background only; we complete appraisals across varied property classes.',
+                specialties: 'Local economic drivers: petrochemical and industrial operations',
+                description: '',
                 communities: ['Sarnia', 'Petrolia', 'Forest', 'Grand Bend', 'Wyoming', 'Corunna'],
                 icon: '⚗️'
             },
             kwcg: {
                 title: 'Kitchener–Waterloo–Cambridge–Guelph',
-                specialties: 'Local economy at a glance: tech corridor and universities',
-                description: 'Economic overview of the KW–Cambridge–Guelph region—innovation sectors and post‑secondary influence. Context, not service limitations; we appraise widely across asset types.',
+                specialties: 'Local economic drivers: technology corridor and universities',
+                description: '',
                 communities: ['Kitchener', 'Waterloo', 'Cambridge', 'Guelph', 'Elmira', 'New Hamburg'],
                 icon: '💻'
             },
             hamilton: {
                 title: 'Brantford–Hamilton–Burlington',
-                specialties: 'Local economy at a glance: industrial and transportation hub',
-                description: 'Background on Brantford–Hamilton–Burlington’s industrial base and logistics networks. Provided for context; our valuation services cover all property categories.',
+                specialties: 'Local economic drivers: industrial and transportation hub',
+                description: '',
                 communities: ['Hamilton', 'Burlington', 'Brantford', 'Grimsby', 'Stoney Creek', 'Ancaster'],
                 icon: '🚛'
             },
             huron: {
                 title: 'Huron–Perth–Wellington–Grey–Bruce',
-                specialties: 'Local economy at a glance: rural, agricultural, and recreation',
-                description: 'Overview of regional rural/agricultural activity and recreation/tourism influences. Informational context only; appraisal capabilities are not limited to these areas.',
+                specialties: 'Local economic drivers: rural, agricultural, and recreation',
+                description: '',
                 communities: ['Stratford', 'Owen Sound', 'Goderich', 'Listowel', 'Hanover', 'Wingham'],
                 icon: '🏞️'
             },
             niagara: {
                 title: 'Niagara Region',
-                specialties: 'Local economy at a glance: tourism, viticulture, cross‑border trade',
-                description: 'Economic context for Niagara—tourism, wineries/hospitality, and U.S. border proximity shaping demand. This is background on the area; our appraisals span all major property types.',
+                specialties: 'Local economic drivers: tourism, viticulture, and cross‑border trade',
+                description: '',
                 communities: ['St. Catharines', 'Niagara Falls', 'Welland', 'Fort Erie', 'Grimsby', 'Lincoln'],
                 icon: '🍇'
             },
             halton: {
                 title: 'Halton–Peel (Oakville, Milton, Brampton)',
-                specialties: 'Local economy at a glance: GTA‑influenced growth and development',
-                description: 'Overview of Halton–Peel’s GTA proximity, mixed‑use growth, and development pressures. Contextual only; we appraise across a full range of asset classes.',
+                specialties: 'Local economic drivers: GTA‑influenced growth and development',
+                description: '',
                 communities: ['Oakville', 'Milton', 'Brampton', 'Georgetown', 'Acton', 'Mississauga'],
                 icon: '🏙️'
             },
             ottawa: {
                 title: 'Ottawa (Select Assignments Only)',
-                specialties: 'Local economy at a glance: government and institutional hub',
-                description: 'Context on Ottawa’s government/institutional presence and specialized commercial activity. We take select assignments here across varied property types.',
+                specialties: 'Local economic drivers: government and institutional hub',
+                description: '',
                 communities: ['Ottawa', 'Nepean', 'Kanata', 'Orleans', 'Gloucester', 'Vanier'],
                 icon: '🏛️'
             }
@@ -872,8 +872,7 @@
                     <div class="text-4xl">${region.icon}</div>
                     <div class="flex-1">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">${region.title}</h3>
-                        <p class="text-lg text-gray-600 font-medium mb-4">${region.specialties}</p>
-                        <p class="text-gray-700 leading-relaxed mb-6">${region.description}</p>
+                        <p class="text-lg text-gray-600 font-medium mb-6">${region.specialties}</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
