@@ -17,45 +17,36 @@ function handleHighLevelBooking(webhookData) {
         source: webhookData.source || 'highlevel_calendar'
     };
 
-    // Send conversion to GA4
-    if (typeof gtag !== 'undefined') {
-        // Main conversion event
-        gtag('event', 'conversion', {
-            'send_to': 'G-TB55XJ4B9D',
-            'event_category': 'conversion',
-            'event_label': 'highlevel_calendar_booking',
-            'value': 100,
-            'currency': 'CAD',
-            'transaction_id': bookingInfo.appointmentId
-        });
-
-        // Custom calendar booking event
-        gtag('event', 'highlevel_calendar_booking', {
-            'event_category': 'conversion',
-            'event_label': 'appointment_scheduled',
-            'value': 100,
-            'currency': 'CAD',
-            'custom_parameter_1': bookingInfo.contactId,
-            'custom_parameter_2': bookingInfo.calendarId
-        });
-
-        console.log('✅ HighLevel booking sent to GA4');
-    }
-
-    // Send to GTM Data Layer
+    // Send conversion to GTM (which handles GA4)
     window.dataLayer = window.dataLayer || [];
+    
+    // Main conversion event
     window.dataLayer.push({
-        'event': 'highlevel_conversion',
+        'event': 'conversion',
+        'event_category': 'conversion',
+        'event_label': 'highlevel_calendar_booking',
         'conversion_type': 'calendar_booking',
-        'conversion_value': 100,
+        'value': 100,
         'currency': 'CAD',
+        'transaction_id': bookingInfo.appointmentId,
         'contact_id': bookingInfo.contactId,
-        'appointment_id': bookingInfo.appointmentId,
-        'contact_name': bookingInfo.contactName,
-        'contact_email': bookingInfo.contactEmail,
-        'source': 'highlevel_calendar',
+        'calendar_id': bookingInfo.calendarId,
         'page_location': window.location.href
     });
+
+    // Custom calendar booking event
+    window.dataLayer.push({
+        'event': 'highlevel_calendar_booking',
+        'event_category': 'conversion',
+        'event_label': 'appointment_scheduled',
+        'value': 100,
+        'currency': 'CAD',
+        'contact_id': bookingInfo.contactId,
+        'calendar_id': bookingInfo.calendarId,
+        'page_location': window.location.href
+    });
+
+    console.log('✅ HighLevel booking sent to GTM');
 
     // Track A/B test attribution if available
     if (window.ABTest && window.ABTest.userVariants) {

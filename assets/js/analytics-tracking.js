@@ -9,22 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             const phoneNumber = this.href.replace('tel:', '');
             
-            // Send to GA4
-            gtag('event', 'phone_call', {
-                'event_category': 'contact',
-                'event_label': phoneNumber,
-                'value': 1
-            });
-            
-            // Send to GTM
+            // Send to GTM (which will handle GA4)
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'phone_call',
+                'event_category': 'contact',
+                'event_label': phoneNumber,
                 'phone_number': phoneNumber,
+                'value': 1,
                 'page_location': window.location.href
             });
             
-            console.log('Phone click tracked:', phoneNumber);
+            console.log('Phone click tracked via GTM:', phoneNumber);
         });
     });
 
@@ -33,22 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             const email = this.href.replace('mailto:', '');
             
-            // Send to GA4
-            gtag('event', 'email_click', {
-                'event_category': 'contact',
-                'event_label': email,
-                'value': 1
-            });
-            
-            // Send to GTM
+            // Send to GTM (which will handle GA4)
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'email_click',
+                'event_category': 'contact',
+                'event_label': email,
                 'email_address': email,
+                'value': 1,
                 'page_location': window.location.href
             });
             
-            console.log('Email click tracked:', email);
+            console.log('Email click tracked via GTM:', email);
         });
     });
 
@@ -56,22 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForms = document.querySelectorAll('form');
     contactForms.forEach(form => {
         form.addEventListener('submit', function() {
-            // Send to GA4
-            gtag('event', 'form_submit', {
-                'event_category': 'contact',
-                'event_label': 'contact_form',
-                'value': 1
-            });
-            
-            // Send to GTM
+            // Send to GTM (which will handle GA4)
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'form_submit',
+                'event_category': 'contact',
+                'event_label': 'contact_form',
                 'form_type': 'contact_form',
+                'value': 1,
                 'page_location': window.location.href
             });
             
-            console.log('Form submission tracked');
+            console.log('Form submission tracked via GTM');
         });
     });
 
