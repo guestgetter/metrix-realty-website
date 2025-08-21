@@ -79,13 +79,17 @@ window.addEventListener('message', function(event) {
 function observeHighLevelCalendar() {
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-            // Look for success/confirmation messages
-            const confirmationElements = document.querySelectorAll('[class*="success"], [class*="confirmation"], [class*="booked"]');
+            // Look for success/confirmation messages - Enhanced for HighLevel
+            const confirmationElements = document.querySelectorAll('*');
             
             confirmationElements.forEach(element => {
-                if (element.textContent.toLowerCase().includes('confirmed') || 
-                    element.textContent.toLowerCase().includes('booked') ||
-                    element.textContent.toLowerCase().includes('scheduled')) {
+                const text = element.textContent.toLowerCase();
+                if (text.includes('your meeting has been scheduled') ||
+                    text.includes('meeting has been scheduled') ||
+                    text.includes('appointment scheduled') ||
+                    text.includes('confirmed') || 
+                    text.includes('booked') ||
+                    text.includes('scheduled')) {
                     
                     // Trigger conversion tracking
                     handleHighLevelBooking({
