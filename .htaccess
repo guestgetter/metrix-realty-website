@@ -17,6 +17,13 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # RewriteCond %{HTTP_HOST} !^www\. [NC]
 # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# 301 Redirects from Old Squarespace URLs to New Site
+Redirect 301 /services /services-enhanced.html
+Redirect 301 /contact /contact-enhanced.html
+Redirect 301 /team /team.html
+Redirect 301 /team2 /team.html
+Redirect 301 /jpetruzella /jeff-petruzella.html
+
 # Security Headers
 <IfModule mod_headers.c>
     # Content Security Policy
