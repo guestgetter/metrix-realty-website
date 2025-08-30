@@ -205,7 +205,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Example 2: Test different hero headlines on homepage
+    // Example 2: Test different hero headlines on homepage - DISABLED
+    // Client wants to use the original version consistently
+    /*
     if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
         window.ABTest
             .createTest('hero_headline', ['original', 'benefit_focused'], {
@@ -225,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
     }
+    */
 
     // Track conversions when calendar bookings happen
     window.addEventListener('message', function(e) {
