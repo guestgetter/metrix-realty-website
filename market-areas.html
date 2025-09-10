@@ -778,7 +778,7 @@
         const regionData = {
             windsor: {
                 title: 'Windsor–Essex',
-                specialties: 'Local economic drivers: automotive manufacturing and cross‑border trade',
+                specialties: 'Local economic drivers: automotive manufacturing, greenhouse operations, and cross‑border trade',
                 description: '',
                 communities: ['Windsor', 'Essex', 'Amherstburg', 'LaSalle', 'Tecumseh', 'Lakeshore', 'Leamington', 'Kingsville'],
                 icon: '🏭'
@@ -866,7 +866,8 @@
                     <div class="text-4xl">${region.icon}</div>
                     <div class="flex-1">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">${region.title}</h3>
-                        <p class="text-lg text-gray-600 font-medium mb-6">${region.specialties}</p>
+                        <p class="text-lg text-gray-600 font-medium mb-4">${region.specialties}</p>
+                        ${region.description ? `<p class="text-base text-gray-700 mb-6 bg-blue-50 p-4 rounded-lg border border-blue-200">${region.description}</p>` : ''}
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
