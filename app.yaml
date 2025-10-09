@@ -3,16 +3,58 @@ static_sites:
 - name: metrix-realty
   source_dir: /
   github:
-    repo: your-username/metrix-realty-website
+    repo: guestgetter/metrix-realty-website
     branch: main
-  routes:
-  - path: /
-  catchall_document: index.html
   
-  # Clean URL rewrites
+  # Error handling
   error_document: 404.html
   
-  # Custom headers for clean URLs
+  # Routes for clean URLs - Digital Ocean App Platform approach
+  routes:
+  - path: /
+    catchall_document: index.html
+  - path: /team
+    catchall_document: team.html
+  - path: /services
+    catchall_document: services-enhanced.html
+  - path: /contact
+    catchall_document: contact-enhanced.html
+  - path: /market-areas
+    catchall_document: market-areas.html
+  - path: /ali-mahfoud
+    catchall_document: ali-mahfoud.html
+  - path: /dan-van-houtte
+    catchall_document: dan-van-houtte.html
+  - path: /james-sibbald
+    catchall_document: james-sibbald.html
+  - path: /jeff-petruzella
+    catchall_document: jeff-petruzella.html
+  - path: /john-carter
+    catchall_document: john-carter.html
+  - path: /kim-vilos
+    catchall_document: kim-vilos.html
+  - path: /madison-collver
+    catchall_document: madison-collver.html
+  - path: /maia-mcclintock
+    catchall_document: maia-mcclintock.html
+  - path: /mark-penhale
+    catchall_document: mark-penhale.html
+  - path: /michael-fry
+    catchall_document: michael-fry.html
+  - path: /paula-busch
+    catchall_document: paula-busch.html
+  - path: /roman-virk
+    catchall_document: roman-virk.html
+  - path: /sam-van-houtte
+    catchall_document: sam-van-houtte.html
+  - path: /sarah-de-jong
+    catchall_document: sarah-de-jong.html
+  - path: /suzanne-de-jong
+    catchall_document: suzanne-de-jong.html
+  - path: /tyler-munn
+    catchall_document: tyler-munn.html
+  
+  # Custom headers
   headers:
   - name: "/*"
     headers:
