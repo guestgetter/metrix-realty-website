@@ -31,14 +31,14 @@ static_sites:
     catchall_document: jeff-petruzella.html
   - path: /john-carter
     catchall_document: john-carter.html
-  - path: /kim-vilos
-    catchall_document: kim-vilos.html
   - path: /madison-collver
     catchall_document: madison-collver.html
   - path: /maia-mcclintock
     catchall_document: maia-mcclintock.html
   - path: /mark-penhale
     catchall_document: mark-penhale.html
+  - path: /mason-hewitt
+    catchall_document: mason-hewitt.html
   - path: /michael-fry
     catchall_document: michael-fry.html
   - path: /paula-busch
