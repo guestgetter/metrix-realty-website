@@ -96,15 +96,24 @@
         
         .article-content ul {
             list-style-type: disc;
+            list-style-position: inside;
         }
         
         .article-content ol {
             list-style-type: decimal;
+            list-style-position: inside;
         }
         
         .article-content li {
             margin-bottom: 0.75rem;
             padding-left: 0.5rem;
+        }
+        
+        /* Fix for accidental list styling outside article content */
+        .period-box ul,
+        .callout-box ul {
+            list-style-type: none;
+            padding-left: 0;
         }
         
         .article-content strong {
@@ -129,6 +138,10 @@
             padding: 2rem;
             border-radius: 1rem;
             margin: 2.5rem 0;
+        }
+        
+        .callout-box h3 {
+            color: white !important;
         }
         
         .stat-highlight {
@@ -552,9 +565,7 @@
         <div class="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200" data-aos="fade-up">
             <div class="flex items-start gap-4">
                 <div class="flex-shrink-0">
-                    <div class="w-16 h-16 bg-metrix-blue rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                        SV
-                    </div>
+                    <img src="../assets/images/sam-van-houtte-metrix.png" alt="Sam van Houtte" class="w-20 h-20 rounded-full object-cover">
                 </div>
                 <div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">About Sam van Houtte</h3>
