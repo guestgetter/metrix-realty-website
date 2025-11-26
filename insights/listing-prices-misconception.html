@@ -109,11 +109,20 @@
             padding-left: 0.5rem;
         }
         
-        /* Fix for accidental list styling outside article content */
-        .period-box ul,
-        .callout-box ul {
-            list-style-type: none;
-            padding-left: 0;
+        /* Kill ALL random dots/markers outside of actual lists */
+        .period-box,
+        .callout-box,
+        .stat-highlight,
+        .bias-box,
+        h1, h2, h3, h4, h5, h6 {
+            list-style: none !important;
+        }
+        
+        .period-box *,
+        .callout-box *,
+        .stat-highlight *,
+        .bias-box * {
+            list-style: none !important;
         }
         
         .article-content strong {

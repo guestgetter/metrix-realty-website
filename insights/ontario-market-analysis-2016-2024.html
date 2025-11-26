@@ -96,15 +96,33 @@
         
         .article-content ul {
             list-style-type: disc;
+            list-style-position: inside;
         }
         
         .article-content ol {
             list-style-type: decimal;
+            list-style-position: inside;
         }
         
         .article-content li {
             margin-bottom: 0.75rem;
             padding-left: 0.5rem;
+        }
+        
+        /* Kill ALL random dots/markers outside of actual lists */
+        .period-box,
+        .callout-box,
+        .stat-highlight,
+        .bias-box,
+        h1, h2, h3, h4, h5, h6 {
+            list-style: none !important;
+        }
+        
+        .period-box *,
+        .callout-box *,
+        .stat-highlight *,
+        .bias-box * {
+            list-style: none !important;
         }
         
         .article-content strong {
