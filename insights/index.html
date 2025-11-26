@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Insights | Metrix Realty Group</title>
+    <title>Real Estate Market Insights & Expert Analysis | Metrix Realty Group</title>
     <link rel="icon" type="image/png" href="/favicon.png">
-    <meta name="description" content="Real estate market insights and analysis from Metrix Realty Group's professional appraisers.">
+    <meta name="description" content="Expert real estate market insights from Metrix Realty Group's AACI-designated appraisers. In-depth analysis of Ontario's property market, valuation trends, and professional appraisal guidance.">
     <link rel="canonical" href="https://metrixrealty.com/insights/">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Real Estate Market Insights | Metrix Realty Group">
+    <meta property="og:description" content="Expert real estate market insights and analysis from Southwestern Ontario's leading appraisal firm.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://metrixrealty.com/insights/">
+    <meta property="og:image" content="https://metrixrealty.com/assets/images/metrix-realty-team.webp">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Real Estate Market Insights | Metrix Realty Group">
+    <meta name="twitter:description" content="Expert real estate market insights and analysis from Southwestern Ontario's leading appraisal firm.">
+    <meta name="twitter:image" content="https://metrixrealty.com/assets/images/metrix-realty-team.webp">
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -17,84 +30,451 @@
     <!-- End Google Tag Manager -->
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metrix-blue': '#233c75',
+                        'metrix-blue-light': '#3d5a9e',
+                        'metrix-blue-dark': '#1a2d5a',
+                        'metrix-green': '#3faa4d',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .insight-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(35, 60, 117, 0.1), 0 10px 10px -5px rgba(35, 60, 117, 0.04);
+            border-color: #233c75;
+        }
+        
+        .category-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #233c75 0%, #1a2d5a 100%);
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 320px;
+            background: #ffffff;
+            box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15);
+            z-index: 99999;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+    
+    <!-- JSON-LD Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Metrix Realty Group Insights",
+        "description": "Expert real estate market insights and analysis from AACI-designated appraisers",
+        "url": "https://metrixrealty.com/insights/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Metrix Realty Group",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://metrixrealty.com/assets/images/metrix-realty-logo.png"
+            }
+        },
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Why Listing Prices Are Lying to You: What Ontario Property Owners Get Wrong About Real Estate Valuations",
+                "url": "https://metrixrealty.com/insights/listing-prices-misconception.html",
+                "datePublished": "2025-11-26",
+                "author": {
+                    "@type": "Person",
+                    "name": "Sam van Houtte",
+                    "jobTitle": "Senior Vice President"
+                }
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Inside Ontario's Real Estate Rollercoaster: A Senior Appraiser's 2016-2024 Market Analysis",
+                "url": "https://metrixrealty.com/insights/ontario-market-analysis-2016-2024.html",
+                "datePublished": "2025-11-26",
+                "author": {
+                    "@type": "Person",
+                    "name": "Sam van Houtte",
+                    "jobTitle": "Senior Vice President"
+                }
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "The Sentimental Equity Problem: Why Homeowners Can't Objectively Value Their Own Properties",
+                "url": "https://metrixrealty.com/insights/sentimental-equity-problem.html",
+                "datePublished": "2025-11-26",
+                "author": {
+                    "@type": "Person",
+                    "name": "Sam van Houtte",
+                    "jobTitle": "Senior Vice President"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="bg-white">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XX7VHJV"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Header -->
-    <header class="bg-white shadow-sm">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-6">
+            <div class="flex justify-between items-center py-4 md:py-6">
                 <div class="flex items-center">
                     <a href="../index.html" class="flex items-center">
-                        <img src="../assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-8 w-auto">
+                        <img src="../assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-8 md:h-10 w-auto">
                     </a>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="../index.html" class="text-gray-700 hover:text-gray-900">Home</a>
-                    <a href="../services-enhanced.html" class="text-gray-700 hover:text-gray-900">Services</a>
-                    <a href="../market-areas.html" class="text-gray-700 hover:text-gray-900">Market Areas</a>
-                    <a href="../team.html" class="text-gray-700 hover:text-gray-900">Team</a>
-                    <a href="../contact-enhanced.html" class="text-gray-700 hover:text-gray-900">Contact</a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-metrix-blue font-medium transition-colors">Home</a>
+                    <a href="../services-enhanced.html" class="text-gray-700 hover:text-metrix-blue font-medium transition-colors">Services</a>
+                    <a href="../market-areas.html" class="text-gray-700 hover:text-metrix-blue font-medium transition-colors">Market Areas</a>
+                    <a href="../team.html" class="text-gray-700 hover:text-metrix-blue font-medium transition-colors">Team</a>
+                    <a href="../insights/" class="text-metrix-blue font-semibold">Insights</a>
+                    <a href="../contact-enhanced.html" class="bg-metrix-blue text-white px-6 py-2 rounded-lg hover:bg-metrix-blue-dark transition-colors">Contact</a>
                 </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="absolute top-5 right-5 p-2 hover:bg-gray-100 rounded-lg transition-colors" id="closeMobileMenu">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <nav class="flex flex-col space-y-1 p-6 pt-16">
+            <a href="../index.html" class="py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors">Home</a>
+            <a href="../services-enhanced.html" class="py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors">Services</a>
+            <a href="../market-areas.html" class="py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors">Market Areas</a>
+            <a href="../team.html" class="py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors">Team</a>
+            <a href="../insights/" class="py-3 px-4 bg-metrix-blue/10 text-metrix-blue rounded-lg font-semibold">Insights</a>
+            <a href="../contact-enhanced.html" class="py-3 px-4 bg-metrix-blue text-white rounded-lg font-semibold hover:bg-metrix-blue-dark transition-colors text-center mt-4">Contact</a>
+        </nav>
+    </div>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Market Insights</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Professional real estate market analysis and insights from our experienced appraisal team.
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    Market Insights & Expert Analysis
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
+                    In-depth perspectives on Ontario's real estate market from our team of AACI-designated appraisers with decades of combined experience.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <span class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+                        <svg class="w-5 h-5 mr-2 text-metrix-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Professional Analysis
+                    </span>
+                    <span class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+                        <svg class="w-5 h-5 mr-2 text-metrix-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Evidence-Based Insights
+                    </span>
+                    <span class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+                        <svg class="w-5 h-5 mr-2 text-metrix-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Local Market Expertise
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Insights</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Real-world insights from the front lines of property valuation in Southwestern Ontario.
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Market Trends</h3>
-                <p class="text-gray-600 mb-4">Stay informed about current real estate market trends across our service areas.</p>
-                <a href="../market-areas.html" class="text-blue-600 hover:text-blue-800 font-medium">View Market Areas →</a>
-            </div>
+        <!-- Articles Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            
+            <!-- Article 1: Listing Prices Misconception -->
+            <article class="insight-card bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-48 bg-gradient-to-br from-metrix-blue to-metrix-blue-light flex items-center justify-center">
+                    <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="category-badge inline-block px-3 py-1 bg-metrix-blue/10 text-metrix-blue text-xs font-semibold rounded-full">
+                            Property Valuation
+                        </span>
+                        <span class="text-xs text-gray-500">8 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        Why Listing Prices Are Lying to You: What Ontario Property Owners Get Wrong
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Discover the common misconceptions property owners have about real estate valuations and why relying on listing prices and outdated sales data could cost you thousands.
+                    </p>
+                    <div class="flex items-center mb-4 pb-4 border-b border-gray-100">
+                        <div class="text-sm">
+                            <p class="font-semibold text-gray-900">Sam van Houtte</p>
+                            <p class="text-gray-500">Senior Vice President</p>
+                        </div>
+                    </div>
+                    <a href="listing-prices-misconception.html" class="inline-flex items-center text-metrix-blue font-semibold hover:text-metrix-blue-dark transition-colors group">
+                        Read Full Article
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
 
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Valuation Insights</h3>
-                <p class="text-gray-600 mb-4">Professional insights into property valuation methodologies and market factors.</p>
-                <a href="../services-enhanced.html" class="text-blue-600 hover:text-blue-800 font-medium">Our Services →</a>
-            </div>
+            <!-- Article 2: Ontario Market Analysis -->
+            <article class="insight-card bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-48 bg-gradient-to-br from-metrix-green to-green-600 flex items-center justify-center">
+                    <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="category-badge inline-block px-3 py-1 bg-metrix-green/10 text-green-700 text-xs font-semibold rounded-full">
+                            Market Analysis
+                        </span>
+                        <span class="text-xs text-gray-500">12 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        Inside Ontario's Real Estate Rollercoaster: A Senior Appraiser's 2016-2024 Market Analysis
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        From predictable growth to COVID-fueled chaos and back. A first-hand account of navigating Ontario's most volatile real estate period in recent history.
+                    </p>
+                    <div class="flex items-center mb-4 pb-4 border-b border-gray-100">
+                        <div class="text-sm">
+                            <p class="font-semibold text-gray-900">Sam van Houtte</p>
+                            <p class="text-gray-500">Senior Vice President</p>
+                        </div>
+                    </div>
+                    <a href="ontario-market-analysis-2016-2024.html" class="inline-flex items-center text-metrix-blue font-semibold hover:text-metrix-blue-dark transition-colors group">
+                        Read Full Article
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
 
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert Analysis</h3>
-                <p class="text-gray-600 mb-4">Get expert analysis from our team of certified appraisers and market specialists.</p>
-                <a href="../team.html" class="text-blue-600 hover:text-blue-800 font-medium">Meet Our Team →</a>
-            </div>
+            <!-- Article 3: Sentimental Equity Problem -->
+            <article class="insight-card bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                <div class="h-48 bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
+                    <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="category-badge inline-block px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                            Psychology of Value
+                        </span>
+                        <span class="text-xs text-gray-500">7 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        The Sentimental Equity Problem: Why Homeowners Can't Objectively Value Their Properties
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        The psychological barriers that prevent homeowners from accurately assessing their property's market value and why third-party expertise matters.
+                    </p>
+                    <div class="flex items-center mb-4 pb-4 border-b border-gray-100">
+                        <div class="text-sm">
+                            <p class="font-semibold text-gray-900">Sam van Houtte</p>
+                            <p class="text-gray-500">Senior Vice President</p>
+                        </div>
+                    </div>
+                    <a href="sentimental-equity-problem.html" class="inline-flex items-center text-metrix-blue font-semibold hover:text-metrix-blue-dark transition-colors group">
+                        Read Full Article
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
         </div>
 
-        <div class="mt-12 text-center">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Need Professional Appraisal Services?</h2>
-            <p class="text-gray-600 mb-6">Contact our team for comprehensive real estate valuation and market analysis.</p>
-            <a href="../contact-enhanced.html" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                Schedule Consultation
-            </a>
+        <!-- CTA Section -->
+        <div class="bg-gradient-to-r from-metrix-blue to-metrix-blue-dark rounded-2xl p-8 md:p-12 text-white text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Need a Professional Property Appraisal?</h2>
+            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                Our AACI-designated appraisers provide comprehensive property valuations backed by decades of experience in Southwestern Ontario's real estate markets.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../contact-enhanced.html" class="inline-block bg-white text-metrix-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Schedule a Consultation
+                </a>
+                <a href="../services-enhanced.html" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+                    View Our Services
+                </a>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 border-t">
+    <footer class="bg-gray-900 text-white mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="text-center">
-                <p class="text-gray-500">&copy; 2025 Metrix Realty Group. All rights reserved.</p>
-                <div class="mt-4 space-x-4">
-                    <a href="../privacy-policy.html" class="text-gray-500 hover:text-gray-700">Privacy Policy</a>
-                    <a href="../terms-of-service.html" class="text-gray-500 hover:text-gray-700">Terms of Service</a>
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <img src="../assets/images/metrix-realty-logo.png" alt="Metrix Realty Group" class="h-10 w-auto mb-4 brightness-0 invert">
+                    <p class="text-gray-400 mb-4">
+                        AACI-designated real estate appraisers serving London, Windsor, Guelph, and surrounding areas with professional property valuation services.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="tel:519-659-1295" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="../services-enhanced.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="../market-areas.html" class="text-gray-400 hover:text-white transition-colors">Market Areas</a></li>
+                        <li><a href="../team.html" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="../insights/" class="text-gray-400 hover:text-white transition-colors">Insights</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../privacy-policy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="../terms-of-service.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="../accessibility.html" class="text-gray-400 hover:text-white transition-colors">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Metrix Realty Group. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenuFunc() {
+            mobileMenu.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        overlay.addEventListener('click', closeMobileMenuFunc);
+    </script>
+    
     <script src="../assets/js/analytics-tracking.js"></script>
 </body>
 </html>
