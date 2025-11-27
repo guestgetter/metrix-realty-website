@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Listing Prices Are Lying to You: What Ontario Property Owners Get Wrong | Metrix Realty</title>
     <link rel="icon" type="image/png" href="/favicon.png">
-    <meta name="description" content="Real estate appraiser Sam van Houtte explains the common misconceptions Ontario property owners have about valuations and why relying on listing prices could cost you thousands.">
+    <meta name="description" content="Common misconceptions Ontario property owners have about valuations and why relying on listing prices could cost you thousands. Expert insights from an AACI-designated appraiser.">
     <link rel="canonical" href="https://metrixrealty.com/insights/listing-prices-misconception.html">
     
     <!-- Open Graph Meta Tags -->
@@ -201,6 +201,100 @@
         
         .share-button:hover {
             transform: translateY(-2px);
+        }
+        
+        /* Navigation Styles */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #233c75, #1a2d5a);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: #233c75;
+        }
+        
+        .mega-menu-item {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .mega-menu-item:hover {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            transform: translateX(4px);
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            color: #6b7280;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .mobile-menu-content {
+            padding: 24px;
+            padding-top: 80px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 16px;
+            color: #374151;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            color: #233c75;
+            background: #f8fafc;
         }
     </style>
     
@@ -407,7 +501,7 @@
             
             <!-- Excerpt -->
             <p class="text-xl text-gray-600 leading-relaxed border-l-4 border-metrix-blue pl-6 py-2">
-                If you're a property owner in Ontario relying on listing prices and outdated sales data to understand your home's value, you could be making costly decisions based on misleading information. Here's what professional appraisers wish you knew.
+                If you're a property owner in Ontario relying on listing prices and outdated sales data to understand your home's value, you could be making costly decisions based on misleading information. Here's what you need to know.
             </p>
             
             <!-- Share Buttons -->
@@ -800,26 +894,60 @@
         });
         
         // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('overlay');
-        
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenu.classList.contains('open');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+
         function openMobileMenu() {
             mobileMenu.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+            document.body.classList.add('menu-open');
         }
-        
-        function closeMobileMenuFunc() {
+
+        function closeMobileMenu() {
             mobileMenu.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+            if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileMenu();
+            });
         }
         
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
-        overlay.addEventListener('click', closeMobileMenuFunc);
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenu();
+            });
+        }
+        
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
+        mobileMenuLinks?.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
         
         // Share functionality
         function shareArticle(platform) {
