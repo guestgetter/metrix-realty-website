@@ -34,10 +34,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -378,7 +374,7 @@
     <!-- Hero Section -->
     <section class="hero-gradient text-white py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                     Market Insights & Expert Analysis
                 </h1>
@@ -413,7 +409,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         
         <!-- Section Header -->
-        <div class="text-center mb-12" data-aos="fade-up">
+        <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Insights</h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                 Real-world insights from the front lines of property valuation in Southwestern Ontario.
@@ -424,7 +420,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             
             <!-- Article 1: Listing Prices Misconception -->
-            <a href="listing-prices-misconception.html" class="block" data-aos="fade-up" data-aos-delay="100">
+            <a href="/insights/listing-prices-misconception.html" class="block">
                 <article class="insight-card bg-white rounded-xl overflow-hidden h-full">
                     <div class="h-48 bg-gradient-to-br from-metrix-blue to-metrix-blue-light flex items-center justify-center">
                         <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -461,7 +457,7 @@
             </a>
 
             <!-- Article 2: Ontario Market Analysis -->
-            <a href="ontario-market-analysis-2016-2024.html" class="block" data-aos="fade-up" data-aos-delay="200">
+            <a href="/insights/ontario-market-analysis-2016-2024.html" class="block">
                 <article class="insight-card bg-white rounded-xl overflow-hidden h-full">
                     <div class="h-48 bg-gradient-to-br from-metrix-green to-green-600 flex items-center justify-center">
                         <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -498,7 +494,7 @@
             </a>
 
             <!-- Article 3: Sentimental Equity Problem -->
-            <a href="sentimental-equity-problem.html" class="block" data-aos="fade-up" data-aos-delay="300">
+            <a href="/insights/sentimental-equity-problem.html" class="block">
                 <article class="insight-card bg-white rounded-xl overflow-hidden h-full">
                     <div class="h-48 bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
                         <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -536,7 +532,7 @@
         </div>
 
         <!-- CTA Section -->
-        <div class="bg-gradient-to-r from-metrix-blue to-metrix-blue-dark rounded-2xl p-8 md:p-12 text-white text-center" data-aos="fade-up">
+        <div class="bg-gradient-to-r from-metrix-blue to-metrix-blue-dark rounded-2xl p-8 md:p-12 text-white text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Need a Professional Property Appraisal?</h2>
             <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
                 Our AACI-designated appraisers provide comprehensive property valuations backed by decades of experience in Southwestern Ontario's real estate markets.
@@ -652,13 +648,6 @@
     </footer>
 
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-        
         // Mobile menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');

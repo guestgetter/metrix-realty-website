@@ -35,10 +35,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -457,7 +453,7 @@
 
     <!-- Article Header -->
     <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <header class="mb-12" data-aos="fade-up">
+        <header class="mb-12">
             <!-- Category Badge -->
             <div class="mb-6">
                 <span class="inline-block px-4 py-2 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">
@@ -513,7 +509,7 @@
         </header>
 
         <!-- Article Content -->
-        <div class="article-content" data-aos="fade-up">
+        <div class="article-content">
             
             <p>
                 You've lived in your home for fifteen years. You painted the kitchen yourself — twice. You replaced the deck after that winter storm. You refinished the basement when your daughter needed a music practice room. You planted those Japanese maples in the backyard and watched them grow.
@@ -815,7 +811,7 @@
         </div>
 
         <!-- Author Bio -->
-        <div class="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200" data-aos="fade-up">
+        <div class="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
             <div class="flex items-start gap-4">
                 <div class="flex-shrink-0">
                     <img src="../assets/images/sam-van-houtte-metrix.png" alt="Sam van Houtte" class="w-20 h-20 rounded-full object-cover">
@@ -836,7 +832,7 @@
         </div>
 
         <!-- Related Articles -->
-        <div class="mt-16 pt-12 border-t" data-aos="fade-up">
+        <div class="mt-16 pt-12 border-t">
             <h2 class="text-3xl font-bold text-gray-900 mb-8">Continue Reading</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <a href="listing-prices-misconception.html" class="group">
@@ -869,7 +865,7 @@
         </div>
 
         <!-- CTA Section -->
-        <div class="mt-16 bg-gradient-to-r from-metrix-blue to-metrix-blue-dark rounded-2xl p-8 md:p-12 text-white text-center" data-aos="fade-up">
+        <div class="mt-16 bg-gradient-to-r from-metrix-blue to-metrix-blue-dark rounded-2xl p-8 md:p-12 text-white text-center">
             <h2 class="text-3xl font-bold mb-4">Get an Objective, Professional Valuation</h2>
             <p class="text-xl text-gray-200 mb-6 max-w-2xl mx-auto">
                 Remove emotion from the equation. Work with AACI-designated appraisers who provide evidence-based valuations you can rely on.
@@ -981,13 +977,6 @@
     </footer>
 
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-        
         // Mobile menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
