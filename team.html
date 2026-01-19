@@ -44,6 +44,10 @@
         }
     </script>
     <style>
+        /* Prevent flash of unstyled content */
+        body { opacity: 0; animation: pageLoad 0.2s ease-out 0.1s forwards; }
+        @keyframes pageLoad { to { opacity: 1; } }
+        
         .bg-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('assets/images/metrix-realty-team.webp');
             background-size: cover;
