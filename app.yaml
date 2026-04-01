@@ -47,8 +47,6 @@ static_sites:
     catchall_document: roman-virk.html
   - path: /sam-van-houtte
     catchall_document: sam-van-houtte.html
-  - path: /sarah-de-jong
-    catchall_document: sarah-de-jong.html
   - path: /suzanne-de-jong
     catchall_document: suzanne-de-jong.html
   - path: /tyler-munn
