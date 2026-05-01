@@ -4,7 +4,7 @@
   "description": "Metrix Realty Group - Professional Real Estate Appraisal Services",
   "scripts": {
     "build": "echo 'Static site - no build needed'",
-    "start": "echo 'This is a static site' && exit 1"
+    "start": "echo 'Static site - no start server needed'"
   },
   "engines": {
     "node": ">=18.0.0"
