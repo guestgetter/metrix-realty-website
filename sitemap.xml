@@ -47,7 +47,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Priority service pages (new — PR #10) -->
+  <!-- Updated service pages (PR #10) -->
   <url>
     <loc>https://metrixrealty.com/services/commercial-property-valuations</loc>
     <lastmod>2026-05-04</lastmod>
@@ -77,6 +77,25 @@
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <!-- High-intent priority service pages (PR #14) -->
+  <url>
+    <loc>https://metrixrealty.com/services/commercial-real-estate-appraisal-london-ontario</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://metrixrealty.com/services/property-tax-appeal-appraisal-ontario</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://metrixrealty.com/services/industrial-property-appraisal-southwestern-ontario</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Existing service pages (keep live until new hubs replace them) -->
