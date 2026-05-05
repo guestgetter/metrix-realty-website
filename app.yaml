@@ -17,6 +17,16 @@ static_sites:
     catchall_document: team.html
   - path: /services
     catchall_document: services-enhanced.html
+  - path: /services/commercial-property-valuations
+    catchall_document: services/commercial-property-valuations.html
+  - path: /services/residential-property-appraisals
+    catchall_document: services/residential-property-appraisals.html
+  - path: /services/litigation-support-expert-testimony
+    catchall_document: services/litigation-support-expert-testimony.html
+  - path: /services/real-estate-consulting
+    catchall_document: services/real-estate-consulting.html
+  - path: /services/government-institutional-services
+    catchall_document: services/government-institutional-services.html
   - path: /contact
     catchall_document: contact-enhanced.html
   - path: /market-areas
