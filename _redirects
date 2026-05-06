@@ -1,0 +1,18 @@
+# Metrix Realty — redirect rules for Digital Ocean App Platform
+# Format: /source /destination [status]
+
+# Legacy enhanced pages
+/services-enhanced     /services    301
+/services-enhanced.html /services   301
+/contact-enhanced      /contact     301
+/contact-enhanced.html /contact     301
+
+# Market insights slug rename
+/market-insights       /insights/   301
+/market-insights.html  /insights/   301
+
+# Trailing-slash canonicalization
+/services/index        /services    301
+/services/index.html   /services    301
+/london                /london/     301
+/windsor               /windsor/    301
