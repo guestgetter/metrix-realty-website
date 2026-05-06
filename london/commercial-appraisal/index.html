@@ -40,21 +40,34 @@
     </script>
     <style>
         .bg-hero { background: linear-gradient(135deg, #233c75 0%, #1a2d5a 70%, #3faa4d 100%); }
-        .nav-link { position: relative; color: #374151; text-decoration: none; transition: all 0.3s; }
-        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #1a202c; transition: width 0.3s; }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link:hover, .nav-link.active { color: #1a202c; font-weight: 600; }
-        .mobile-menu { position: fixed; top: 0; right: 0; height: 100vh; width: 320px; background: #fff; box-shadow: -10px 0 25px rgba(0,0,0,0.15); z-index: 99999; transform: translateX(100%); transition: transform 0.3s; border-left: 1px solid #e5e7eb; }
-        .mobile-menu.open { transform: translateX(0); }
-        .mobile-menu-content { padding: 24px; padding-top: 80px; height: 100%; overflow-y: auto; }
-        .mobile-nav-link { display: block; font-size: 18px; font-weight: 500; color: #1f2937; text-decoration: none; padding: 16px 0; border-bottom: 1px solid #f3f4f6; transition: all 0.2s; }
-        .mobile-nav-link:hover { color: #233c75; padding-left: 8px; }
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 99998; opacity: 0; visibility: hidden; transition: all 0.3s; }
-        .overlay.open { opacity: 1; visibility: visible; }
-        .hamburger-line { transition: all 0.3s; }
-        .hamburger.open .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .hamburger-line { transition: all 0.3s ease; }
+        .hamburger.open .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.open .hamburger-line:nth-child(2) { opacity: 0; }
-        .hamburger.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(7px,-6px); }
+        .hamburger.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        .mobile-menu { position: fixed; top: 0; right: 0; height: 100vh; width: 320px; background: #ffffff !important; box-shadow: -10px 0 25px rgba(0,0,0,0.15); z-index: 99999 !important; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); border-left: 1px solid #e5e7eb; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu-close { position: absolute; top: 24px; right: 24px; background: none; border: none; padding: 8px; cursor: pointer; color: #9ca3af; border-radius: 8px; transition: all 0.2s ease; }
+        .mobile-menu-close:hover { background: #f3f4f6; color: #374151; }
+        .mobile-menu-content { padding: 80px 32px 32px; height: 100%; overflow-y: auto; }
+        .mobile-nav { display: flex; flex-direction: column; gap: 8px; }
+        .mobile-nav-link { display: block; padding: 16px 0; color: #374151; font-weight: 500; font-size: 18px; text-decoration: none; border-bottom: 1px solid #f3f4f6; transition: all 0.2s ease; }
+        .mobile-nav-link:hover { color: #233c75; background: #f8fafc; padding-left: 16px; border-radius: 8px; border-bottom: 1px solid transparent; }
+        .mobile-nav-link.active { color: #233c75; font-weight: 600; }
+        .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99998 !important; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu-overlay.show { opacity: 1; visibility: visible; }
+        body.menu-open { overflow: hidden; }
+        .nav-link { position: relative; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg,#1a202c,#2d3748); transition: width 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: #1a202c; transform: translateY(-1px); }
+        .nav-link.active { color: #1a202c; font-weight: 600; }
+        .nav-link.active::after { width: 100%; }
+        .mega-menu-item { display: block; border-radius: 12px; transition: all 0.2s ease; }
+        .mega-menu-item:hover { background: #f8fafc; }
+        .mega-menu-item:hover .mega-menu-title { color: #233c75; }
+        .btn-primary { position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(26,32,44,0.25); }
+        .touch-target { min-height: 44px; min-width: 44px; }
     </style>
 
     <!-- Structured Data -->
@@ -142,7 +155,7 @@
 <body class="font-inter">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XX7VHJV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Header -->
+    <!-- Global Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
@@ -151,34 +164,73 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                     <a href="/" class="nav-link text-gray-900 font-semibold">Home</a>
-                    <a href="/services" class="nav-link active text-gray-900 font-semibold">Services</a>
+                    <div class="relative group">
+                        <a href="/services" class="nav-link active text-gray-900 font-semibold">Services</a>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 backdrop-blur-sm">
+                            <div class="p-8">
+                                <h4 class="font-bold text-gray-900 mb-6 pb-3 border-b-2 border-metrix-blue text-lg">Appraisal & Consulting Services</h4>
+                                <div class="space-y-1">
+                                    <a href="/services/commercial-property-valuations" class="mega-menu-item block p-4">
+                                        <div class="mega-menu-title font-semibold text-gray-900 mb-2">Commercial Appraisals</div>
+                                        <div class="text-sm text-gray-600 leading-relaxed">Expert valuations for office, retail, and industrial properties</div>
+                                    </a>
+                                    <a href="/services/residential-property-appraisals" class="mega-menu-item block p-4">
+                                        <div class="mega-menu-title font-semibold text-gray-900 mb-2">Residential Appraisals</div>
+                                        <div class="text-sm text-gray-600 leading-relaxed">Professional home valuations for mortgages, refinancing, estate planning, and legal matters.</div>
+                                    </a>
+                                    <a href="/services/litigation-support-expert-testimony" class="mega-menu-item block p-4">
+                                        <div class="mega-menu-title font-semibold text-gray-900 mb-2">Litigation Support</div>
+                                        <div class="text-sm text-gray-600 leading-relaxed">Expert witness testimony and legal valuations</div>
+                                    </a>
+                                    <a href="/services/real-estate-consulting" class="mega-menu-item block p-4">
+                                        <div class="mega-menu-title font-semibold text-gray-900 mb-2">Real Estate Consulting</div>
+                                        <div class="text-sm text-gray-600 leading-relaxed">Strategic market analysis and investment advisory services</div>
+                                    </a>
+                                    <a href="/services/government-institutional-services" class="mega-menu-item block p-4">
+                                        <div class="mega-menu-title font-semibold text-gray-900 mb-2">Government & Institutional Services</div>
+                                        <div class="text-sm text-gray-600 leading-relaxed">Specialized services for federal, provincial, and municipal clients</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <a href="/market-areas" class="nav-link text-gray-900 font-semibold">Market Areas</a>
                     <a href="/team" class="nav-link text-gray-900 font-semibold">Team</a>
-                    <a href="/contact" class="inline-flex items-center justify-center px-5 py-2.5 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-colors duration-200 text-sm">Connect with an Appraiser</a>
+                    <a href="/contact" class="nav-link text-gray-900 font-semibold">Contact</a>
                 </div>
-                <button class="hamburger md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-gray-100" id="menuToggle" aria-label="Open menu">
-                    <span class="hamburger-line w-6 h-0.5 bg-gray-700 mb-1.5"></span>
-                    <span class="hamburger-line w-6 h-0.5 bg-gray-700 mb-1.5"></span>
-                    <span class="hamburger-line w-6 h-0.5 bg-gray-700"></span>
-                </button>
+                <div class="hidden md:block">
+                    <a href="/contact" class="btn-primary inline-flex items-center px-4 lg:px-6 py-2 lg:py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 text-sm lg:text-base transition-colors duration-200">Connect with an Appraiser</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
+                        <div class="hamburger w-6 h-6 flex flex-col justify-center space-y-1">
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                            <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
+                        </div>
+                    </button>
+                </div>
             </div>
         </nav>
-    </header>
-    <div class="overlay" id="overlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="absolute top-5 right-5 p-2 text-gray-500 hover:text-gray-700" id="menuClose" aria-label="Close menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <div class="mobile-menu-content">
-            <nav class="flex flex-col gap-0">
-                <a href="/" class="mobile-nav-link">Home</a>
-                <a href="/services" class="mobile-nav-link">Services</a>
-                <a href="/market-areas" class="mobile-nav-link">Market Areas</a>
-                <a href="/team" class="mobile-nav-link">Team</a>
-                <a href="/contact" class="mobile-nav-link font-semibold text-metrix-blue">Connect with an Appraiser</a>
-            </nav>
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="mobile-menu-content">
+                <nav class="mobile-nav">
+                    <a href="/" class="mobile-nav-link">Home</a>
+                    <a href="/services" class="mobile-nav-link active">Services</a>
+                    <a href="/market-areas" class="mobile-nav-link">Market Areas</a>
+                    <a href="/team" class="mobile-nav-link">Team</a>
+                    <a href="/contact" class="mobile-nav-link">Contact</a>
+                    <div style="margin-top:32px;">
+                        <a href="/contact" class="btn-primary block w-full text-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200">Connect with an Appraiser</a>
+                    </div>
+                </nav>
+            </div>
         </div>
-    </div>
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden"></div>
+    </header>
 
     <!-- Hero -->
     <section class="bg-hero pt-20 sm:pt-24 pb-16 sm:pb-20 text-white">
@@ -453,15 +505,33 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true, duration: 800 });
-        const toggle = document.getElementById('menuToggle');
-        const menu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('overlay');
-        const close = document.getElementById('menuClose');
-        function openMenu() { menu.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-        function closeMenu() { menu.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
-        if (toggle) toggle.addEventListener('click', openMenu);
-        if (close) close.addEventListener('click', closeMenu);
-        if (overlay) overlay.addEventListener('click', closeMenu);
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburger = document.querySelector('.hamburger');
+            if (!mobileMenuButton || !mobileMenu) return;
+            function openMobileMenu() {
+                mobileMenu.classList.add('open');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('show');
+                if (hamburger) hamburger.classList.add('open');
+                document.body.classList.add('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+            }
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('open');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('show');
+                if (hamburger) hamburger.classList.remove('open');
+                document.body.classList.remove('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+            });
+            if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+            if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        });
     </script>
 </body>
 </html>
