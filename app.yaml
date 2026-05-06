@@ -16,6 +16,8 @@ static_sites:
   - path: /team
     catchall_document: team.html
   - path: /services
+    catchall_document: services/index.html
+  - path: /services-enhanced
     catchall_document: services-enhanced.html
   - path: /services/commercial-property-valuations
     catchall_document: services/commercial-property-valuations.html
