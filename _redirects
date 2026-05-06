@@ -2,8 +2,6 @@
 # Format: /source /destination [status]
 
 # Legacy enhanced pages
-/services-enhanced     /services    301
-/services-enhanced.html /services   301
 /contact-enhanced      /contact     301
 /contact-enhanced.html /contact     301
 
