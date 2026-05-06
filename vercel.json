@@ -1,3 +1,28 @@
 {
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.metrixrealty.com" }],
+      "destination": "https://metrixrealty.com/:path*",
+      "permanent": true
+    },
+    { "source": "/services-enhanced.html", "destination": "/services", "permanent": true },
+    { "source": "/services-enhanced", "destination": "/services", "permanent": true },
+    { "source": "/contact-enhanced.html", "destination": "/contact", "permanent": true },
+    { "source": "/contact-enhanced", "destination": "/contact", "permanent": true },
+    { "source": "/market-insights.html", "destination": "/insights/", "permanent": true },
+    { "source": "/market-insights", "destination": "/insights/", "permanent": true },
+    { "source": "/services/index.html", "destination": "/services", "permanent": true },
+    { "source": "/services/index", "destination": "/services", "permanent": true },
+    { "source": "/windsor", "destination": "/windsor/", "permanent": true },
+    { "source": "/london", "destination": "/london/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
+  ]
 }
