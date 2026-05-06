@@ -15,9 +15,65 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-5XX7VHJV');</script>
     <!-- End Google Tag Manager -->
-    
 
-    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://metrixrealty.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://metrixrealty.com/contact"}
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://metrixrealty.com/#organization",
+          "name": "Metrix Realty Group",
+          "url": "https://metrixrealty.com",
+          "telephone": "+1-519-672-7550",
+          "email": "info@metrixrealty.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "620A Richmond Street, Suite 203",
+            "addressLocality": "London",
+            "addressRegion": "ON",
+            "postalCode": "N6A 5J9",
+            "addressCountry": "CA"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 42.9849,
+            "longitude": -81.2453
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "09:00",
+            "closes": "17:00"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-519-672-7550",
+            "contactType": "customer service",
+            "areaServed": "CA-ON",
+            "availableLanguage": "English"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://metrixrealty.com/contact#webpage",
+          "url": "https://metrixrealty.com/contact",
+          "name": "Contact — Metrix Realty Group",
+          "description": "Contact Metrix Realty Group to book a free consultation with an accredited property appraiser in London, Ontario.",
+          "isPartOf": {"@id": "https://metrixrealty.com/#organization"}
+        }
+      ]
+    }
+    </script>
+
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
