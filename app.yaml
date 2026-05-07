@@ -32,7 +32,7 @@ static_sites:
   - path: /contact
     catchall_document: contact-enhanced.html
   - path: /market-areas
-    catchall_document: market-areas.html
+    catchall_document: market-areas/index.html
   - path: /ali-mahfoud
     catchall_document: ali-mahfoud.html
   - path: /dan-van-houtte
