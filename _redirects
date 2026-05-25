@@ -10,7 +10,8 @@
 /market-insights.html  /insights/   301
 
 # Trailing-slash canonicalization
-/services/index        /services    301
-/services/index.html   /services    301
+/services              /services/   301
+/services/index        /services/   301
+/services/index.html   /services/   301
 /london                /london/     301
 /windsor               /windsor/    301
