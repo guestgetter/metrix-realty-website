@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Expert Team | Metrix Realty Group | AACI Designated Appraisers</title>
+    <title>AACI Certified Appraisers | Metrix Realty Group Team</title>
+    <meta property="og:title" content="AACI Certified Appraisers | Metrix Realty Group Team">
+    <meta property="og:description" content="Meet our team of AACI-designated real estate appraisers and valuation experts serving Southwestern Ontario with over 25 years of combined experience.">
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta name="description" content="Meet our team of AACI-designated real estate appraisers and valuation experts serving Southwestern Ontario with over 25 years of combined experience.">
     <link rel="canonical" href="https://metrixrealty.com/team">
@@ -265,23 +267,23 @@
                                 <div>
                                     <h4 class="font-bold text-gray-900 mb-6 pb-3 border-b-2 border-metrix-blue text-lg">Appraisal & Consulting Services</h4>
                                     <div class="space-y-1">
-                                        <a href="/services#commercial" class="mega-menu-item block p-4">
+                                        <a href="/services/commercial-property-valuations" class="mega-menu-item block p-4">
                                             <div class="mega-menu-title font-semibold text-gray-900 mb-2">Commercial Appraisals</div>
                                             <div class="text-sm text-gray-600 leading-relaxed">Expert valuations for office, retail, and industrial properties</div>
                                         </a>
-                                        <a href="/services#residential" class="mega-menu-item block p-4">
+                                        <a href="/services/residential-property-appraisals" class="mega-menu-item block p-4">
                                             <div class="mega-menu-title font-semibold text-gray-900 mb-2">Residential Appraisals</div>
                                             <div class="text-sm text-gray-600 leading-relaxed">Professional home valuations for mortgages, refinancing, estate planning, and legal matters.</div>
                                         </a>
-                                        <a href="/services#litigation" class="mega-menu-item block p-4">
+                                        <a href="/services/litigation-support-expert-testimony" class="mega-menu-item block p-4">
                                             <div class="mega-menu-title font-semibold text-gray-900 mb-2">Litigation Support</div>
                                             <div class="text-sm text-gray-600 leading-relaxed">Expert witness testimony and legal valuations</div>
                                         </a>
-                                        <a href="/services#consulting" class="mega-menu-item block p-4">
+                                        <a href="/services/real-estate-consulting" class="mega-menu-item block p-4">
                                             <div class="mega-menu-title font-semibold text-gray-900 mb-2">Real Estate Consulting</div>
                                             <div class="text-sm text-gray-600 leading-relaxed">Strategic market analysis and investment advisory services</div>
                                         </a>
-                                        <a href="/services#government" class="mega-menu-item block p-4">
+                                        <a href="/services/government-institutional-services" class="mega-menu-item block p-4">
                                             <div class="mega-menu-title font-semibold text-gray-900 mb-2">Government & Institutional Services</div>
                                             <div class="text-sm text-gray-600 leading-relaxed">Specialized services for federal, provincial, and municipal clients</div>
                                         </a>
@@ -290,9 +292,17 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/market-areas" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Market Areas</a>
-                    <a href="#" class="nav-link active text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Team</a>
-                    <!-- <a href="/insights/" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Market Insights</a> -->
+                    <div class="relative group">
+                        <a href="/market-areas" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Market Areas</a>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-48 bg-white rounded-2xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="py-3 px-2">
+                                <a href="/london/" class="block px-4 py-2.5 font-semibold text-gray-900 hover:bg-gray-50 rounded-xl text-sm">London, ON</a>
+                                <a href="/windsor/" class="block px-4 py-2.5 font-semibold text-gray-900 hover:bg-gray-50 rounded-xl text-sm">Windsor, ON</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/team" class="nav-link active text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Team</a>
+                    <!-- <a href="/insights/" class="nav-link text-gray-900 font-semibold">Market Insights</a> -->
                     <a href="/contact" class="nav-link text-gray-900 font-semibold nav-text-enhanced text-smooth focus-readable">Contact</a>
                 </div>
                 
@@ -305,8 +315,8 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="hamburger touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
-                        <div class="w-6 h-6 flex flex-col justify-center space-y-1">
+                    <button id="mobile-menu-button" class="touch-target text-gray-900 hover:text-metrix-blue p-2" aria-label="Toggle mobile menu">
+                        <div class="hamburger w-6 h-6 flex flex-col justify-center space-y-1">
                             <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
                             <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
                             <span class="hamburger-line block h-0.5 w-6 bg-current"></span>
@@ -315,6 +325,37 @@
                 </div>
             </div>
         </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="mobile-menu-content">
+                <nav class="mobile-nav">
+                    <a href="/" class="mobile-nav-link">Home</a>
+                    <a href="/services" class="mobile-nav-link">Services</a>
+                    <a href="/market-areas" class="mobile-nav-link">Market Areas</a>
+                    <a href="/london/" class="mobile-nav-link" style="padding-left:2.5rem">London, ON</a>
+                    <a href="/windsor/" class="mobile-nav-link" style="padding-left:2.5rem">Windsor, ON</a>
+                    <a href="/team" class="mobile-nav-link active">Team</a>
+                    <!-- <a href="/insights/" class="mobile-nav-link">Market Insights</a> -->
+                    <a href="/contact" class="mobile-nav-link">Contact</a>
+                    
+                    <div style="margin-top: 32px;">
+                        <a href="/contact" class="btn-primary block w-full text-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                            Connect with an Appraiser
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden"></div>
     </header>
 
     <!-- Mobile Menu -->
@@ -330,6 +371,8 @@
                 <a href="/" class="mobile-nav-link">Home</a>
                 <a href="/services" class="mobile-nav-link">Services</a>
                 <a href="/market-areas" class="mobile-nav-link">Market Areas</a>
+                <a href="/london/" class="mobile-nav-link" style="padding-left:2.5rem">London, ON</a>
+                <a href="/windsor/" class="mobile-nav-link" style="padding-left:2.5rem">Windsor, ON</a>
                 <a href="#" class="mobile-nav-link active">Team</a>
                 <!-- <a href="/insights/" class="mobile-nav-link">Market Insights</a> -->
                 <a href="/contact" class="mobile-nav-link">Contact</a>
@@ -359,7 +402,7 @@
                 </div>
                 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight" data-aos="fade-up" data-aos-duration="1000">
-                    Meet Our Team of Professionals
+                    Meet Our AACI-Certified Appraisers
                 </h1>
                 <p class="text-lg sm:text-xl lg:text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                     Our accredited professionals bring decades of combined experience in real estate valuation across Southwestern Ontario.
@@ -866,29 +909,29 @@
                 <div>
                     <h3 class="text-white font-semibold text-lg mb-6">Services</h3>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="/services#commercial" class="hover:text-white transition-colors duration-200">Commercial Valuation</a></li>
-                        <li><a href="/services#residential" class="hover:text-white transition-colors duration-200">Residential Appraisals</a></li>
-                        <li><a href="/services#litigation" class="hover:text-white transition-colors duration-200">Litigation Support</a></li>
-                        <li><a href="/services#consulting" class="hover:text-white transition-colors duration-200">Real Estate Consulting</a></li>
+                        <li><a href="/services/commercial-property-valuations" class="hover:text-white transition-colors duration-200">Commercial Appraisal</a></li>
+                        <li><a href="/services/residential-property-appraisals" class="hover:text-white transition-colors duration-200">Residential Appraisal</a></li>
+                        <li><a href="/services/litigation-support-expert-testimony" class="hover:text-white transition-colors duration-200">Litigation Support</a></li>
+                        <li><a href="/services/real-estate-consulting" class="hover:text-white transition-colors duration-200">Real Estate Consulting</a></li>
+                        <li><a href="/services/government-institutional-services" class="hover:text-white transition-colors duration-200">Government & Institutional</a></li>
                         <li><a href="/services" class="hover:text-white transition-colors duration-200">View All Services</a></li>
                     </ul>
                 </div>
                 
                 <!-- Market Areas -->
                 <div>
-                    <h3 class="text-white font-semibold text-lg mb-6">Market Areas</h3>
+                    <h3 class="text-white font-semibold text-lg mb-6">Office Locations</h3>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">London–Middlesex–Elgin</a></li>
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Windsor–Essex</a></li>
+                        <li><a href="/london/" class="hover:text-white transition-colors duration-200 font-semibold text-white">London (Main Office)</a></li>
+                        <li><a href="/windsor/" class="hover:text-white transition-colors duration-200 font-semibold text-white">Windsor</a></li>
+                    </ul>
+                    <h4 class="text-white font-semibold text-sm mt-6 mb-3">Also Serving</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
                         <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Sarnia–Lambton</a></li>
                         <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Chatham–Kent</a></li>
                         <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">KW–Cambridge–Guelph</a></li>
                         <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Brantford–Hamilton–Burlington</a></li>
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Oxford County</a></li>
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Huron–Perth–Wellington</a></li>
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Niagara Region</a></li>
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Halton–Peel</a></li>
-                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">Full Coverage Map</a></li>
+                        <li><a href="/market-areas" class="hover:text-white transition-colors duration-200">All Ontario Coverage →</a></li>
                     </ul>
                 </div>
                 
@@ -927,6 +970,12 @@
             <!-- Copyright -->
             <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
                 <p>&copy; 2025 Metrix Realty Group. All rights reserved.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="/privacy-policy" class="text-gray-400 hover:text-gray-300 text-sm">Privacy Policy</a>
+                    <a href="/terms-of-service" class="text-gray-400 hover:text-gray-300 text-sm">Terms of Service</a>
+                    <a href="/accessibility" class="text-gray-400 hover:text-gray-300 text-sm">Accessibility</a>
+                    <a href="/llms.txt" class="text-gray-400 hover:text-gray-300 text-sm">LLMs.txt</a>
+                </div>
             </div>
         </div>
     </footer>
