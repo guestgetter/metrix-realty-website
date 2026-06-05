@@ -9,6 +9,9 @@
 /market-insights       /insights/   301
 /market-insights.html  /insights/   301
 
+# Reclaim 37 inbound backlinks from Cloudflare email-obfuscation path
+/cdn-cgi/l/email-protection   /contact   301
+
 # Trailing-slash canonicalization
 /services              /services/   301
 /services/index        /services/   301
