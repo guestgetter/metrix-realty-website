@@ -59,7 +59,7 @@
   </url>
   <url>
     <loc>https://metrixrealty.com/london/commercial-appraisal</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -76,10 +76,40 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://metrixrealty.com/london/litigation-support</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://metrixrealty.com/london/estate-appraisal</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://metrixrealty.com/london/divorce-appraisal</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://metrixrealty.com/london/property-tax-appeal</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://metrixrealty.com/windsor/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://metrixrealty.com/windsor/residential-appraisal</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://metrixrealty.com/market-areas</loc>
@@ -131,6 +161,8 @@
   <url><loc>https://metrixrealty.com/insights/listing-prices-misconception.html</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://metrixrealty.com/insights/ontario-market-analysis-2016-2024.html</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://metrixrealty.com/insights/sentimental-equity-problem.html</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://metrixrealty.com/insights/what-is-aaci-designation.html</loc><lastmod>2026-06-16</lastmod><priority>0.7</priority></url>
+  <url><loc>https://metrixrealty.com/insights/what-is-cuspap.html</loc><lastmod>2026-06-16</lastmod><priority>0.7</priority></url>
 
   <!-- Utility -->
   <url><loc>https://metrixrealty.com/privacy-policy</loc><lastmod>2026-05-05</lastmod><priority>0.3</priority></url>
