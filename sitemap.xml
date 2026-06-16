@@ -156,13 +156,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url><loc>https://metrixrealty.com/insights/appraisal-vs-realtor-cma-ontario.html</loc><lastmod>2026-05-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://metrixrealty.com/insights/bank-appraisal-vs-private-appraisal-ontario.html</loc><lastmod>2026-05-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://metrixrealty.com/insights/listing-prices-misconception.html</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://metrixrealty.com/insights/ontario-market-analysis-2016-2024.html</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://metrixrealty.com/insights/sentimental-equity-problem.html</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://metrixrealty.com/insights/what-is-aaci-designation.html</loc><lastmod>2026-06-16</lastmod><priority>0.7</priority></url>
-  <url><loc>https://metrixrealty.com/insights/what-is-cuspap.html</loc><lastmod>2026-06-16</lastmod><priority>0.7</priority></url>
+  <url><loc>https://metrixrealty.com/insights/appraisal-vs-realtor-cma-ontario/</loc><lastmod>2026-05-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://metrixrealty.com/insights/bank-appraisal-vs-private-appraisal-ontario/</loc><lastmod>2026-05-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://metrixrealty.com/insights/listing-prices-misconception/</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://metrixrealty.com/insights/ontario-market-analysis-2016-2024/</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://metrixrealty.com/insights/sentimental-equity-problem/</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://metrixrealty.com/insights/what-is-aaci-designation/</loc><lastmod>2026-06-16</lastmod><priority>0.7</priority></url>
+  <url><loc>https://metrixrealty.com/insights/what-is-cuspap/</loc><lastmod>2026-06-16</lastmod><priority>0.7</priority></url>
 
   <!-- Utility -->
   <url><loc>https://metrixrealty.com/privacy-policy</loc><lastmod>2026-05-05</lastmod><priority>0.3</priority></url>
