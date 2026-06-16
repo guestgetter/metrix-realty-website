@@ -17,14 +17,7 @@
     { "source": "/services/index.html", "destination": "/services", "permanent": true },
     { "source": "/services/index", "destination": "/services", "permanent": true },
     { "source": "/windsor", "destination": "/windsor/", "permanent": true },
-    { "source": "/london", "destination": "/london/", "permanent": true },
-    { "source": "/insights/appraisal-vs-realtor-cma-ontario.html", "destination": "/insights/appraisal-vs-realtor-cma-ontario/", "permanent": true },
-    { "source": "/insights/bank-appraisal-vs-private-appraisal-ontario.html", "destination": "/insights/bank-appraisal-vs-private-appraisal-ontario/", "permanent": true },
-    { "source": "/insights/listing-prices-misconception.html", "destination": "/insights/listing-prices-misconception/", "permanent": true },
-    { "source": "/insights/ontario-market-analysis-2016-2024.html", "destination": "/insights/ontario-market-analysis-2016-2024/", "permanent": true },
-    { "source": "/insights/sentimental-equity-problem.html", "destination": "/insights/sentimental-equity-problem/", "permanent": true },
-    { "source": "/insights/what-is-aaci-designation.html", "destination": "/insights/what-is-aaci-designation/", "permanent": true },
-    { "source": "/insights/what-is-cuspap.html", "destination": "/insights/what-is-cuspap/", "permanent": true }
+    { "source": "/london", "destination": "/london/", "permanent": true }
   ],
   "headers": [
     {
