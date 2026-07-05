@@ -300,14 +300,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== ANALYTICS TRACKING (Placeholder) =====
     function trackEvent(category, action, label) {
-        // Google Analytics 4 event tracking
-        if (typeof gtag !== 'undefined') {
-            gtag('event', action, {
-                event_category: category,
-                event_label: label
-            });
-        }
-        
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: action,
+            event_category: category,
+            event_label: label
+        });
+
         console.log(`Event tracked: ${category} - ${action} - ${label}`);
     }
     
@@ -396,4 +395,4 @@ function formatPhoneNumber(phoneNumber) {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-} 
+}
