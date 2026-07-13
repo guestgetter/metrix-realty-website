@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const ignoredDirectories = new Set([".git", ".vercel", "node_modules"]);
+const horizontalOverflowGuardFiles = new Set(["team.html", "team/index.html"]);
 
 async function findHtmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -57,15 +58,28 @@ function normalizedPathname(target, route) {
 }
 
 const failures = [];
+const overflowGuardFailures = [];
 
 for (const absolutePath of await findHtmlFiles(root)) {
-  const relativePath = path.relative(root, absolutePath);
+  const relativePath = path.relative(root, absolutePath).split(path.sep).join("/");
   const route = cleanRouteFor(relativePath);
   const html = await readFile(absolutePath, "utf8");
 
   for (const redirect of redirectTargets(html)) {
     if (normalizedPathname(redirect.target, route) === route) {
       failures.push({ relativePath, route, ...redirect });
+    }
+  }
+
+  if (horizontalOverflowGuardFiles.has(relativePath)) {
+    const htmlClasses = html.match(/<html\b[^>]*class=["']([^"']*)["']/i)?.[1] ?? "";
+    const bodyClasses = html.match(/<body\b[^>]*class=["']([^"']*)["']/i)?.[1] ?? "";
+
+    if (
+      !htmlClasses.split(/\s+/).includes("overflow-x-hidden") ||
+      !bodyClasses.split(/\s+/).includes("overflow-x-hidden")
+    ) {
+      overflowGuardFailures.push(relativePath);
     }
   }
 }
@@ -77,7 +91,15 @@ if (failures.length > 0) {
       `- ${failure.relativePath}: ${failure.source} sends ${failure.route} back to itself`
     );
   }
-  process.exit(1);
 }
 
-console.log("Route check passed: no clean URL redirects to itself.");
+if (overflowGuardFailures.length > 0) {
+  console.error("Required mobile overflow guards are missing:");
+  for (const relativePath of overflowGuardFailures) {
+    console.error(`- ${relativePath}: html and body must both include overflow-x-hidden`);
+  }
+}
+
+if (failures.length > 0 || overflowGuardFailures.length > 0) process.exit(1);
+
+console.log("Route check passed: clean URLs and mobile overflow guards are valid.");
