@@ -70,15 +70,6 @@ class ABTesting {
         this.userVariants[testName] = variant;
         localStorage.setItem('ab_test_variants', JSON.stringify(this.userVariants));
 
-        // Track variant assignment in GA4
-        gtag('event', 'ab_test_assigned', {
-            'event_category': 'ab_testing',
-            'event_label': `${testName}_${variant}`,
-            'custom_parameter_1': testName,
-            'custom_parameter_2': variant
-        });
-
-        // Send to GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'ab_test_assigned',
@@ -99,17 +90,6 @@ class ABTesting {
             return;
         }
 
-        // Track conversion in GA4
-        gtag('event', 'ab_test_conversion', {
-            'event_category': 'ab_testing',
-            'event_label': `${testName}_${variant}_${conversionType}`,
-            'value': value,
-            'custom_parameter_1': testName,
-            'custom_parameter_2': variant,
-            'custom_parameter_3': conversionType
-        });
-
-        // Send to GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'ab_test_conversion',

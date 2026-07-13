@@ -74,15 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const buttonText = this.textContent.trim() || this.getAttribute('aria-label') || 'CTA Button';
             const destination = this.href || 'button_action';
-            
-            // Send to GA4
-            gtag('event', 'cta_click', {
-                'event_category': 'engagement',
-                'event_label': buttonText,
-                'value': 1
-            });
-            
-            // Send to GTM
+
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'cta_click',
@@ -104,24 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Track different Calendly events
             switch(eventType) {
                 case 'calendly.event_scheduled':
-                    // CONVERSION EVENT - Someone booked a meeting!
-                    gtag('event', 'conversion', {
-                        'send_to': 'G-TB55XJ4B9D',
-                        'event_category': 'conversion',
-                        'event_label': 'calendar_booking',
-                        'value': 100, // Assign monetary value to conversion
-                        'currency': 'CAD'
-                    });
-                    
-                    // Also send as custom conversion event
-                    gtag('event', 'calendar_booking', {
-                        'event_category': 'conversion',
-                        'event_label': 'calendly_scheduled',
-                        'value': 100,
-                        'currency': 'CAD'
-                    });
-                    
-                    // Send to GTM for advanced tracking
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         'event': 'conversion',
@@ -136,12 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                     
                 case 'calendly.profile_page_viewed':
-                    gtag('event', 'calendar_viewed', {
-                        'event_category': 'engagement',
-                        'event_label': 'calendly_opened',
-                        'value': 1
-                    });
-                    
+                    window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         'event': 'calendar_viewed',
                         'page_location': window.location.href
@@ -151,12 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                     
                 case 'calendly.date_and_time_selected':
-                    gtag('event', 'calendar_time_selected', {
-                        'event_category': 'engagement',
-                        'event_label': 'time_slot_selected',
-                        'value': 10
-                    });
-                    
+                    window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         'event': 'calendar_time_selected',
                         'page_location': window.location.href
@@ -166,13 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                     
                 default:
-                    // Track any other Calendly interactions
-                    gtag('event', 'calendly_interaction', {
-                        'event_category': 'engagement',
-                        'event_label': eventType,
-                        'value': 1
-                    });
-                    
+                    window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         'event': 'calendly_interaction',
                         'calendly_event': eventType,
@@ -195,14 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (scrollPercent >= milestone && maxScroll < milestone) {
                 maxScroll = milestone;
                 
-                // Send to GA4
-                gtag('event', 'scroll_depth', {
-                    'event_category': 'engagement',
-                    'event_label': milestone + '%',
-                    'value': milestone
-                });
-                
-                // Send to GTM
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     'event': 'scroll_depth',
