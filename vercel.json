@@ -14,6 +14,8 @@
     { "source": "/contact-enhanced", "destination": "/contact", "permanent": true },
     { "source": "/market-insights.html", "destination": "/insights/", "permanent": true },
     { "source": "/market-insights", "destination": "/insights/", "permanent": true },
+    { "source": "/insights/aaci-vs-cra-appraisal-designations", "destination": "/insights/what-is-aaci-designation/", "permanent": true },
+    { "source": "/insights/cuspap-2026-ontario-appraisal-clients", "destination": "/insights/what-is-cuspap/", "permanent": true },
     { "source": "/services/index.html", "destination": "/services", "permanent": true },
     { "source": "/services/index", "destination": "/services", "permanent": true },
     { "source": "/windsor", "destination": "/windsor/", "permanent": true },
