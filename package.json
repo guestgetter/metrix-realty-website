@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Metrix Realty Group - Professional Real Estate Appraisal Services",
   "scripts": {
-    "build": "npm run test:routes",
+    "build": "npm run test:routes && npm run test:search",
     "test:routes": "node scripts/check-clean-url-loops.mjs",
+    "test:search": "node scripts/check-search-readiness.mjs",
     "start": "echo 'This is a static site' && exit 1"
   },
   "engines": {
