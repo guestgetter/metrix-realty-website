@@ -128,14 +128,24 @@ function revealCalendar(summaryText) {
   }
 }
 
+function buildMailtoHref(summaryText) {
+  const subject = encodeURIComponent('Windsor residential appraisal inquiry');
+  const body = encodeURIComponent(
+    `Hi Metrix team,\n\nI was screened on the contact page for a Windsor residential request.\n\n${summaryText}\n\nPlease let me know if you can take this or recommend a local resource.\n`
+  );
+  return `mailto:info@metrixrealty.com?subject=${subject}&body=${body}`;
+}
+
 function showSoftGate(summaryText) {
   const softGate = byId('booking-soft-gate');
   const formWrap = byId('booking-screening-panel');
   const softSummary = byId('booking-soft-gate-summary');
+  const emailLink = byId('booking-soft-gate-email');
 
   hide(formWrap);
   show(softGate);
   if (softSummary) softSummary.textContent = summaryText;
+  if (emailLink) emailLink.setAttribute('href', buildMailtoHref(summaryText));
 
   if (softGate?.scrollIntoView) {
     softGate.scrollIntoView({ behavior: 'smooth', block: 'start' });
