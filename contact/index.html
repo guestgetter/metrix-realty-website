@@ -187,6 +187,85 @@
             color: #233c75;
         }
         
+        /* Booking screening intake */
+        .booking-field-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-field-hint {
+            display: block;
+            font-size: 0.8125rem;
+            color: #6b7280;
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+
+        .booking-input,
+        .booking-select,
+        .booking-textarea {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            padding: 0.75rem 0.875rem;
+            font-size: 0.9375rem;
+            color: #111827;
+            background: #fff;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .booking-input:focus,
+        .booking-select:focus,
+        .booking-textarea:focus {
+            outline: none;
+            border-color: #233c75;
+            box-shadow: 0 0 0 3px rgba(35, 60, 117, 0.15);
+        }
+
+        .booking-error {
+            color: #b91c1c;
+            font-size: 0.8125rem;
+            margin-top: 0.375rem;
+        }
+
+        .booking-chat-prompt {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 0.875rem 1rem;
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        .booking-chat-avatar {
+            flex-shrink: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: #233c75;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .booking-soft-gate {
+            background: #fffbeb;
+            border: 1px solid #f59e0b;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: left;
+        }
+
         /* Hamburger Animation */
         .hamburger-line {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -486,7 +565,7 @@
                                 <span class="text-metrix-blue">Appraised Today</span>
                             </h1>
                             <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                                Book a <strong>free consultation</strong> with our accredited appraisers. Trusted by Ontario's leading property owners, lenders, and legal professionals for over 30 years.
+                                Tell us the purpose of your request, then book a <strong>free consultation</strong> with our accredited appraisers. Trusted by Ontario's leading property owners, lenders, and legal professionals for over 30 years.
                             </p>
                         </div>
                         
@@ -538,20 +617,138 @@
                         </div>
                     </div>
 
-                    <!-- Right Side: Calendar Widget -->
-                    <div class="lg:pl-8" >
+                    <!-- Right Side: Screening intake, then HighLevel calendar -->
+                    <div class="lg:pl-8">
                         <div class="bg-white rounded-2xl p-6 shadow-2xl border border-gray-200">
                             <div class="text-center mb-6">
-                                <h2 class="text-2xl font-bold text-gray-900 mb-3">Book Your Free Consultation</h2>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-3">Book a Call with an Appraiser</h2>
                                 <p class="text-gray-600 text-sm">
-                                    Professional consultation to understand your appraisal needs
+                                    A short intake helps us route serious requests and markets we serve before you pick a time.
                                 </p>
                             </div>
-                            
-                            <!-- Calendar Booking Widget -->
-                            <div class="booking-widget-container">
-                                <iframe src="https://api.leadconnectorhq.com/widget/booking/uCDQjgPy4GKKL7DTbiR2" style="width: 100%;border:none;overflow: hidden; min-height: 600px;" scrolling="no" id="uCDQjgPy4GKKL7DTbiR2_1753540313128"></iframe>
-                                <script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
+
+                            <!-- Step 1: Required screening (HighLevel fields cannot be changed from this repo) -->
+                            <div id="booking-screening-panel">
+                                <div class="booking-chat-prompt" role="note">
+                                    <div class="booking-chat-avatar" aria-hidden="true">MR</div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-gray-900 mb-1">Quick question before you book</p>
+                                        <p class="text-sm text-gray-600 leading-relaxed">What is the purpose of your request? <span class="text-gray-500">(Example: residential property in Windsor for estate settlement.)</span></p>
+                                    </div>
+                                </div>
+
+                                <form id="booking-screening-form" novalidate>
+                                    <div class="space-y-4 text-left">
+                                        <div>
+                                            <label class="booking-field-label" for="booking-purpose">Purpose of request <span class="text-red-600">*</span></label>
+                                            <select class="booking-select" id="booking-purpose" name="purpose" required>
+                                                <option value="">Select purpose</option>
+                                                <option value="mortgage_refinance">Mortgage or refinance</option>
+                                                <option value="purchase_sale">Purchase or sale</option>
+                                                <option value="estate_probate">Estate or probate</option>
+                                                <option value="divorce_separation">Divorce or separation</option>
+                                                <option value="litigation">Litigation or legal dispute</option>
+                                                <option value="tax_appeal">Property tax appeal (MPAC)</option>
+                                                <option value="commercial_industrial">Commercial or industrial valuation</option>
+                                                <option value="investment_multifamily">Investment or multi-family</option>
+                                                <option value="other">Other (describe below)</option>
+                                            </select>
+                                            <p class="booking-error" data-error-for="purpose" hidden>Please select the purpose of your request.</p>
+                                        </div>
+
+                                        <div id="purpose-detail-wrap" hidden>
+                                            <label class="booking-field-label" for="booking-purpose-detail">Describe your request <span class="text-red-600">*</span></label>
+                                            <textarea class="booking-textarea" id="booking-purpose-detail" name="purposeDetail" rows="3" placeholder="e.g. residential property in Windsor for a private valuation"></textarea>
+                                            <p class="booking-error" data-error-for="purposeDetail" hidden>Please add a short description (at least a few words).</p>
+                                        </div>
+
+                                        <div>
+                                            <label class="booking-field-label" for="booking-property-type">Property type <span class="text-red-600">*</span></label>
+                                            <select class="booking-select" id="booking-property-type" name="propertyType" required>
+                                                <option value="">Select property type</option>
+                                                <option value="residential_single">Single-family residential</option>
+                                                <option value="multifamily">Multi-family (2+ units)</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="industrial">Industrial</option>
+                                                <option value="land">Land or development</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <p class="booking-error" data-error-for="propertyType" hidden>Please select a property type.</p>
+                                        </div>
+
+                                        <div>
+                                            <label class="booking-field-label" for="booking-market">Property location / market <span class="text-red-600">*</span></label>
+                                            <select class="booking-select" id="booking-market" name="market" required>
+                                                <option value="">Select market</option>
+                                                <option value="london_middlesex">London / Middlesex</option>
+                                                <option value="windsor_essex">Windsor / Essex</option>
+                                                <option value="other_swo">Other Southwestern Ontario</option>
+                                                <option value="elsewhere_ontario">Elsewhere in Ontario</option>
+                                                <option value="outside_ontario">Outside Ontario</option>
+                                            </select>
+                                            <p class="booking-error" data-error-for="market" hidden>Please select a market or region.</p>
+                                        </div>
+
+                                        <div id="city-detail-wrap" hidden>
+                                            <label class="booking-field-label" for="booking-city-detail">City or area</label>
+                                            <input class="booking-input" type="text" id="booking-city-detail" name="cityDetail" autocomplete="address-level2" placeholder="City or neighbourhood (optional)">
+                                            <span class="booking-field-hint">Helps us confirm coverage and capacity.</span>
+                                            <p class="booking-error" data-error-for="cityDetail" hidden>Please enter the city or town.</p>
+                                        </div>
+
+                                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-colors duration-200">
+                                            Continue to scheduling
+                                        </button>
+                                        <p class="text-xs text-gray-500 text-center">Calendar opens after this step. We use your answers to screen fit before booking.</p>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Soft gate: simple residential Windsor -->
+                            <div id="booking-soft-gate" class="booking-soft-gate" hidden>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Standard residential in Windsor</h3>
+                                <p class="text-sm text-gray-700 mb-3 leading-relaxed">
+                                    Our Windsor office prioritizes commercial, institutional, litigation, and complex residential work. For standard single-family mortgage or purchase appraisals in Windsor-Essex, capacity is limited.
+                                </p>
+                                <p id="booking-soft-gate-summary" class="text-xs text-gray-600 mb-4 leading-relaxed"></p>
+                                <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                                    Email or call us and we will confirm availability or connect you with a qualified local residential resource. If your matter is complex (estate, divorce, litigation, multi-family), continue to book.
+                                </p>
+                                <div class="flex flex-col gap-3">
+                                    <a id="booking-soft-gate-email" href="mailto:info@metrixrealty.com?subject=Windsor%20residential%20appraisal%20inquiry" class="inline-flex items-center justify-center px-6 py-3 bg-metrix-blue text-white font-semibold rounded-lg hover:bg-metrix-blue-dark transition-colors duration-200">
+                                        Email the team
+                                    </a>
+                                    <a href="tel:519-672-7550" class="inline-flex items-center justify-center px-6 py-3 bg-white text-metrix-blue font-semibold rounded-lg border border-metrix-blue hover:bg-gray-50 transition-colors duration-200">
+                                        Call (519) 672-7550
+                                    </a>
+                                    <button type="button" id="booking-continue-complex" class="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-black transition-colors duration-200">
+                                        My request is complex - continue to book
+                                    </button>
+                                    <button type="button" id="booking-edit-answers" class="text-sm text-metrix-blue font-semibold hover:underline">
+                                        Edit my answers
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: HighLevel booking widget (loaded only after screening) -->
+                            <div id="booking-calendar-stage" hidden>
+                                <div class="mb-4 rounded-xl border border-gray-200 bg-gray-50 p-4 text-left">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-metrix-blue mb-1">Your request</p>
+                                    <p id="booking-screening-summary" class="text-sm text-gray-700 leading-relaxed"></p>
+                                    <p class="text-xs text-gray-500 mt-2">Please restate this purpose in the booking notes if available so the appraiser sees it on the calendar invite.</p>
+                                    <button type="button" id="booking-change-answers" class="mt-2 text-sm text-metrix-blue font-semibold hover:underline">
+                                        Change answers
+                                    </button>
+                                </div>
+                                <div class="booking-widget-container">
+                                    <iframe
+                                        title="Book a consultation with Metrix Realty"
+                                        data-booking-src="https://api.leadconnectorhq.com/widget/booking/uCDQjgPy4GKKL7DTbiR2"
+                                        style="width: 100%;border:none;overflow: hidden; min-height: 600px;"
+                                        scrolling="no"
+                                        id="booking-calendar-iframe"></iframe>
+                                    <script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -839,5 +1036,6 @@
     <script src="/assets/js/analytics-tracking.js"></script>
     <script src="/assets/js/ab-testing.js"></script>
     <script src="/assets/js/highlevel-webhook-handler.js"></script>
+    <script type="module" src="/assets/js/booking-screening.js"></script>
 </body>
 </html>
