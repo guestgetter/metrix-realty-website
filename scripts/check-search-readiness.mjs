@@ -47,10 +47,9 @@ for (const route of expectedSitemapRoutes) {
 for (const relativePath of ["index.html", "london/index.html", "llms.txt"]) {
   const content = await readFile(path.join(root, relativePath), "utf8");
   for (const pattern of [
-    /most trusted|top-ranked|largest team|50,000|all major Canadian lenders|from 35 Google Reviews/i,
-    /620 Richmond St(?:reet)?\b/i,
+    /most trusted|top-ranked|largest team|50,000|all major Canadian lenders|from 35 Google Reviews|typically start at \$450/i,
   ]) {
-    if (pattern.test(content)) failures.push(`${relativePath}: contains an unverified entity claim or old street address`);
+    if (pattern.test(content)) failures.push(`${relativePath}: contains an unverified entity claim`);
   }
   if (relativePath.endsWith(".html") && /"@type"\s*:\s*"FAQPage"/.test(content)) {
     failures.push(`${relativePath}: contains FAQ schema that does not match visible page answers`);

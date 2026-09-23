@@ -82,6 +82,12 @@ for (const absolutePath of await findHtmlFiles(root)) {
       overflowGuardFailures.push(relativePath);
     }
   }
+
+  // The London map's horizontal AOS entrance shifted the map 100px past a
+  // 390px viewport and made the production page 475px wide.
+  if (relativePath === "london/index.html" && /data-aos=["']fade-left["']>\s*<!-- Google Map Embed -->/.test(html)) {
+    overflowGuardFailures.push(`${relativePath}: map uses a horizontal entrance animation`);
+  }
 }
 
 if (failures.length > 0) {
