@@ -61,6 +61,12 @@ const redirectMap = new Map(
   (vercel.redirects ?? []).map(({ source, destination }) => [source, destination]),
 );
 for (const [source, destination] of [
+  ["/faq", "/#faq"],
+  ["/jpetruzella", "/jeff-petruzella"],
+  ["/team2", "/team"],
+  ["/services/commercial", "/services/commercial-property-valuations"],
+  ["/services/litigation", "/services/litigation-support-expert-testimony"],
+  ["/services/residential", "/services/residential-property-appraisals"],
   ["/insights/aaci-vs-cra-appraisal-designations", "/insights/what-is-aaci-designation/"],
   ["/insights/cuspap-2026-ontario-appraisal-clients", "/insights/what-is-cuspap/"],
 ]) {
