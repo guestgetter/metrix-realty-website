@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Track Contact Form Submissions (if form exists)
     const contactForms = document.querySelectorAll('form');
     contactForms.forEach(form => {
+        // The screening form only reveals the HighLevel calendar. It does not
+        // submit an inquiry, so counting it as form_submit inflates lead signals.
+        if (form.id === 'booking-screening-form') return;
         form.addEventListener('submit', function() {
             // Send to GTM (which will handle GA4)
             window.dataLayer = window.dataLayer || [];
