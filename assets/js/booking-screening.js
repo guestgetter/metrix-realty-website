@@ -32,6 +32,16 @@ function labelFor(selectEl, value) {
   return option ? option.textContent.trim() : value;
 }
 
+function prefillFromUrl(form) {
+  const params = new URLSearchParams(window.location.search);
+  for (const name of ['purpose', 'propertyType', 'market']) {
+    const value = params.get(name);
+    if (value && Array.from(form.elements[name].options).some((option) => option.value === value)) {
+      form.elements[name].value = value;
+    }
+  }
+}
+
 function validate(answers, form) {
   const errors = [];
   if (!answers.purpose) errors.push('purpose');
@@ -199,6 +209,7 @@ function init() {
   const editAnswersBtn = byId('booking-edit-answers');
   const changeAnswersBtn = byId('booking-change-answers');
 
+  prefillFromUrl(form);
   toggleConditionalFields(form);
   form.elements.purpose.addEventListener('change', () => toggleConditionalFields(form));
   form.elements.market.addEventListener('change', () => toggleConditionalFields(form));
