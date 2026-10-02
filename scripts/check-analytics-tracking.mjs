@@ -45,3 +45,46 @@ if (dataLayer.filter(({ event }) => event === "form_submit").length !== 1) {
 }
 
 console.log("Analytics check passed: screening is excluded from form_submit.");
+
+const bookingSource = await readFile("assets/js/highlevel-webhook-handler.js", "utf8");
+const calendarWindow = {};
+const bookingEvents = [];
+let onMessage;
+const bookingWindow = {
+  dataLayer: bookingEvents,
+  location: { href: "https://metrixrealty.com/contact" },
+  addEventListener(type, callback) {
+    if (type === "message") onMessage = callback;
+  },
+};
+const bookingDocument = {
+  getElementById(id) {
+    return id === "booking-calendar-iframe" ? { contentWindow: calendarWindow } : null;
+  },
+  querySelectorAll() {
+    throw new Error("Page text must not be used to infer a booking");
+  },
+};
+vm.runInNewContext(bookingSource, {
+  document: bookingDocument,
+  window: bookingWindow,
+  console: { log() {} },
+});
+if (typeof onMessage !== "function") throw new Error("Calendar listener missing");
+
+const booking = { type: "highlevel_booking", booking: { appointment_id: "apt-1" } };
+onMessage({ origin: "https://example.com", source: calendarWindow, data: booking });
+onMessage({ origin: "https://api.leadconnectorhq.com", source: {}, data: booking });
+onMessage({ origin: "https://api.leadconnectorhq.com", source: calendarWindow, data: { type: "highlevel_booking", booking: {} } });
+if (bookingEvents.length) throw new Error("Unverified booking emitted a conversion");
+
+onMessage({ origin: "https://api.leadconnectorhq.com", source: calendarWindow, data: booking });
+onMessage({ origin: "https://api.leadconnectorhq.com", source: calendarWindow, data: booking });
+if (bookingEvents.filter(({ event }) => event === "conversion").length !== 1) {
+  throw new Error("A verified appointment should emit one conversion");
+}
+if (bookingEvents.some((event) => "value" in event || "currency" in event)) {
+  throw new Error("Booking events must not invent revenue");
+}
+
+console.log("Analytics check passed: calendar conversions require a verified message and appointment ID.");
