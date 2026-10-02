@@ -59,7 +59,7 @@ assert(
   `contact/index.html: must still reference HighLevel booking widget ${BOOKING_WIDGET_SRC}`,
 );
 assert(
-  contactHtml.includes('type="module" src="/assets/js/booking-screening.js"'),
+  contactHtml.includes('type="module" src="/assets/js/booking-screening.js'),
   "contact/index.html: missing booking-screening.js module script",
 );
 assert(
