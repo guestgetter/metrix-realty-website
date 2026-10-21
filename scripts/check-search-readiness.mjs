@@ -4,6 +4,37 @@ import path from "node:path";
 const root = process.cwd();
 const failures = [];
 
+// Vercel cleanUrls serves the sibling .html file before the directory index.
+// Both sources must carry the approved metadata, or a merged SEO change can
+// pass the build while the public article continues serving its old metadata.
+const aaciSources = [
+  "insights/what-is-aaci-designation/index.html",
+  "insights/what-is-aaci-designation.html",
+];
+const aaciMetadata = [];
+for (const relativePath of aaciSources) {
+  const html = await readFile(path.join(root, relativePath), "utf8");
+  const fields = {
+    title: html.match(/<title>([^<]+)<\/title>/)?.[1],
+    description: html.match(/<meta name="description" content="([^"]+)"/)?.[1],
+    canonical: html.match(/<link rel="canonical" href="([^"]+)"/)?.[1],
+    ogTitle: html.match(/<meta property="og:title" content="([^"]+)"/)?.[1],
+    ogDescription: html.match(/<meta property="og:description" content="([^"]+)"/)?.[1],
+    twitterTitle: html.match(/<meta name="twitter:title" content="([^"]+)"/)?.[1],
+    twitterDescription: html.match(/<meta name="twitter:description" content="([^"]+)"/)?.[1],
+    headline: html.match(/"headline"\s*:\s*"([^"]+)"/)?.[1],
+  };
+  for (const [field, value] of Object.entries(fields)) {
+    if (!value) failures.push(`${relativePath}: missing ${field}`);
+  }
+  aaciMetadata.push(fields);
+}
+for (const field of Object.keys(aaciMetadata[0])) {
+  if (aaciMetadata[0][field] !== aaciMetadata[1][field]) {
+    failures.push(`AACI clean-URL sources disagree on ${field}; update both article files`);
+  }
+}
+
 const pagesThatShouldBeIndexable = [
   "insights/commercial-appraisal-documents-ontario/index.html",
   "insights/industrial-property-appraisal-factors-ontario/index.html",
