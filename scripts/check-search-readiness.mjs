@@ -11,6 +11,18 @@ const aaciSources = [
   "insights/what-is-aaci-designation/index.html",
   "insights/what-is-aaci-designation.html",
 ];
+const approvedAaciTitle = "What Is the AACI Designation in Canada? | Metrix Realty";
+const approvedAaciDescription = "The AACI (Accredited Appraiser Canadian Institute) is Canada's senior appraisal credential. Learn what it means, who holds it, and when to require it.";
+const approvedAaciMetadata = {
+  title: approvedAaciTitle,
+  description: approvedAaciDescription,
+  canonical: "https://metrixrealty.com/insights/what-is-aaci-designation/",
+  ogTitle: approvedAaciTitle,
+  ogDescription: approvedAaciDescription,
+  twitterTitle: "What Is the AACI Designation in Canada?",
+  twitterDescription: approvedAaciDescription,
+  headline: "What Is the AACI Designation in Canada?",
+};
 const aaciMetadata = [];
 for (const relativePath of aaciSources) {
   const html = await readFile(path.join(root, relativePath), "utf8");
@@ -29,6 +41,7 @@ for (const relativePath of aaciSources) {
   };
   for (const [field, value] of Object.entries(fields)) {
     if (!value) failures.push(`${relativePath}: missing ${field}`);
+    else if (value !== approvedAaciMetadata[field]) failures.push(`${relativePath}: ${field} does not match the approved AACI metadata`);
   }
   aaciMetadata.push(fields);
 }
