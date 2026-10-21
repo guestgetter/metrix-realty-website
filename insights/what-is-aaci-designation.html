@@ -70,7 +70,10 @@
         .article-content a { color: #233c75; text-decoration: underline; }
         .article-content a:hover { color: #1a2d5a; }
 
+        .comparison-scroll { max-width: 100%; overflow-x: auto; margin: 2rem 0; }
+        .comparison-scroll:focus-visible { outline: 2px solid #233c75; outline-offset: 4px; }
         .article-content table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; }
+        .article-content .comparison-scroll table { margin: 0; }
         .article-content th { background: #233c75; color: white; padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
         .article-content td { padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
         .article-content tr:nth-child(even) td { background: #f9fafb; }
@@ -454,6 +457,7 @@
 
             <h2>AACI vs CRA vs Unlicensed: A Comparison</h2>
 
+            <div class="comparison-scroll" role="region" aria-label="Appraisal credential comparison, scroll horizontally" tabindex="0">
             <table>
                 <thead>
                     <tr>
@@ -514,6 +518,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
 
             <h2>Why Lenders Require AACI-Designated Appraisers</h2>
 

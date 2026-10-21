@@ -14,6 +14,9 @@ const aaciSources = [
 const aaciMetadata = [];
 for (const relativePath of aaciSources) {
   const html = await readFile(path.join(root, relativePath), "utf8");
+  if (!/<div class="comparison-scroll"[^>]*>\s*<table>[\s\S]*?<\/table>\s*<\/div>/.test(html) || !/\.comparison-scroll\s*\{[^}]*overflow-x:\s*auto/.test(html)) {
+    failures.push(`${relativePath}: comparison table must scroll within the article on narrow screens`);
+  }
   const fields = {
     title: html.match(/<title>([^<]+)<\/title>/)?.[1],
     description: html.match(/<meta name="description" content="([^"]+)"/)?.[1],
