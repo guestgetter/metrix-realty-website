@@ -4,6 +4,53 @@ import path from "node:path";
 const root = process.cwd();
 const failures = [];
 
+// Vercel cleanUrls serves the sibling .html file before the directory index.
+// Both sources must carry the approved metadata, or a merged SEO change can
+// pass the build while the public article continues serving its old metadata.
+const aaciSources = [
+  "insights/what-is-aaci-designation/index.html",
+  "insights/what-is-aaci-designation.html",
+];
+const approvedAaciTitle = "What Is the AACI Designation in Canada? | Metrix Realty";
+const approvedAaciDescription = "The AACI (Accredited Appraiser Canadian Institute) is Canada's senior appraisal credential. Learn what it means, who holds it, and when to require it.";
+const approvedAaciMetadata = {
+  title: approvedAaciTitle,
+  description: approvedAaciDescription,
+  canonical: "https://metrixrealty.com/insights/what-is-aaci-designation/",
+  ogTitle: approvedAaciTitle,
+  ogDescription: approvedAaciDescription,
+  twitterTitle: "What Is the AACI Designation in Canada?",
+  twitterDescription: approvedAaciDescription,
+  headline: "What Is the AACI Designation in Canada?",
+};
+const aaciMetadata = [];
+for (const relativePath of aaciSources) {
+  const html = await readFile(path.join(root, relativePath), "utf8");
+  if (!/<div class="comparison-scroll"[^>]*>\s*<table>[\s\S]*?<\/table>\s*<\/div>/.test(html) || !/\.comparison-scroll\s*\{[^}]*overflow-x:\s*auto/.test(html)) {
+    failures.push(`${relativePath}: comparison table must scroll within the article on narrow screens`);
+  }
+  const fields = {
+    title: html.match(/<title>([^<]+)<\/title>/)?.[1],
+    description: html.match(/<meta name="description" content="([^"]+)"/)?.[1],
+    canonical: html.match(/<link rel="canonical" href="([^"]+)"/)?.[1],
+    ogTitle: html.match(/<meta property="og:title" content="([^"]+)"/)?.[1],
+    ogDescription: html.match(/<meta property="og:description" content="([^"]+)"/)?.[1],
+    twitterTitle: html.match(/<meta name="twitter:title" content="([^"]+)"/)?.[1],
+    twitterDescription: html.match(/<meta name="twitter:description" content="([^"]+)"/)?.[1],
+    headline: html.match(/"headline"\s*:\s*"([^"]+)"/)?.[1],
+  };
+  for (const [field, value] of Object.entries(fields)) {
+    if (!value) failures.push(`${relativePath}: missing ${field}`);
+    else if (value !== approvedAaciMetadata[field]) failures.push(`${relativePath}: ${field} does not match the approved AACI metadata`);
+  }
+  aaciMetadata.push(fields);
+}
+for (const field of Object.keys(aaciMetadata[0])) {
+  if (aaciMetadata[0][field] !== aaciMetadata[1][field]) {
+    failures.push(`AACI clean-URL sources disagree on ${field}; update both article files`);
+  }
+}
+
 const pagesThatShouldBeIndexable = [
   "insights/commercial-appraisal-documents-ontario/index.html",
   "insights/industrial-property-appraisal-factors-ontario/index.html",
