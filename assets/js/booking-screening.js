@@ -34,9 +34,15 @@ function labelFor(selectEl, value) {
 
 function prefillFromUrl(form) {
   const params = new URLSearchParams(window.location.search);
+  // HighLevel form_embed.js reads the parent page query, so revealCalendar()
+  // writes label keys (appraisal_purpose, screened_property_type, market,
+  // cityarea, purpose_details). Ignore those labels here. Only apply inbound
+  // CTA keys when they match a real option value (e.g. market=london_middlesex).
   for (const name of ['purpose', 'propertyType', 'market']) {
     const value = params.get(name);
-    if (value && Array.from(form.elements[name].options).some((option) => option.value === value)) {
+    if (!value) continue;
+    const options = Array.from(form.elements[name]?.options || []);
+    if (options.some((option) => option.value === value)) {
       form.elements[name].value = value;
     }
   }
@@ -146,7 +152,10 @@ function revealCalendar(summaryText, answers) {
   if (summary) summary.textContent = summaryText;
 
   if (iframe) {
-    const src = buildCalendarSrc(byId('booking-screening-form'), answers);
+    const form = byId('booking-screening-form');
+    const src = buildCalendarSrc(form, answers);
+    const q = new URL(src).search;
+    history.replaceState(null, '', location.pathname + q);
     if (iframe.getAttribute('src') !== src) iframe.setAttribute('src', src);
   }
 
@@ -212,6 +221,7 @@ function returnToForm() {
   show(byId('booking-screening-panel'));
   const iframe = byId('booking-calendar-iframe');
   if (iframe) iframe.removeAttribute('src');
+  history.replaceState(null, '', location.pathname + location.hash);
   byId('booking-screening-panel')?.scrollIntoView({
     behavior: 'smooth',
     block: 'start',
