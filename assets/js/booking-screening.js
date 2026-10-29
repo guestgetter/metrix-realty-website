@@ -116,7 +116,23 @@ function hide(el) {
   if (el) el.hidden = true;
 }
 
-function revealCalendar(summaryText) {
+function buildCalendarSrc(form, answers) {
+  if (!form || !answers) return BOOKING_WIDGET_SRC;
+  const params = new URLSearchParams();
+  const add = (key, value) => {
+    if (value) params.set(key, value);
+  };
+  add('appraisal_purpose', labelFor(form.elements.purpose, answers.purpose));
+  add('screened_property_type', labelFor(form.elements.propertyType, answers.propertyType));
+  add('market', labelFor(form.elements.market, answers.market));
+  add('cityarea', answers.cityDetail);
+  add('purpose_details', answers.purposeDetail);
+  const query = params.toString();
+  if (!query) return BOOKING_WIDGET_SRC;
+  return BOOKING_WIDGET_SRC + (BOOKING_WIDGET_SRC.includes('?') ? '&' : '?') + query;
+}
+
+function revealCalendar(summaryText, answers) {
   const stage = byId('booking-calendar-stage');
   const summary = byId('booking-screening-summary');
   const iframe = byId('booking-calendar-iframe');
@@ -129,8 +145,9 @@ function revealCalendar(summaryText) {
 
   if (summary) summary.textContent = summaryText;
 
-  if (iframe && !iframe.getAttribute('src')) {
-    iframe.setAttribute('src', BOOKING_WIDGET_SRC);
+  if (iframe) {
+    const src = buildCalendarSrc(byId('booking-screening-form'), answers);
+    if (iframe.getAttribute('src') !== src) iframe.setAttribute('src', src);
   }
 
   if (stage?.scrollIntoView) {
@@ -245,7 +262,7 @@ function init() {
       return;
     }
 
-    revealCalendar(summaryText);
+    revealCalendar(summaryText, answers);
   });
 
   continueComplexBtn?.addEventListener('click', () => {
@@ -258,7 +275,8 @@ function init() {
     track('booking_screening_soft_gate_continue', {});
     revealCalendar(
       stored?.summaryText ||
-        'Complex or capacity-check request - continue with booking.'
+        'Complex or capacity-check request - continue with booking.',
+      stored?.answers
     );
   });
 
