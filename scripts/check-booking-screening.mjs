@@ -59,8 +59,8 @@ assert(
   `contact/index.html: must still reference HighLevel booking widget ${BOOKING_WIDGET_SRC}`,
 );
 assert(
-  contactHtml.includes('type="module" src="/assets/js/booking-screening.js?v=20261029"'),
-  "contact/index.html: booking-screening.js must be cache-busted as v=20261029",
+  contactHtml.includes('type="module" src="/assets/js/booking-screening.js?v=20261029b"'),
+  "contact/index.html: booking-screening.js must be cache-busted as v=20261029b",
 );
 assert(
   screeningJs.includes("function buildCalendarSrc"),
@@ -79,6 +79,18 @@ assert(
 assert(
   /revealCalendar\(\s*summaryText,\s*answers\s*\)/.test(screeningJs),
   "booking-screening.js: revealCalendar must receive screening answers",
+);
+assert(
+  screeningJs.includes("history.replaceState(null, '', location.pathname + q)"),
+  "booking-screening.js: HighLevel form_embed.js reads parent location.search; write calendar params there",
+);
+assert(
+  screeningJs.includes("history.replaceState(null, '', location.pathname + location.hash)"),
+  "booking-screening.js: returnToForm must clear HighLevel label params from the page URL",
+);
+assert(
+  screeningJs.includes("options.some((option) => option.value === value)"),
+  "booking-screening.js: prefillFromUrl must ignore HighLevel label params that are not option values",
 );
 assert(
   contactHtml.includes("Quick question before you book"),
