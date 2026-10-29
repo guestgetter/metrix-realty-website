@@ -59,8 +59,26 @@ assert(
   `contact/index.html: must still reference HighLevel booking widget ${BOOKING_WIDGET_SRC}`,
 );
 assert(
-  contactHtml.includes('type="module" src="/assets/js/booking-screening.js'),
-  "contact/index.html: missing booking-screening.js module script",
+  contactHtml.includes('type="module" src="/assets/js/booking-screening.js?v=20261029"'),
+  "contact/index.html: booking-screening.js must be cache-busted as v=20261029",
+);
+assert(
+  screeningJs.includes("function buildCalendarSrc"),
+  "booking-screening.js: must build HighLevel iframe src from screening answers",
+);
+assert(
+  screeningJs.includes("screened_property_type"),
+  "booking-screening.js: must pass screened_property_type to HighLevel calendar",
+);
+assert(
+  ["appraisal_purpose", "market", "cityarea", "purpose_details"].every((key) =>
+    screeningJs.includes(`'${key}'`),
+  ),
+  "booking-screening.js: must pass appraisal_purpose, market, cityarea, purpose_details",
+);
+assert(
+  /revealCalendar\(\s*summaryText,\s*answers\s*\)/.test(screeningJs),
+  "booking-screening.js: revealCalendar must receive screening answers",
 );
 assert(
   contactHtml.includes("Quick question before you book"),
