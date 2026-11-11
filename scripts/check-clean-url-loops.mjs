@@ -1,3 +1,4 @@
+import { statSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -57,9 +58,20 @@ function normalizedPathname(target, route) {
   return pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
 }
 
+function servedFileExists(pathname) {
+  const webPath = pathname.replace(/^\/+/, "");
+  if (webPath === "") return true;
+  const trimmed = webPath.replace(/\/+$/, "");
+  return [webPath, `${trimmed}.html`, `${trimmed}/index.html`].some((candidate) => {
+    const stats = statSync(path.join(root, candidate), { throwIfNoEntry: false });
+    return stats?.isFile() ?? false;
+  });
+}
+
 const failures = [];
 const overflowGuardFailures = [];
 const servedRouteFailures = [];
+const relativeUrlFailures = [];
 const filesByRoute = new Map();
 
 for (const absolutePath of await findHtmlFiles(root)) {
@@ -83,6 +95,25 @@ for (const absolutePath of await findHtmlFiles(root)) {
       !bodyClasses.split(/\s+/).includes("overflow-x-hidden")
     ) {
       overflowGuardFailures.push(relativePath);
+    }
+  }
+
+  // Vercel serves each page at /X and /X/, so a relative URL resolves to two
+  // different places. Until November 2026 eight insights articles loaded
+  // ../assets/js/analytics-tracking.js, which is a 404 at their canonical
+  // trailing-slash URL: no phone, email, CTA or scroll events were recorded
+  // there, the author photo was broken and the Insights breadcrumb led to a 404.
+  if (/<script\b[^>]*\bsrc=["'](?!\/)[^"']*analytics-tracking\.js/.test(html)) {
+    relativeUrlFailures.push(`${relativePath}: load the tracking script as /assets/js/analytics-tracking.js`);
+  }
+  const canonical = html.match(/<link rel="canonical" href="https:\/\/metrixrealty\.com([^"]*)"/)?.[1];
+  if (canonical !== undefined) {
+    for (const [, url] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+      if (/^(?:\/|https?:|#|mailto:|tel:|data:|javascript:)/.test(url)) continue;
+      const pathname = decodeURIComponent(new URL(url, `https://metrixrealty.com${canonical || "/"}`).pathname);
+      if (!servedFileExists(pathname)) {
+        relativeUrlFailures.push(`${relativePath}: "${url}" resolves to ${pathname} at the canonical URL, which does not exist; use a path that starts with /`);
+      }
     }
   }
 
@@ -136,6 +167,11 @@ if (servedRouteFailures.length > 0) {
   console.error("Conversion paths missing from a served page:", servedRouteFailures.join(", "));
 }
 
-if (failures.length > 0 || overflowGuardFailures.length > 0 || servedRouteFailures.length > 0 || duplicateRoutes.length > 0) process.exit(1);
+if (relativeUrlFailures.length > 0) {
+  console.error("Relative URLs that break on the public page:");
+  for (const failure of relativeUrlFailures) console.error(`- ${failure}`);
+}
+
+if (failures.length > 0 || overflowGuardFailures.length > 0 || servedRouteFailures.length > 0 || duplicateRoutes.length > 0 || relativeUrlFailures.length > 0) process.exit(1);
 
 console.log("Route check passed: one file per page, clean URLs and mobile overflow guards are valid.");
