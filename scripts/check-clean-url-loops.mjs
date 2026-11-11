@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const ignoredDirectories = new Set([".git", ".vercel", "node_modules"]);
-const horizontalOverflowGuardFiles = new Set(["team.html", "team/index.html"]);
+const horizontalOverflowGuardFiles = new Set(["team.html"]);
 
 async function findHtmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -60,11 +60,13 @@ function normalizedPathname(target, route) {
 const failures = [];
 const overflowGuardFailures = [];
 const servedRouteFailures = [];
+const filesByRoute = new Map();
 
 for (const absolutePath of await findHtmlFiles(root)) {
   const relativePath = path.relative(root, absolutePath).split(path.sep).join("/");
   const route = cleanRouteFor(relativePath);
   const html = await readFile(absolutePath, "utf8");
+  filesByRoute.set(route, [...(filesByRoute.get(route) ?? []), relativePath]);
 
   for (const redirect of redirectTargets(html)) {
     if (normalizedPathname(redirect.target, route) === route) {
@@ -91,17 +93,26 @@ for (const absolutePath of await findHtmlFiles(root)) {
   }
 }
 
-// Vercel clean URLs can serve the flat .html file when a directory/index.html
-// shares the same route. Keep the conversion paths in both copies.
-for (const [flat, directory, marker] of [
-  ["services/commercial-property-valuations.html", "services/commercial-property-valuations/index.html", 'href="/london/commercial-appraisal/"'],
-  ["insights/commercial-appraisal-documents-ontario.html", "insights/commercial-appraisal-documents-ontario/index.html", "London commercial appraisal service</a>"],
-  ["insights/industrial-property-appraisal-factors-ontario.html", "insights/industrial-property-appraisal-factors-ontario/index.html", "London industrial appraisal service</a>"],
+// One file per page. Vercel clean URLs serve X.html at /X and /X/ and never
+// serve a sibling X/index.html. Until November 2026 the repo held 36 pages
+// twice, the copies drifted, and changes merged to the unserved copy (five
+// service pages, two agent pull requests) never reached the public site.
+const duplicateRoutes = [...filesByRoute].filter(([, files]) => files.length > 1);
+
+for (const [file, marker] of [
+  ["services/commercial-property-valuations.html", 'href="/london/commercial-appraisal/"'],
+  ["insights/commercial-appraisal-documents-ontario.html", "London commercial appraisal service</a>"],
+  ["insights/industrial-property-appraisal-factors-ontario.html", "London industrial appraisal service</a>"],
 ]) {
-  for (const file of [flat, directory]) {
-    if (!(await readFile(path.join(root, file), "utf8")).includes(marker)) {
-      servedRouteFailures.push(file);
-    }
+  if (!(await readFile(path.join(root, file), "utf8")).includes(marker)) {
+    servedRouteFailures.push(file);
+  }
+}
+
+if (duplicateRoutes.length > 0) {
+  console.error("Pages with two source files (only the .html file is served; delete the index.html copy):");
+  for (const [route, files] of duplicateRoutes) {
+    console.error(`- ${route}: ${files.join(", ")}`);
   }
 }
 
@@ -122,9 +133,9 @@ if (overflowGuardFailures.length > 0) {
 }
 
 if (servedRouteFailures.length > 0) {
-  console.error("Conversion paths missing from a clean-URL copy:", servedRouteFailures.join(", "));
+  console.error("Conversion paths missing from a served page:", servedRouteFailures.join(", "));
 }
 
-if (failures.length > 0 || overflowGuardFailures.length > 0 || servedRouteFailures.length > 0) process.exit(1);
+if (failures.length > 0 || overflowGuardFailures.length > 0 || servedRouteFailures.length > 0 || duplicateRoutes.length > 0) process.exit(1);
 
-console.log("Route check passed: clean URLs and mobile overflow guards are valid.");
+console.log("Route check passed: one file per page, clean URLs and mobile overflow guards are valid.");
