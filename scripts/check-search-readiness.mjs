@@ -4,11 +4,9 @@ import path from "node:path";
 const root = process.cwd();
 const failures = [];
 
-// Vercel cleanUrls serves the sibling .html file before the directory index.
-// Both sources must carry the approved metadata, or a merged SEO change can
-// pass the build while the public article continues serving its old metadata.
+// Vercel cleanUrls serves the .html file. It is the page's only source file
+// (check-clean-url-loops.mjs fails the build if an index.html copy returns).
 const aaciSources = [
-  "insights/what-is-aaci-designation/index.html",
   "insights/what-is-aaci-designation.html",
 ];
 const approvedAaciTitle = "What Is the AACI Designation in Canada? | Metrix Realty";
@@ -23,7 +21,6 @@ const approvedAaciMetadata = {
   twitterDescription: approvedAaciDescription,
   headline: "What Is the AACI Designation in Canada?",
 };
-const aaciMetadata = [];
 for (const relativePath of aaciSources) {
   const html = await readFile(path.join(root, relativePath), "utf8");
   if (!/<div class="comparison-scroll"[^>]*>\s*<table>[\s\S]*?<\/table>\s*<\/div>/.test(html) || !/\.comparison-scroll\s*\{[^}]*overflow-x:\s*auto/.test(html)) {
@@ -43,17 +40,11 @@ for (const relativePath of aaciSources) {
     if (!value) failures.push(`${relativePath}: missing ${field}`);
     else if (value !== approvedAaciMetadata[field]) failures.push(`${relativePath}: ${field} does not match the approved AACI metadata`);
   }
-  aaciMetadata.push(fields);
-}
-for (const field of Object.keys(aaciMetadata[0])) {
-  if (aaciMetadata[0][field] !== aaciMetadata[1][field]) {
-    failures.push(`AACI clean-URL sources disagree on ${field}; update both article files`);
-  }
 }
 
 const pagesThatShouldBeIndexable = [
-  "insights/commercial-appraisal-documents-ontario/index.html",
-  "insights/industrial-property-appraisal-factors-ontario/index.html",
+  "insights/commercial-appraisal-documents-ontario.html",
+  "insights/industrial-property-appraisal-factors-ontario.html",
   "windsor/commercial-appraisal/index.html",
   "windsor/industrial-appraisal/index.html",
   "windsor/investment-appraisal/index.html",
