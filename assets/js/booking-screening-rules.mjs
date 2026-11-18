@@ -44,3 +44,11 @@ export function isSimpleWindsorResidential(answers) {
     SIMPLE_RESIDENTIAL_PURPOSES.has(answers.purpose)
   );
 }
+
+// HighLevel's widget reads query fields without form-urlencoding's plus-to-space
+// conversion. Encode literal plus signs and spaces distinctly.
+export function encodeBookingFields(fields) {
+  return Object.entries(fields).filter(([, value]) => value)
+    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+    .join('&');
+}

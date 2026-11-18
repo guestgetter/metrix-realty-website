@@ -5,6 +5,7 @@
  */
 import {
   BOOKING_WIDGET_SRC,
+  encodeBookingFields,
   isSimpleWindsorResidential,
   isWindsorMarket,
 } from './booking-screening-rules.mjs';
@@ -133,7 +134,7 @@ function buildCalendarSrc(form, answers) {
   add('market', labelFor(form.elements.market, answers.market));
   add('cityarea', answers.cityDetail);
   add('purpose_details', answers.purposeDetail);
-  const query = params.toString();
+  const query = encodeBookingFields(Object.fromEntries(params));
   if (!query) return BOOKING_WIDGET_SRC;
   return BOOKING_WIDGET_SRC + (BOOKING_WIDGET_SRC.includes('?') ? '&' : '?') + query;
 }
