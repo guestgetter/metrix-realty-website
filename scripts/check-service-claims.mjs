@@ -18,3 +18,14 @@ for (const page of pages) {
 }
 if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
 console.log('Service claims passed: canonical pages make no blanket acceptance or rush promises.');
+
+// The London page previously described standards and organizational memberships
+// as professional credentials and published unverified data-provider/history claims.
+const london = await readFile('london/commercial-appraisal/index.html', 'utf8');
+for (const pattern of [/"hasCredential"\s*:\s*\[/, /TRREB|RealTrack|early 2000s|unique in the London market/]) {
+  if (pattern.test(london)) throw new Error('London commercial: unsupported credential, history or provider claim returned');
+}
+const schemas = [...london.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+if (!schemas.some(s => s['@graph']?.some(n => n['@type'] === 'Service' && n.provider?.address?.addressLocality === 'London'))) {
+  throw new Error('London commercial: service schema must identify the actual London provider');
+}
