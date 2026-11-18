@@ -43,6 +43,7 @@ for (const relativePath of aaciSources) {
 }
 
 const pagesThatShouldBeIndexable = [
+  "market-report/index.html",
   "insights/commercial-appraisal-documents-ontario.html",
   "insights/industrial-property-appraisal-factors-ontario.html",
   "windsor/commercial-appraisal/index.html",
@@ -52,6 +53,7 @@ const pagesThatShouldBeIndexable = [
 ];
 
 const expectedSitemapRoutes = [
+  "/market-report/",
   "/insights/commercial-appraisal-documents-ontario/",
   "/insights/industrial-property-appraisal-factors-ontario/",
   "/windsor/commercial-appraisal",

@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import {
   BOOKING_WIDGET_SRC,
+  encodeBookingFields,
   isSimpleWindsorResidential,
   isWindsorMarket,
 } from "../assets/js/booking-screening-rules.mjs";
@@ -59,8 +60,8 @@ assert(
   `contact/index.html: must still reference HighLevel booking widget ${BOOKING_WIDGET_SRC}`,
 );
 assert(
-  contactHtml.includes('type="module" src="/assets/js/booking-screening.js?v=20261029b"'),
-  "contact/index.html: booking-screening.js must be cache-busted as v=20261029b",
+  contactHtml.includes('type="module" src="/assets/js/booking-screening.js?v=20261118"'),
+  "contact/index.html: booking-screening.js must be cache-busted as v=20261118",
 );
 assert(
   screeningJs.includes("function buildCalendarSrc"),
@@ -172,3 +173,9 @@ if (failures.length) {
 }
 
 console.log("Booking screening checks passed.");
+
+const fields = encodeBookingFields({market: 'London / Middlesex', screened_property_type: 'Multi-family (2+ units)', purpose_details: 'Estate & tax'});
+if (fields.includes('+') || !fields.includes('London%20%2F%20Middlesex') || !fields.includes('2%2B%20units')) throw new Error('Widget values must distinguish spaces from literal plus signs');
+for (const [key, value] of new URLSearchParams(fields)) {
+  if (!['London / Middlesex', 'Multi-family (2+ units)', 'Estate & tax'].includes(value)) throw new Error('Booking field did not round-trip');
+}
